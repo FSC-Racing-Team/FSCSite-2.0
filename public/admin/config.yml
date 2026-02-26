@@ -4,7 +4,7 @@ logo:
 
 backend:
   name: github
-  repo: FSCRACING/FSCsite
+  repo: FSC-Racing-Team/FSCSite-2.0
   branch: main
   base_url: https://fscracing-decap-proxy.fsc-generale.workers.dev
   auth_endpoint: /auth
