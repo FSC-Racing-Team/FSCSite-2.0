@@ -5,7 +5,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import path from "path";
 
 export default defineConfig({
-  base: "/FSCSite-2.0",
+  base: "/FSCSite",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
