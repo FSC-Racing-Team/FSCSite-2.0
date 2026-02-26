@@ -98,6 +98,7 @@ const VEHICLE_DYNAMICS_HYPERSPEED_OPTIONS = {
 
 export default function MechPage({ onNavigate }: MechPageProps) {
   const [selectedDetail, setSelectedDetail] = useState<DetailItem | null>(null);
+  const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 
   const renderCard = (item: DetailItem) => (
     <article
@@ -113,7 +114,7 @@ export default function MechPage({ onNavigate }: MechPageProps) {
       }}
     >
       <div className="img-feat">
-        <img src={item.img} alt={item.title} onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
+        <img src={withBase(item.img)} alt={item.title} onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
       </div>
       <div className="meta-feat">
         <div className="role-feat">{item.role}</div>
@@ -139,7 +140,7 @@ export default function MechPage({ onNavigate }: MechPageProps) {
           <div className="container">
             <section className="intro" aria-label="Presentazione del team">
               <div className="logo-box">
-                <img src="/images/logo.png" alt="Logo FSC Racing Team" />
+                <img src={withBase("/images/logo.png")} alt="Logo FSC Racing Team" />
               </div>
               <div className="about">
                 <h2>Reparto Meccanica</h2>
@@ -167,7 +168,7 @@ export default function MechPage({ onNavigate }: MechPageProps) {
             <section aria-label="Vehicle Dynamics approfondimenti">
               <div className="intro-feat">
                 <div className="media-feat">
-                  <img src="/images/collage-elect/setup.avif" alt="VD Hero" onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
+                  <img src={withBase("/images/collage-elect/setup.avif")} alt="VD Hero" onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
                 </div>
                 <div className="copy-feat">
                   <h2>Shock Absorbers, Tyres and Tuning.</h2>
@@ -206,7 +207,7 @@ export default function MechPage({ onNavigate }: MechPageProps) {
             <section aria-label="Mechanical Design approfondimenti">
               <div className="intro-feat">
                 <div className="media-feat">
-                  <img src="/images/collage-elect/lv-hero.jpg" alt="Design Hero" onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
+                  <img src={withBase("/images/collage-elect/lv-hero.jpg")} alt="Design Hero" onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
                 </div>
                 <div className="copy-feat">
                   <h2>CAD, Simulations & Designing</h2>
@@ -240,7 +241,7 @@ export default function MechPage({ onNavigate }: MechPageProps) {
             <section aria-label="Aerodynamics approfondimenti">
               <div className="intro-feat">
                 <div className="media-feat">
-                  <img src="/images/collage-elect/aero.jpeg" alt="Aero Hero" onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
+                  <img src={withBase("/images/collage-elect/aero.jpeg")} alt="Aero Hero" onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
                 </div>
                 <div className="copy-feat">
                   <h2>CFD, CAD & Aerodynamic Analysis</h2>
@@ -283,7 +284,7 @@ export default function MechPage({ onNavigate }: MechPageProps) {
               </div>
 
               <div className="detail-media-feat">
-                <img src={selectedDetail.img} alt={selectedDetail.title} onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
+                <img src={withBase(selectedDetail.img)} alt={selectedDetail.title} onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
               </div>
 
               <div className="detail-copy-feat">

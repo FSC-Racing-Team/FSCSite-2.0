@@ -22,6 +22,7 @@ interface ElectricPageProps {
 
 export default function ElectricPage({ onNavigate }: ElectricPageProps) {
   const [selectedDetail, setSelectedDetail] = useState<DetailItem | null>(null);
+  const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 
   const hvItems: DetailItem[] = [
     {
@@ -81,7 +82,7 @@ export default function ElectricPage({ onNavigate }: ElectricPageProps) {
       }}
     >
       <div className="img-feat">
-        <img src={item.img} alt={item.title} onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
+        <img src={withBase(item.img)} alt={item.title} onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
       </div>
       <div className="meta-feat">
         <div className="role-feat">Approfondimento</div>
@@ -108,7 +109,7 @@ export default function ElectricPage({ onNavigate }: ElectricPageProps) {
         <div className="container">
           <section className="intro" aria-label="Presentazione del team">
             <div className="logo-box">
-              <img src="/images/logo.png" alt="Logo FSC Racing Team" />
+              <img src={withBase("/images/logo.png")} alt="Logo FSC Racing Team" />
             </div>
             <div className="about">
               <h2>Reparto Elettrico</h2>
@@ -142,7 +143,7 @@ export default function ElectricPage({ onNavigate }: ElectricPageProps) {
           <section id="hv-feat" aria-label="High Voltage approfondimenti">
             <div className="intro-feat">
             <div className="media-feat">
-              <img src="/images/collage-elect/elettrica.jpg" alt="HV Hero" onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
+              <img src={withBase("/images/collage-elect/elettrica.jpg")} alt="HV Hero" onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
             </div>
             <div className="copy-feat">
               <h2>Battery Pack, Powertrain &amp; HV Safety</h2>
@@ -192,7 +193,7 @@ export default function ElectricPage({ onNavigate }: ElectricPageProps) {
           <section id="glv-feat" aria-label="Low Voltage approfondimenti">
             <div className="intro-feat">
               <div className="media-feat">
-                <img src="/images/collage-elect/glv.jpg" alt="GLV Hero" onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
+                <img src={withBase("/images/collage-elect/glv.jpg")} alt="GLV Hero" onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
               </div>
               <div className="copy-feat">
                 <h2>ECU, Wiring, Dashboard &amp; Acquisition</h2>
@@ -239,7 +240,7 @@ export default function ElectricPage({ onNavigate }: ElectricPageProps) {
             </div>
 
             <div className="detail-media-feat">
-              <img src={selectedDetail.img} alt={selectedDetail.title} onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
+              <img src={withBase(selectedDetail.img)} alt={selectedDetail.title} onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
             </div>
 
             <div className="detail-copy-feat">

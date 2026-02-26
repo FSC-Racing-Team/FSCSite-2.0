@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function LogoActive() {
+  const wheelHref = `${import.meta.env.BASE_URL}wheel.png`;
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="520" height="520" viewBox="0 0 520 520">
       <g id="elephant" transform="translate(135 0) scale(1.388)">
@@ -37,7 +38,7 @@ export default function LogoActive() {
       {/* wheel groups compatibili col tuo script */}
       <g id="wheelBase" style={{ transformBox: "fill-box", transformOrigin: "center" }}>
         <g id="wheelClick" style={{ transformBox: "fill-box", transformOrigin: "center" }}>
-          <image href="/wheel.png" x="0" y="20" width="270" height="270" />
+          <image href={wheelHref} x="0" y="20" width="270" height="270" />
         </g>
       </g>
     </svg>

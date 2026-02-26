@@ -66,6 +66,7 @@ const focusItems: DetailItem[] = [
 
 export default function ManagementPage({ onNavigate }: ManagementPageProps) {
   const [selectedDetail, setSelectedDetail] = useState<DetailItem | null>(null);
+  const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
   const [order, setOrder] = useState<number[]>([0, 1, 2]);
   const swipeStart = useRef<SwipeStart | null>(null);
 
@@ -131,7 +132,7 @@ export default function ManagementPage({ onNavigate }: ManagementPageProps) {
       }}
     >
       <div className="img-feat">
-        <img src={item.img} alt={item.title} onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
+        <img src={withBase(item.img)} alt={item.title} onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
       </div>
       <div className="meta-feat">
         <div className="role-feat">{item.role}</div>
@@ -157,7 +158,7 @@ export default function ManagementPage({ onNavigate }: ManagementPageProps) {
           <div className="container">
             <section className="intro" aria-label="Presentazione del team">
               <div className="logo-box">
-                <img src="/images/logo.png" alt="Logo FSC Racing Team" />
+                <img src={withBase("/images/logo.png")} alt="Logo FSC Racing Team" />
               </div>
               <div className="about">
                 <h2>Reparto Management</h2>
@@ -176,9 +177,9 @@ export default function ManagementPage({ onNavigate }: ManagementPageProps) {
 
           <section className="mgmt-collage-wrap" aria-label="Collage del team">
             <div className="mgmt-collage">
-              <figure className="mgmt-tile mgmt-i1"><img src="/images/collage-mgmt/collage-1.jpeg" alt="Team Presentation" /></figure>
-              <figure className="mgmt-tile mgmt-i2"><img src="/images/collage-mgmt/collage-3.jpg" alt="Site Launch" /></figure>
-              <figure className="mgmt-tile mgmt-i3"><img src="/images/collage-mgmt/collage-2.jpeg" alt="Dettagli operativi" /></figure>
+              <figure className="mgmt-tile mgmt-i1"><img src={withBase("/images/collage-mgmt/collage-1.jpeg")} alt="Team Presentation" /></figure>
+              <figure className="mgmt-tile mgmt-i2"><img src={withBase("/images/collage-mgmt/collage-3.jpg")} alt="Site Launch" /></figure>
+              <figure className="mgmt-tile mgmt-i3"><img src={withBase("/images/collage-mgmt/collage-2.jpeg")} alt="Dettagli operativi" /></figure>
             </div>
           </section>
 
@@ -213,7 +214,7 @@ export default function ManagementPage({ onNavigate }: ManagementPageProps) {
                     }}
                   >
                     <div className="mgmt-polaroid-frame">
-                      <img src={card.img} alt={card.alt} />
+                      <img src={withBase(card.img)} alt={card.alt} />
                       <figcaption>{card.caption}</figcaption>
                     </div>
                   </figure>
@@ -263,7 +264,7 @@ export default function ManagementPage({ onNavigate }: ManagementPageProps) {
               </div>
 
               <div className="detail-media-feat">
-                <img src={selectedDetail.img} alt={selectedDetail.title} onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
+                <img src={withBase(selectedDetail.img)} alt={selectedDetail.title} onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
               </div>
 
               <div className="detail-copy-feat">
