@@ -10,7 +10,7 @@ backend:
   auth_endpoint: /auth
 
 media_folder: "public/dev/assets/uploads"
-public_folder: "/dev/assets/uploads"
+public_folder: "/FSCSite-2.0/dev/assets/uploads"
 
 collections:
   - name: "team"
