@@ -8,6 +8,7 @@ interface PageDrawerMenuProps {
 
 export default function PageDrawerMenu({ onNavigate }: PageDrawerMenuProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const adminUrl = `${import.meta.env.BASE_URL}admin/index.html`;
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -47,7 +48,7 @@ export default function PageDrawerMenu({ onNavigate }: PageDrawerMenuProps) {
                 { text: "Home", link: "#home", onClick: () => { setMenuOpen(false); onNavigate("home"); } },
                 { text: "Management", link: "#management", onClick: () => { setMenuOpen(false); onNavigate("management"); } },
                 { text: "Elettrica", link: "#electric", onClick: () => { setMenuOpen(false); onNavigate("electric"); } },
-                { text: "Area Riservata", link: "/admin/index.html", onClick: () => { setMenuOpen(false); window.location.assign("/admin/index.html"); } }
+                { text: "Area Riservata", link: adminUrl, onClick: () => { setMenuOpen(false); window.location.assign(adminUrl); } }
               ]}
               bgColor="transparent"
               speed={5}

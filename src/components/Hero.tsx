@@ -24,6 +24,7 @@ export default function Hero({ booted }: { booted: boolean }) {
 
   // ===== MENU state =====
   const [menuOpen, setMenuOpen] = useState(false);
+  const adminUrl = `${import.meta.env.BASE_URL}admin/index.html`;
 
   const goTo = (id: string) => {
     setMenuOpen(false);
@@ -596,7 +597,7 @@ export default function Hero({ booted }: { booted: boolean }) {
                 { text: "Home", link: "#heroPage", onClick: () => goTo("heroPage") },
                 { text: "Team", link: "#teamPage", onClick: () => goTo("teamPage") },
                 { text: "Contacts", link: "#contacts", onClick: () => goTo("contacts") },
-                { text: "Area Riservata", link: "/admin/index.html", onClick: () => { setMenuOpen(false); window.location.assign("/admin/index.html"); } },
+                { text: "Area Riservata", link: adminUrl, onClick: () => { setMenuOpen(false); window.location.assign(adminUrl); } },
               ]}
               bgColor="transparent"
               speed={5}
