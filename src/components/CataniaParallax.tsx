@@ -1,6 +1,10 @@
 import React, { useEffect, useRef } from "react";
 
 const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
+const toAssetUrl = (path: string) => {
+  if (/^(?:[a-z]+:)?\/\//i.test(path) || path.startsWith("data:")) return path;
+  return `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+};
 
 type Props = {
   active: boolean;
@@ -18,6 +22,10 @@ export default function CataniaParallax({
   src2 = "/parallax/2.png",
   src1 = "/parallax/1.png",
 }: Props) {
+  const resolvedSrc4 = toAssetUrl(src4);
+  const resolvedSrc3 = toAssetUrl(src3);
+  const resolvedSrc2 = toAssetUrl(src2);
+  const resolvedSrc1 = toAssetUrl(src1);
   const stageRef = useRef<HTMLDivElement>(null);
 
   const l1Ref = useRef<SVGImageElement | null>(null);
@@ -132,11 +140,11 @@ export default function CataniaParallax({
         xmlns="http://www.w3.org/2000/svg"
       >
         {/* sotto */}
-        <image ref={l4Ref} className="pxLayer" href={src4} x="0" y="0" width="2048" height="1365" preserveAspectRatio="xMidYMid meet" />
-        <image ref={l3Ref} className="pxLayer" href={src3} x="0" y="0" width="2048" height="1365" preserveAspectRatio="xMidYMid meet" />
-        <image ref={l2Ref} className="pxLayer" href={src2} x="0" y="0" width="2048" height="1365" preserveAspectRatio="xMidYMid meet" />
+        <image ref={l4Ref} className="pxLayer" href={resolvedSrc4} x="0" y="0" width="2048" height="1365" preserveAspectRatio="xMidYMid meet" />
+        <image ref={l3Ref} className="pxLayer" href={resolvedSrc3} x="0" y="0" width="2048" height="1365" preserveAspectRatio="xMidYMid meet" />
+        <image ref={l2Ref} className="pxLayer" href={resolvedSrc2} x="0" y="0" width="2048" height="1365" preserveAspectRatio="xMidYMid meet" />
         {/* sopra */}
-        <image ref={l1Ref} className="pxLayer" href={src1} x="0" y="0" width="2048" height="1365" preserveAspectRatio="xMidYMid meet" />
+        <image ref={l1Ref} className="pxLayer" href={resolvedSrc1} x="0" y="0" width="2048" height="1365" preserveAspectRatio="xMidYMid meet" />
       </svg>
 
       <div className="pxVignette" />

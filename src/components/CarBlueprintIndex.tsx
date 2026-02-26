@@ -28,6 +28,10 @@ type WheelData = {
 };
 
 const clamp01 = (v: number) => Math.max(0, Math.min(1, v));
+const toAssetUrl = (path: string) => {
+    if (/^(?:[a-z]+:)?\/\//i.test(path) || path.startsWith("data:")) return path;
+    return `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+};
 const ease = (t: number) => t * t * (3 - 2 * t);
 const smoothstep01 = (a: number, b: number, x: number) => {
     const t = clamp01((x - a) / (b - a));
@@ -198,6 +202,7 @@ export default function CarBlueprintIndex({
     onRequestExit,                   // ✅
     showProgressBar = false,         // nuovo
 }: Props) {
+    const resolvedModelUrl = useMemo(() => toAssetUrl(modelUrl), [modelUrl]);
     const wrapRef = useRef<HTMLDivElement | null>(null);
     const glHostRef = useRef<HTMLDivElement | null>(null);
     const overlayRef = useRef<HTMLCanvasElement | null>(null);
@@ -1616,7 +1621,7 @@ export default function CarBlueprintIndex({
         };
 
         loader.load(
-            modelUrl,
+            resolvedModelUrl,
             (gltf) => {
                 if (disposed) return;
                 setModel(gltf);
@@ -1760,7 +1765,7 @@ export default function CarBlueprintIndex({
             renderer.dispose();
             if (renderer.domElement.parentElement === glHost) glHost.removeChild(renderer.domElement);
         };
-    }, [modelUrl, cfg, captureWheel, captureKeys]);
+    }, [resolvedModelUrl, cfg, captureWheel, captureKeys]);
 
     return (
         <div
