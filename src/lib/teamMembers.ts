@@ -185,7 +185,8 @@ export async function loadMembersFromDecapFile(): Promise<TeamMember[] | null> {
   }
 
   try {
-    const response = await fetch(`/dev/data/members.json?t=${Date.now()}`, { cache: "no-store" });
+    const membersUrl = `${import.meta.env.BASE_URL}dev/data/members.json?t=${Date.now()}`;
+    const response = await fetch(membersUrl, { cache: "no-store" });
     if (!response.ok) {
       return null;
     }
