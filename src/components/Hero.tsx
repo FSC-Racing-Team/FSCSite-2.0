@@ -73,6 +73,11 @@ export default function Hero({ booted }: { booted: boolean }) {
   useEffect(() => {
     if (!booted) return;
 
+    const prevScrollRestoration = "scrollRestoration" in window.history ? window.history.scrollRestoration : null;
+    if (prevScrollRestoration !== null) {
+      window.history.scrollRestoration = "manual";
+    }
+
     const isMobileInteraction = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
 
     const heroPage = heroRef.current;
@@ -603,7 +608,15 @@ export default function Hero({ booted }: { booted: boolean }) {
     targetPct = 0;
     pct = 0;
 
-    setScrollLock(shouldUseScrollLock);
+    const canStartLocked = shouldUseScrollLock && atTop() && heroMostlyInView();
+    if (canStartLocked) {
+      setScrollLock(true);
+    } else {
+      introCompleted = true;
+      targetPct = 100;
+      pct = 100;
+      setScrollLock(false);
+    }
     applyCataniaContent();
     playRevealOnce();
     recalcLayout();
@@ -628,6 +641,10 @@ export default function Hero({ booted }: { booted: boolean }) {
       (wheelClick || wheelBase)?.removeEventListener("click", onWheelClick);
       document.documentElement.classList.remove("lock");
       document.body.classList.remove("lock");
+
+      if (prevScrollRestoration !== null) {
+        window.history.scrollRestoration = prevScrollRestoration;
+      }
 
       if (rbHideTimerRef.current) window.clearTimeout(rbHideTimerRef.current);
       rbHideTimerRef.current = null;
