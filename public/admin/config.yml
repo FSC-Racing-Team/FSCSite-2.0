@@ -5,12 +5,12 @@ logo:
 backend:
   name: github
   repo: FSC-Racing-Team/FSCSite-2.0
-  branch: main
+  branch: gh-pages
   base_url: https://fscracing-decap-proxy.fsc-generale.workers.dev
   auth_endpoint: /auth
 
-media_folder: "public/dev/assets/uploads"
-public_folder: "/FSCSite-2.0/dev/assets/uploads"
+media_folder: "dev/assets/uploads"
+public_folder: "/dev/assets/uploads"
 
 collections:
   - name: "team"
@@ -18,7 +18,7 @@ collections:
     files:
       - label: "Persone"
         name: "members"
-        file: "public/dev/data/members.json"
+        file: "dev/data/members.json"
         format: "json"
         fields:
           - label: "Membri"
@@ -62,7 +62,7 @@ collections:
     files:
       - label: "Lista News"
         name: "news_list"
-        file: "public/dev/data/news.json"
+        file: "dev/data/news.json"
         format: "json"
         fields:
           - label: "News"
@@ -83,7 +83,7 @@ collections:
     files:
       - label: "Blocchi Generali"
         name: "site_blocks"
-        file: "public/dev/data/site.json"
+        file: "dev/data/site.json"
         format: "json"
         fields:
           - { label: "Titolo Hero", name: "hero_title", widget: "string" }

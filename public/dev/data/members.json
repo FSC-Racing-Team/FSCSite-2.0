@@ -1,76 +1,372 @@
 {
   "members": [
     {
-      "unit": "high_voltage",
-      "dept": "elettrica",
-      "bio": "",
-      "name": "Responsabile HV",
-      "order": 1,
+      "unit": "management",
+      "dept": "management",
+      "section": "Management",
+      "bio": "Planning, operation, coordinamento inter-reparti",
+      "name": "Emanuele Di Bella",
+      "order": 0,
       "visible": true,
-      "photo": "/images/collage-elect/battery.jpg",
-      "role": "Head of High Voltage",
+      "photo": "/dev/assets/uploads/coo.png",
+      "role": "Chief Operating Officer",
       "special": true,
-      "linkedin": ""
+      "linkedin": "https://www.linkedin.com/in/emanuele-di-bella-058581242/"
     },
     {
-      "unit": "low_voltage",
-      "dept": "elettrica",
-      "bio": "",
-      "name": "Responsabile LV",
-      "order": 1,
+      "unit": "professori",
+      "dept": "management",
+      "section": "Management",
+      "name": "Gaetano Sequenzia",
+      "order": 0,
       "visible": true,
-      "photo": "/images/collage-elect/ecu.jpg",
-      "role": "Head of Low Voltage",
+      "photo": "/dev/assets/uploads/seq.png",
+      "role": "Project Advisor",
       "special": true,
-      "linkedin": ""
-    },
-    {
-      "unit": "vehicle_dynamics",
-      "dept": "meccanica",
-      "bio": "",
-      "name": "Responsabile Vehicle Dynamics",
-      "order": 1,
-      "visible": true,
-      "photo": "/images/collage-elect/setup.avif",
-      "role": "Head of Vehicle Dynamics",
-      "special": true,
-      "linkedin": ""
-    },
-    {
-      "unit": "mechanical_design",
-      "dept": "meccanica",
-      "bio": "",
-      "name": "Responsabile Mechanical Design",
-      "order": 1,
-      "visible": true,
-      "photo": "/images/collage-elect/Immagine6.jpg",
-      "role": "Head of Mechanical Design",
-      "special": true,
-      "linkedin": ""
-    },
-    {
-      "unit": "aerodynamics",
-      "dept": "meccanica",
-      "bio": "",
-      "name": "Responsabile Aerodynamics",
-      "order": 1,
-      "visible": true,
-      "photo": "/images/collage-elect/Immagine5.png",
-      "role": "Head of Aerodynamics",
-      "special": true,
-      "linkedin": ""
+      "linkedin": "https://www.dieei.unict.it/docenti/gaetano.sequenzia"
     },
     {
       "unit": "management",
       "dept": "management",
-      "bio": "",
-      "name": "Emanuele di Bella",
-      "order": 1,
+      "section": "Management",
+      "name": "Francesco Carmelo Alongi",
+      "order": 0,
       "visible": true,
-      "photo": "/FSCSite-2.0/dev/assets/uploads/coo.png",
-      "role": "Chief Operative Officer",
+      "photo": "/dev/assets/uploads/lol.png",
+      "role": "Head of Software R&D",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/francesco-carmelo-alongi-803282274/"
+    },
+    {
+      "unit": "management",
+      "dept": "management",
+      "name": "Cristian Amore",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/christianamore.png",
+      "role": "Junior Business",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/christian-amore-882992258/"
+    },
+    {
+      "unit": "management",
+      "dept": "management",
+      "name": "Carla Torrisi",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/carla.png",
+      "role": "Junior Coordinator Manager - Mechanics",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/carla-torrisi-33b2612a0/"
+    },
+    {
+      "unit": "management",
+      "dept": "management",
+      "name": "Giuseppe Romeo",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/peppe.png",
+      "role": "Head of Social Network",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/giuseppe-romeo-653782388/"
+    },
+    {
+      "unit": "management",
+      "dept": "management",
+      "name": "Graziano Lacagnina",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/grazianolacagnina.png",
+      "role": "Junior Business and Financial Manager",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/graziano-lacagnina-03b48b378/"
+    },
+    {
+      "unit": "management",
+      "dept": "management",
+      "name": "Sergio Pellegrino",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/sergiopellegrino.png",
+      "role": "Junior Coordinator Manager - Mechanics",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/sergio-pellegrino-093812233/"
+    },
+    {
+      "unit": "low_voltage",
+      "dept": "elettrica",
+      "name": "Lorenzo Buzzurro",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/lobuzz.png",
+      "role": "Responsabile di Reparto",
       "special": true,
+      "linkedin": "https://www.linkedin.com/in/lorenzo-buzzurro-1b44a2273/"
+    },
+    {
+      "special": true,
+      "visible": true,
+      "order": 0,
+      "name": "Riccardo Barbagallo",
+      "role": "Responsabile di Reparto",
+      "dept": "elettrica",
+      "unit": "high_voltage",
+      "photo": "/dev/assets/uploads/nop.jpg"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Dario Cavallaro",
+      "role": "Junior HV",
+      "dept": "elettrica",
+      "unit": "high_voltage"
+    },
+    {
+      "unit": "low_voltage",
+      "dept": "elettrica",
+      "name": "Giovanni Spadaro",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/gvsp.png",
+      "role": "Head of Telemetry System Development",
+      "special": false,
+      "linkedin": "https://giovannispadaro.it"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Manuel Biancolilla",
+      "role": "Junior LV",
+      "dept": "elettrica",
+      "unit": "low_voltage"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Luigi Tinnirello",
+      "role": "Junior LV",
+      "dept": "elettrica",
+      "unit": "low_voltage"
+    },
+    {
+      "unit": "low_voltage",
+      "dept": "elettrica",
+      "name": "Vincenzo Grasso",
+      "order": 0,
+      "visible": true,
+      "photo": "",
+      "role": "Junior LV",
+      "special": false,
       "linkedin": ""
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Gianpiero Maria Marchese",
+      "role": "IT Specialist",
+      "dept": "elettrica",
+      "unit": "low_voltage",
+      "photo": "/dev/assets/uploads/maestro.png"
+    },
+    {
+      "unit": "vehicle_dynamics",
+      "dept": "meccanica",
+      "name": "Giorgio Scavo",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/giorgioscavo5.png",
+      "role": "Responsabile di Reparto",
+      "special": true,
+      "linkedin": "https://www.linkedin.com/in/giorgio-scavo-680633372/"
+    },
+    {
+      "unit": "vehicle_dynamics",
+      "dept": "meccanica",
+      "name": "Alessandro Zappalà",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/zppl.png",
+      "role": "Junior DDV",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/alessandro-zappalà-664b722b6/"
+    },
+    {
+      "unit": "vehicle_dynamics",
+      "dept": "meccanica",
+      "name": "Diego Napoli",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/diego.png",
+      "role": "Junior DDV",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/diego-napoli-8515533a9/"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Giada Condorelli",
+      "role": "Junior DDV",
+      "dept": "meccanica",
+      "unit": "vehicle_dynamics"
+    },
+    {
+      "unit": "vehicle_dynamics",
+      "dept": "meccanica",
+      "name": "Carlo Grasso",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/crlg.png",
+      "role": "Junior DDV",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/carlo-grasso-557b79279/"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Angelo Scammacca",
+      "role": "Head of Braking System Development",
+      "dept": "meccanica",
+      "unit": "vehicle_dynamics"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Danilo Chiarenza",
+      "role": "Head of Steering System Development",
+      "dept": "meccanica",
+      "unit": "vehicle_dynamics"
+    },
+    {
+      "special": true,
+      "visible": true,
+      "order": 0,
+      "name": "Ettore Ragusa",
+      "role": "Responsabile di Reparto",
+      "dept": "meccanica",
+      "unit": "mechanical_design",
+      "photo": "/dev/assets/uploads/ector2.png"
+    },
+    {
+      "unit": "mechanical_design",
+      "dept": "meccanica",
+      "name": "Antonio Ciancio",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/antonioc.png",
+      "role": "Design Engineer",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/antonio-ciancio-a20464282/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Vincenzo Oliveri",
+      "role": "Design Engineer",
+      "dept": "meccanica",
+      "unit": "mechanical_design",
+      "photo": "/dev/assets/uploads/oliveriv.png"
+    },
+    {
+      "unit": "mechanical_design",
+      "dept": "meccanica",
+      "name": "Ludovica di Fede",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/lddf.png",
+      "role": "Design Engineer",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/ludovica-di-fede-a6a84b3ab/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "dept": "meccanica",
+      "name": "Santi Malò",
+      "role": "Design Engineer",
+      "unit": "mechanical_design"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Andrea Novo",
+      "role": "Design Engineer",
+      "dept": "meccanica",
+      "unit": "mechanical_design"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Fabio Mergiotti",
+      "role": "Design Engineer",
+      "dept": "meccanica",
+      "unit": "mechanical_design"
+    },
+    {
+      "unit": "aerodynamics",
+      "dept": "meccanica",
+      "name": "Carmelo Trischitta",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/carmelotrischitta.png",
+      "role": "Responsabile di Reparto",
+      "special": true,
+      "linkedin": "https://www.linkedin.com/in/carmelo-trischitta/"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Giovanni di Maria",
+      "role": "Aerodynamics Engineer",
+      "dept": "meccanica",
+      "unit": "aerodynamics"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "role": "Aerodynamics Engineer",
+      "name": "Carla Gravina",
+      "dept": "meccanica",
+      "unit": "aerodynamics"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Alex Cosma",
+      "role": "Aerodynamics Engineer",
+      "dept": "meccanica",
+      "unit": "aerodynamics"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "role": "Aerodynamics Engineer",
+      "name": "Paolo Battiato",
+      "dept": "meccanica",
+      "unit": "aerodynamics"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "role": "Aerodynamics Engineer",
+      "name": "Ruggero Gusmano",
+      "dept": "meccanica",
+      "unit": "aerodynamics"
     }
   ]
 }

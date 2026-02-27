@@ -36,6 +36,29 @@ interface DecapMemberRaw {
 }
 
 const STORAGE_KEY = "fsc-team-members-v1";
+const BASE_URL = import.meta.env.BASE_URL;
+
+function normalizePublicUrl(value: string): string {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return "";
+  }
+
+  if (/^(?:[a-z]+:)?\/\//i.test(trimmed) || trimmed.startsWith("data:") || trimmed.startsWith("blob:")) {
+    return trimmed;
+  }
+
+  if (trimmed.startsWith(BASE_URL)) {
+    return trimmed;
+  }
+
+  const baseNoTrailingSlash = BASE_URL.replace(/\/+$/, "");
+  if (baseNoTrailingSlash && trimmed.startsWith(`${baseNoTrailingSlash}/`)) {
+    return trimmed;
+  }
+
+  return `${BASE_URL}${trimmed.replace(/^\/+/, "")}`;
+}
 
 export const TEAM_DEPARTMENT_OPTIONS: { value: TeamDepartment; label: string }[] = [
   { value: "electric-hv", label: "Elettrica — High Voltage" },
@@ -171,7 +194,7 @@ function toTeamMember(raw: DecapMemberRaw, index: number): TeamMember | null {
     department,
     name,
     role,
-    imageUrl: (raw.photo || "").trim(),
+    imageUrl: normalizePublicUrl(raw.photo || ""),
     github: "",
     linkedinUrl: (raw.linkedin || "").trim(),
     cardSize: raw.special ? "lead" : "standard",
