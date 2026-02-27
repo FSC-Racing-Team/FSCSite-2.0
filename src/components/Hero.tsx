@@ -24,7 +24,7 @@ export default function Hero({ booted }: { booted: boolean }) {
 
   // ===== MENU state =====
   const [menuOpen, setMenuOpen] = useState(false);
-  const adminUrl = `${import.meta.env.BASE_URL}admin/index.html`;
+  const adminUrl = `${import.meta.env.BASE_URL}admin/index.html?v=20260227`;
 
   const goTo = (id: string) => {
     setMenuOpen(false);

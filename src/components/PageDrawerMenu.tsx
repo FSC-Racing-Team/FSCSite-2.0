@@ -8,7 +8,7 @@ interface PageDrawerMenuProps {
 
 export default function PageDrawerMenu({ onNavigate }: PageDrawerMenuProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const adminUrl = `${import.meta.env.BASE_URL}admin/index.html`;
+  const adminUrl = `${import.meta.env.BASE_URL}admin/index.html?v=20260227`;
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
