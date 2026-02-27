@@ -1,10 +1,12 @@
-import React from "react";
+interface BackgroundFXProps {
+  lite?: boolean;
+}
 
-export default function BackgroundFX() {
+export default function BackgroundFX({ lite = false }: BackgroundFXProps) {
   return (
     <>
-      <div className="bg" />
-      <div className="grain" />
+      <div className={`bg${lite ? " bg-lite" : ""}`} />
+      <div className={`grain${lite ? " grain-lite" : ""}`} />
     </>
   );
 }

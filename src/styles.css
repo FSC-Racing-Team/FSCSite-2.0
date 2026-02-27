@@ -32,6 +32,41 @@
   --holeBorder: 1px solid rgba(255,255,255,.10);
 }
 
+@media (max-width: 980px){
+  :root{
+    --baseFontSize: clamp(56px, 9vw, 128px);
+    --overlayFontSize: clamp(42px, 7.4vw, 88px);
+    --underTitleGapEm: 1.12;
+    --underTitleExtraPx: 8px;
+    --swayPx: 9px;
+    --panelGapFromWord: 34px;
+  }
+}
+
+@media (max-width: 720px){
+  :root{
+    --baseFontSize: clamp(46px, 11.4vw, 88px);
+    --overlayFontSize: clamp(30px, 8.8vw, 64px);
+    --underTitleGapEm: 1.02;
+    --underTitleExtraPx: 2px;
+    --swayPx: 0px;
+    --panelGapFromWord: 18px;
+  }
+}
+
+:root.low-performance{
+  --dur: 760ms;
+  --stagger: 90ms;
+  --fakeLoad: 520ms;
+  --swayPx: 0px;
+  --underTitleGapEm: 1.04;
+  --underTitleExtraPx: 4px;
+}
+
+html.low-performance{
+  scroll-behavior: auto;
+}
+
 *{ box-sizing:border-box; }
 
 html{ height:100%; overflow:auto; scroll-behavior:smooth; }
@@ -78,6 +113,31 @@ html.lock, body.lock{
   opacity:.55;
   pointer-events:none;
   z-index:0;
+}
+
+.bg.bg-lite{
+  inset: 0;
+  filter: none;
+  opacity: .78;
+  background:
+    radial-gradient(65% 42% at 16% 22%, color-mix(in oklab, var(--cyan) 34%, transparent) 0%, transparent 72%),
+    radial-gradient(62% 40% at 84% 28%, color-mix(in oklab, var(--red) 32%, transparent) 0%, transparent 72%),
+    radial-gradient(56% 44% at 52% 82%, color-mix(in oklab, var(--blue) 22%, transparent) 0%, transparent 74%),
+    linear-gradient(180deg, rgba(255,255,255,.02), transparent 60%);
+}
+
+.grain.grain-lite{
+  mix-blend-mode: normal;
+  opacity: .2;
+  background-image:
+    radial-gradient(circle at 18% 20%, rgba(255,255,255,.04), transparent 34%),
+    radial-gradient(circle at 80% 30%, rgba(255,255,255,.03), transparent 34%),
+    radial-gradient(circle at 50% 82%, rgba(255,255,255,.025), transparent 36%);
+}
+
+@media (max-width: 900px){
+  .bg.bg-lite{ opacity: .72; }
+  .grain.grain-lite{ opacity: .16; }
 }
 
 main{ position:relative; z-index:1; }

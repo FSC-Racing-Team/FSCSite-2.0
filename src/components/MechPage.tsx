@@ -10,6 +10,7 @@ import Silk from "./Silk";
 import Beams from "./Beams";
 import PageDrawerMenu from "./PageDrawerMenu";
 import DepartmentMembers from "./DepartmentMembers";
+import BackgroundFX from "./BackgroundFX";
 import useLowPerformanceMode from "../hooks/useLowPerformanceMode";
 
 interface DetailItem {
@@ -132,8 +133,7 @@ export default function MechPage({ onNavigate }: MechPageProps) {
 
   return (
     <>
-      {!isLowPerformance ? <div className="bg" /> : null}
-      {!isLowPerformance ? <div className="grain" /> : null}
+      <BackgroundFX lite={isLowPerformance} />
 
       <div className="mech-page electric-page">
         <PageDrawerMenu onNavigate={onNavigate} />

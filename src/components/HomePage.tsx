@@ -7,6 +7,7 @@ import GarageDoorEngine from "./GarageDoorEngine";
 import ThreePanels from "./GarageStage";
 import FscFooter from "./FscFooter";
 import ContactGate from "./Contacts";
+import BackgroundFX from "./BackgroundFX";
 import useLowPerformanceMode from "../hooks/useLowPerformanceMode";
 
 interface HomePageProps {
@@ -32,8 +33,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
   return (
     <>
       <LoaderOverlay off={booted} />
-      {!isLowPerformance ? <div className="bg" /> : null}
-      {!isLowPerformance ? <div className="grain" /> : null}
+      <BackgroundFX lite={isLowPerformance} />
 
       <main>
         <HeroPage booted={booted} />

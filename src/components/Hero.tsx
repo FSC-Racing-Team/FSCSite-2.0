@@ -279,12 +279,19 @@ export default function Hero({ booted }: { booted: boolean }) {
       const dy = e.deltaY || 0;
 
       if (scrollLocked) {
-        userAttemptedUnlock = true;
+        if (dy < 0 && targetPct <= 0.001 && pct <= 0.001) {
+          e.preventDefault();
+          return;
+        }
+
         if (dy > 0 && pct >= 99.5) {
           introCompleted = true;
           setScrollLock(false);
           return;
         }
+
+        if (dy > 0) userAttemptedUnlock = true;
+
         e.preventDefault();
         const step = dy * 0.06;
         targetPct = clamp(targetPct + step, 0, 100);
@@ -459,7 +466,12 @@ export default function Hero({ booted }: { booted: boolean }) {
             setScrollLock(false);
           }
 
-          if (userAttemptedUnlock && performance.now() - lastProgressTs > 2200) {
+          if (
+            userAttemptedUnlock &&
+            targetPct > 0.5 &&
+            targetPct < 99.5 &&
+            performance.now() - lastProgressTs > 2200
+          ) {
             targetPct = 100;
             pct = 100;
             introCompleted = true;

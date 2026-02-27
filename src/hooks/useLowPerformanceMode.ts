@@ -22,7 +22,9 @@ export default function useLowPerformanceMode() {
       const slowNetwork = netType.includes("2g") || netType.includes("3g");
 
       const lowTierDesktop = cores <= 4 || memory <= 4 || saveData || slowNetwork || prefersReducedMotion;
-      setIsLowPerformance(isMobile || lowTierDesktop);
+      const next = isMobile || lowTierDesktop;
+      setIsLowPerformance(next);
+      document.documentElement.classList.toggle("low-performance", next);
     };
 
     compute();
