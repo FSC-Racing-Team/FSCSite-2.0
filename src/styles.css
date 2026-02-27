@@ -1608,6 +1608,22 @@ html.car-lock, body.car-lock{
 /* ===== GARAGE (Door Toggle + Engine Frame) ===== */
 .garageSec{
   position: relative;
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  html,
+  body,
+  html.lock,
+  body.lock,
+  html.car-lock,
+  body.car-lock {
+    height: auto !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-y: auto !important;
+    touch-action: pan-y pinch-zoom !important;
+  }
+}
   padding: clamp(18px, 4vw, 42px) 0;
 }
 
