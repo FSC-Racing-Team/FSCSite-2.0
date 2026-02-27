@@ -1,5 +1,5 @@
 // designed by alongio
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./ElectricPage.css";
 // @ts-ignore - Lightning is a JSX component
 import Lightning from "./Lightning";
@@ -22,7 +22,17 @@ interface ElectricPageProps {
 
 export default function ElectricPage({ onNavigate }: ElectricPageProps) {
   const [selectedDetail, setSelectedDetail] = useState<DetailItem | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)");
+    const updateMobile = () => setIsMobile(mq.matches);
+    updateMobile();
+
+    mq.addEventListener("change", updateMobile);
+    return () => mq.removeEventListener("change", updateMobile);
+  }, []);
 
   const hvItems: DetailItem[] = [
     {
@@ -98,8 +108,8 @@ export default function ElectricPage({ onNavigate }: ElectricPageProps) {
 
   return (
     <>
-      <div className="bg" />
-      <div className="grain" />
+      {!isMobile ? <div className="bg" /> : null}
+      {!isMobile ? <div className="grain" /> : null}
       
       <div className="electric-page">
         <PageDrawerMenu onNavigate={onNavigate} />
@@ -126,15 +136,17 @@ export default function ElectricPage({ onNavigate }: ElectricPageProps) {
 
       {/* HIGH VOLTAGE */}
       <section className="hv-wrapper">
-        <div className="hv-bg">
-          <Lightning
-            hue={260}
-            xOffset={0}
-            speed={1}
-            intensity={1}
-            size={1}
-          />
-        </div>
+        {!isMobile ? (
+          <div className="hv-bg">
+            <Lightning
+              hue={260}
+              xOffset={0}
+              speed={1}
+              intensity={1}
+              size={1}
+            />
+          </div>
+        ) : null}
         <div className="hv-container">
           <div className="header">
             <span className="pip"></span> High Voltage
@@ -164,27 +176,29 @@ export default function ElectricPage({ onNavigate }: ElectricPageProps) {
 
       {/* LOW VOLTAGE */}
       <section className="glv-wrapper">
-        <div className="glv-bg">
-          <FaultyTerminal
-            scale={1.5}
-            gridMul={[2, 1]}
-            digitSize={1.2}
-            timeScale={0.5}
-            pause={false}
-            scanlineIntensity={0.5}
-            glitchAmount={1}
-            flickerAmount={1}
-            noiseAmp={1}
-            chromaticAberration={0}
-            dither={0}
-            curvature={0.1}
-            tint="#A7EF9E"
-            mouseReact
-            mouseStrength={0.5}
-            pageLoadAnimation
-            brightness={0.6}
-          />
-        </div>
+        {!isMobile ? (
+          <div className="glv-bg">
+            <FaultyTerminal
+              scale={1.5}
+              gridMul={[2, 1]}
+              digitSize={1.2}
+              timeScale={0.5}
+              pause={false}
+              scanlineIntensity={0.5}
+              glitchAmount={1}
+              flickerAmount={1}
+              noiseAmp={1}
+              chromaticAberration={0}
+              dither={0}
+              curvature={0.1}
+              tint="#A7EF9E"
+              mouseReact
+              mouseStrength={0.5}
+              pageLoadAnimation
+              brightness={0.6}
+            />
+          </div>
+        ) : null}
         <div className="glv-container">
           <div className="header">
             <span className="pip"></span> Low Voltage & Control

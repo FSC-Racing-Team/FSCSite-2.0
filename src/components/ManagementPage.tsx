@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./ElectricPage.css";
 import ContactGate from "./Contacts";
 import FscFooter from "./FscFooter";
@@ -66,9 +66,19 @@ const focusItems: DetailItem[] = [
 
 export default function ManagementPage({ onNavigate }: ManagementPageProps) {
   const [selectedDetail, setSelectedDetail] = useState<DetailItem | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
   const [order, setOrder] = useState<number[]>([0, 1, 2]);
   const swipeStart = useRef<SwipeStart | null>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)");
+    const updateMobile = () => setIsMobile(mq.matches);
+    updateMobile();
+
+    mq.addEventListener("change", updateMobile);
+    return () => mq.removeEventListener("change", updateMobile);
+  }, []);
 
   const goNext = () => {
     setOrder((prev) => {
@@ -148,8 +158,8 @@ export default function ManagementPage({ onNavigate }: ManagementPageProps) {
 
   return (
     <>
-      <div className="bg" />
-      <div className="grain" />
+      {!isMobile ? <div className="bg" /> : null}
+      {!isMobile ? <div className="grain" /> : null}
 
       <div className="management-page electric-page">
         <PageDrawerMenu onNavigate={onNavigate} />

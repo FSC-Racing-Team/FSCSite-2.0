@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./ElectricPage.css";
 import ContactGate from "./Contacts";
 import FscFooter from "./FscFooter";
@@ -98,7 +98,17 @@ const VEHICLE_DYNAMICS_HYPERSPEED_OPTIONS = {
 
 export default function MechPage({ onNavigate }: MechPageProps) {
   const [selectedDetail, setSelectedDetail] = useState<DetailItem | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)");
+    const updateMobile = () => setIsMobile(mq.matches);
+    updateMobile();
+
+    mq.addEventListener("change", updateMobile);
+    return () => mq.removeEventListener("change", updateMobile);
+  }, []);
 
   const renderCard = (item: DetailItem) => (
     <article
@@ -130,8 +140,8 @@ export default function MechPage({ onNavigate }: MechPageProps) {
 
   return (
     <>
-      <div className="bg" />
-      <div className="grain" />
+      {!isMobile ? <div className="bg" /> : null}
+      {!isMobile ? <div className="grain" /> : null}
 
       <div className="mech-page electric-page">
         <PageDrawerMenu onNavigate={onNavigate} />
@@ -157,9 +167,11 @@ export default function MechPage({ onNavigate }: MechPageProps) {
         <div className="divisore"></div>
 
         <section className="mech-section-wrapper mech-vd-wrapper">
-          <div className="mech-vd-bg" aria-hidden="true">
-            <Hyperspeed effectOptions={VEHICLE_DYNAMICS_HYPERSPEED_OPTIONS} />
-          </div>
+          {!isMobile ? (
+            <div className="mech-vd-bg" aria-hidden="true">
+              <Hyperspeed effectOptions={VEHICLE_DYNAMICS_HYPERSPEED_OPTIONS} />
+            </div>
+          ) : null}
           <div className="mech-section-container electric-section">
             <div className="header">
               <span className="pip"></span> Vehicle Dynamics & Suspensions
@@ -185,20 +197,22 @@ export default function MechPage({ onNavigate }: MechPageProps) {
         </section>
 
         <section className="mech-section-wrapper mech-design-wrapper">
-          <div className="mech-design-bg" aria-hidden="true">
-            <div className="mech-design-beams-host">
-              <Beams
-                beamWidth={3.4}
-                beamHeight={30}
-                beamNumber={20}
-                lightColor="#0084ff"
-                speed={4.8}
-                noiseIntensity={1.75}
-                scale={0.2}
-                rotation={30}
-              />
+          {!isMobile ? (
+            <div className="mech-design-bg" aria-hidden="true">
+              <div className="mech-design-beams-host">
+                <Beams
+                  beamWidth={3.4}
+                  beamHeight={30}
+                  beamNumber={20}
+                  lightColor="#0084ff"
+                  speed={4.8}
+                  noiseIntensity={1.75}
+                  scale={0.2}
+                  rotation={30}
+                />
+              </div>
             </div>
-          </div>
+          ) : null}
           <div className="mech-section-container electric-section">
             <div className="header">
               <span className="pip"></span> Mechanic Designing
@@ -224,15 +238,17 @@ export default function MechPage({ onNavigate }: MechPageProps) {
         </section>
 
         <section className="mech-section-wrapper mech-aero-wrapper">
-          <div className="mech-aero-bg" aria-hidden="true">
-            <Silk
-              speed={20}
-              scale={1}
-              color="#ff0000"
-              noiseIntensity={1.5}
-              rotation={0}
-            />
-          </div>
+          {!isMobile ? (
+            <div className="mech-aero-bg" aria-hidden="true">
+              <Silk
+                speed={20}
+                scale={1}
+                color="#ff0000"
+                noiseIntensity={1.5}
+                rotation={0}
+              />
+            </div>
+          ) : null}
           <div className="mech-section-container electric-section">
             <div className="header">
               <span className="pip"></span> Aerodynamics
