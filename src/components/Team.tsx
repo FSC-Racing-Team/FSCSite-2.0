@@ -3,21 +3,25 @@ import React from "react";
 import Threads from "./Threads";
 import BlurText from "./BlurText";
 import ScrollVelocity from "./ScrollVelocity";
+import useLowPerformanceMode from "../hooks/useLowPerformanceMode";
 
 export default function Team(): React.ReactElement {
+  const isLowPerformance = useLowPerformanceMode();
+
   return (
     <section id="teamPage" className="teamV3" aria-label="Sezione Team">
       {/* BG: Threads */}
-      <div className="teamV3Bg" aria-hidden="true">
-        <Threads
-          // puoi cambiare colore / intensità qui
-          color={[0.9, 0.95, 1]}
-          amplitude={0.9}
-          distance={0}
-          enableMouseInteraction={false}
-        />
-        <div className="teamV3Vignette" />
-      </div>
+      {!isLowPerformance ? (
+        <div className="teamV3Bg" aria-hidden="true">
+          <Threads
+            color={[0.9, 0.95, 1]}
+            amplitude={0.9}
+            distance={0}
+            enableMouseInteraction={false}
+          />
+          <div className="teamV3Vignette" />
+        </div>
+      ) : null}
 
       {/* Contenuto */}
       <div className="teamV3Inner">

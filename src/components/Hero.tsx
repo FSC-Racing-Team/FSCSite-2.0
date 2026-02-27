@@ -1,13 +1,14 @@
 // designed by alongio
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { animate, stagger } from "animejs";
 import LogoActive from "./LogoActive";
 import CataniaParallax from "./CataniaParallax";
 
 import ColorBends from "./ColorBends";
 import FlowingMenu from "./FlowingMenu";
+import useLowPerformanceMode from "../hooks/useLowPerformanceMode";
 
 const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
@@ -18,6 +19,7 @@ type XYWH = { x: number; y: number; w: number; h: number };
 export default function Hero({ booted }: { booted: boolean }) {
   const heroRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
+  const isLowPerformance = useLowPerformanceMode();
 
   // ✅ Parallax ON/OFF (fade)
   const [parallaxOn, setParallaxOn] = useState(false);
@@ -433,7 +435,7 @@ export default function Hero({ booted }: { booted: boolean }) {
       if (targetPct === 0 && pct < 0.5) pct = 0;
 
       // ColorBends SOLO quando FSC/RACING/TEAM (pct==0)
-      const shouldShowRB = heroMostlyInView() && scrollLocked && targetPct <= 0.001 && pct <= 0.001;
+      const shouldShowRB = !isLowPerformance && heroMostlyInView() && scrollLocked && targetPct <= 0.001 && pct <= 0.001;
       setRB(shouldShowRB);
 
       // wheel
@@ -442,7 +444,7 @@ export default function Hero({ booted }: { booted: boolean }) {
 
       // ✅ PARALLAX: visibile SOLO a 100, sparisce appena < 100
       const EPS = 0.05; // tolleranza per il lerp (0.05 => ~99.95)
-      const wantParallax = pct >= (100 - EPS);
+      const wantParallax = !isLowPerformance && pct >= (100 - EPS);
 
       if (wantParallax !== parallaxWasOn) {
         parallaxWasOn = wantParallax;
@@ -584,7 +586,7 @@ export default function Hero({ booted }: { booted: boolean }) {
       if (rbHideTimerRef.current) window.clearTimeout(rbHideTimerRef.current);
       rbHideTimerRef.current = null;
     };
-  }, [booted]);
+  }, [booted, isLowPerformance]);
 
   return (
     <section className="page" id="heroPage" ref={heroRef}>
@@ -625,7 +627,7 @@ export default function Hero({ booted }: { booted: boolean }) {
       </aside>
 
       {/* ColorBends SOLO quando FSC/RACING/TEAM */}
-      {rbMounted && (
+      {!isLowPerformance && rbMounted && (
         <div className={`rbBgWrap ${rbVisible ? "is-on" : ""}`} aria-hidden="true">
           <ColorBends
             colors={["#ff0000", "#000000", "#ff0000"]}
@@ -645,7 +647,7 @@ export default function Hero({ booted }: { booted: boolean }) {
         </div>
       )}
       {/* ✅ PARALLAX ancorato all'hero, full viewport, sotto le scritte */}
-      <div className={`heroParallax ${parallaxOn ? "is-on" : ""}`} aria-hidden={!parallaxOn}>
+      <div className={`heroParallax ${!isLowPerformance && parallaxOn ? "is-on" : ""}`} aria-hidden={!parallaxOn || isLowPerformance}>
         <CataniaParallax active={parallaxOn} />
       </div>
 

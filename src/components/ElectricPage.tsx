@@ -1,5 +1,5 @@
 // designed by alongio
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./ElectricPage.css";
 // @ts-ignore - Lightning is a JSX component
 import Lightning from "./Lightning";
@@ -9,6 +9,7 @@ import ContactGate from "./Contacts";
 import FscFooter from "./FscFooter";
 import PageDrawerMenu from "./PageDrawerMenu";
 import DepartmentMembers from "./DepartmentMembers";
+import useLowPerformanceMode from "../hooks/useLowPerformanceMode";
 
 interface DetailItem {
   title: string;
@@ -22,17 +23,8 @@ interface ElectricPageProps {
 
 export default function ElectricPage({ onNavigate }: ElectricPageProps) {
   const [selectedDetail, setSelectedDetail] = useState<DetailItem | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const isLowPerformance = useLowPerformanceMode();
   const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
-
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)");
-    const updateMobile = () => setIsMobile(mq.matches);
-    updateMobile();
-
-    mq.addEventListener("change", updateMobile);
-    return () => mq.removeEventListener("change", updateMobile);
-  }, []);
 
   const hvItems: DetailItem[] = [
     {
@@ -108,8 +100,8 @@ export default function ElectricPage({ onNavigate }: ElectricPageProps) {
 
   return (
     <>
-      {!isMobile ? <div className="bg" /> : null}
-      {!isMobile ? <div className="grain" /> : null}
+      {!isLowPerformance ? <div className="bg" /> : null}
+      {!isLowPerformance ? <div className="grain" /> : null}
       
       <div className="electric-page">
         <PageDrawerMenu onNavigate={onNavigate} />
@@ -136,7 +128,7 @@ export default function ElectricPage({ onNavigate }: ElectricPageProps) {
 
       {/* HIGH VOLTAGE */}
       <section className="hv-wrapper">
-        {!isMobile ? (
+        {!isLowPerformance ? (
           <div className="hv-bg">
             <Lightning
               hue={260}
@@ -176,7 +168,7 @@ export default function ElectricPage({ onNavigate }: ElectricPageProps) {
 
       {/* LOW VOLTAGE */}
       <section className="glv-wrapper">
-        {!isMobile ? (
+        {!isLowPerformance ? (
           <div className="glv-bg">
             <FaultyTerminal
               scale={1.5}

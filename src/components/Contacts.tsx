@@ -1,6 +1,7 @@
 // designed by alongio
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { LaserFlow } from "./LaserFlow";
+import useLowPerformanceMode from "../hooks/useLowPerformanceMode";
 
 function isValidEmail(value: string) {
   const v = value.trim();
@@ -26,6 +27,7 @@ function escapeHtml(str: string) {
 }
 
 export default function ContactGate() {
+  const isLowPerformance = useLowPerformanceMode();
   const [email, setEmail] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -86,16 +88,18 @@ export default function ContactGate() {
         </h1>
       </header>
 
-      <LaserFlow
-        color="#A80000"
-        horizontalSizing={1.24}
-        verticalSizing={1.2}
-        wispDensity={5}
-        wispSpeed={12}
-        wispIntensity={0}
-        horizontalBeamOffset={0.0}
-        verticalBeamOffset={-0.5}
-      />
+      {!isLowPerformance ? (
+        <LaserFlow
+          color="#A80000"
+          horizontalSizing={1.24}
+          verticalSizing={1.2}
+          wispDensity={5}
+          wispSpeed={12}
+          wispIntensity={0}
+          horizontalBeamOffset={0.0}
+          verticalBeamOffset={-0.5}
+        />
+      ) : null}
 
       <main className="cgHero">
         <div className="cgGate">

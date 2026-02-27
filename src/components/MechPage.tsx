@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./ElectricPage.css";
 import ContactGate from "./Contacts";
 import FscFooter from "./FscFooter";
@@ -10,6 +10,7 @@ import Silk from "./Silk";
 import Beams from "./Beams";
 import PageDrawerMenu from "./PageDrawerMenu";
 import DepartmentMembers from "./DepartmentMembers";
+import useLowPerformanceMode from "../hooks/useLowPerformanceMode";
 
 interface DetailItem {
   title: string;
@@ -98,17 +99,8 @@ const VEHICLE_DYNAMICS_HYPERSPEED_OPTIONS = {
 
 export default function MechPage({ onNavigate }: MechPageProps) {
   const [selectedDetail, setSelectedDetail] = useState<DetailItem | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const isLowPerformance = useLowPerformanceMode();
   const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
-
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)");
-    const updateMobile = () => setIsMobile(mq.matches);
-    updateMobile();
-
-    mq.addEventListener("change", updateMobile);
-    return () => mq.removeEventListener("change", updateMobile);
-  }, []);
 
   const renderCard = (item: DetailItem) => (
     <article
@@ -140,8 +132,8 @@ export default function MechPage({ onNavigate }: MechPageProps) {
 
   return (
     <>
-      {!isMobile ? <div className="bg" /> : null}
-      {!isMobile ? <div className="grain" /> : null}
+      {!isLowPerformance ? <div className="bg" /> : null}
+      {!isLowPerformance ? <div className="grain" /> : null}
 
       <div className="mech-page electric-page">
         <PageDrawerMenu onNavigate={onNavigate} />
@@ -167,7 +159,7 @@ export default function MechPage({ onNavigate }: MechPageProps) {
         <div className="divisore"></div>
 
         <section className="mech-section-wrapper mech-vd-wrapper">
-          {!isMobile ? (
+          {!isLowPerformance ? (
             <div className="mech-vd-bg" aria-hidden="true">
               <Hyperspeed effectOptions={VEHICLE_DYNAMICS_HYPERSPEED_OPTIONS} />
             </div>
@@ -197,7 +189,7 @@ export default function MechPage({ onNavigate }: MechPageProps) {
         </section>
 
         <section className="mech-section-wrapper mech-design-wrapper">
-          {!isMobile ? (
+          {!isLowPerformance ? (
             <div className="mech-design-bg" aria-hidden="true">
               <div className="mech-design-beams-host">
                 <Beams
@@ -238,7 +230,7 @@ export default function MechPage({ onNavigate }: MechPageProps) {
         </section>
 
         <section className="mech-section-wrapper mech-aero-wrapper">
-          {!isMobile ? (
+          {!isLowPerformance ? (
             <div className="mech-aero-bg" aria-hidden="true">
               <Silk
                 speed={20}
