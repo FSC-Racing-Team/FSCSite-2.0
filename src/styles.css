@@ -439,6 +439,56 @@ section.page{ min-height:100vh; width:100%; position:relative; }
   .panel{ right: 0; left: 0 !important; position:absolute; }
   .collageWrap{ height: calc(100vh - 78px); }
 }
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  html,
+  body {
+    height: auto !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    scroll-behavior: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: auto;
+    touch-action: pan-y pinch-zoom;
+  }
+
+  html.lock,
+  body.lock,
+  html.car-lock,
+  body.car-lock {
+    height: auto !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior-y: auto !important;
+    touch-action: pan-y pinch-zoom !important;
+  }
+
+  #heroPage,
+  #heroPage.page {
+    min-height: 40vh;
+  }
+
+  .stage {
+    height: auto;
+    min-height: 40vh;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .reveal,
+  .reveal > .inner {
+    height: auto;
+    min-height: 0;
+  }
+
+  .bg,
+  .grain,
+  .rbBgWrap,
+  .heroParallax {
+    display: none !important;
+  }
+}
+}
 .page{
   position: relative;
   overflow: hidden;
