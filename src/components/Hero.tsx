@@ -71,6 +71,8 @@ export default function Hero({ booted }: { booted: boolean }) {
   useEffect(() => {
     if (!booted) return;
 
+    const isMobileInteraction = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
+
     const heroPage = heroRef.current;
     const stage = stageRef.current;
     if (!heroPage || !stage) return;
@@ -203,9 +205,16 @@ export default function Hero({ booted }: { booted: boolean }) {
     };
 
     // ===== LOCK logic =====
-    let scrollLocked = true;
+    let scrollLocked = !isMobileInteraction;
 
     const setScrollLock = (on: boolean) => {
+      if (isMobileInteraction) {
+        scrollLocked = false;
+        document.documentElement.classList.remove("lock");
+        document.body.classList.remove("lock");
+        return;
+      }
+
       scrollLocked = !!on;
       document.documentElement.classList.toggle("lock", scrollLocked);
       document.body.classList.toggle("lock", scrollLocked);
@@ -225,16 +234,17 @@ export default function Hero({ booted }: { booted: boolean }) {
     let pct = 0;
 
     const onScrollCheck = () => {
+      if (isMobileInteraction) return;
       if (!scrollLocked && heroMostlyInView() && atTop()) {
         targetPct = 100;
         pct = 100;
         setScrollLock(true);
       }
     };
-    window.addEventListener("scroll", onScrollCheck, { passive: true });
 
     const blockedKeys = new Set(["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " ", "Spacebar"]);
     const onKeyDown = (e: KeyboardEvent) => {
+      if (isMobileInteraction) return;
       if (!scrollLocked) return;
       if (!heroMostlyInView()) return;
 
@@ -245,16 +255,16 @@ export default function Hero({ booted }: { booted: boolean }) {
       }
       if (blockedKeys.has(e.key)) e.preventDefault();
     };
-    window.addEventListener("keydown", onKeyDown, { passive: false });
 
     const onTouchMove = (e: TouchEvent) => {
+      if (isMobileInteraction) return;
       if (!scrollLocked) return;
       if (!heroMostlyInView()) return;
       e.preventDefault();
     };
-    window.addEventListener("touchmove", onTouchMove, { passive: false });
 
     const onWheel = (e: WheelEvent) => {
+      if (isMobileInteraction) return;
       if (!heroMostlyInView()) return;
       const dy = e.deltaY || 0;
 
@@ -269,7 +279,13 @@ export default function Hero({ booted }: { booted: boolean }) {
         if (targetPct > 99.5) targetPct = 100;
       }
     };
-    window.addEventListener("wheel", onWheel, { passive: false });
+
+    if (!isMobileInteraction) {
+      window.addEventListener("scroll", onScrollCheck, { passive: true });
+      window.addEventListener("keydown", onKeyDown, { passive: false });
+      window.addEventListener("touchmove", onTouchMove, { passive: false });
+      window.addEventListener("wheel", onWheel, { passive: false });
+    }
 
     // ===== content apply =====
     const applyCataniaContent = () => {
@@ -553,10 +569,12 @@ export default function Hero({ booted }: { booted: boolean }) {
 
       setParallaxOn(false);
 
-      window.removeEventListener("scroll", onScrollCheck as any);
-      window.removeEventListener("keydown", onKeyDown as any);
-      window.removeEventListener("touchmove", onTouchMove as any);
-      window.removeEventListener("wheel", onWheel as any);
+      if (!isMobileInteraction) {
+        window.removeEventListener("scroll", onScrollCheck as any);
+        window.removeEventListener("keydown", onKeyDown as any);
+        window.removeEventListener("touchmove", onTouchMove as any);
+        window.removeEventListener("wheel", onWheel as any);
+      }
       window.removeEventListener("resize", onResize as any);
 
       (wheelClick || wheelBase)?.removeEventListener("click", onWheelClick);

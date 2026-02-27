@@ -14,6 +14,7 @@ interface HomePageProps {
 
 export default function HomePage({ onNavigate }: HomePageProps) {
   const [booted, setBooted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -27,6 +28,16 @@ export default function HomePage({ onNavigate }: HomePageProps) {
     return () => window.clearTimeout(t);
   }, []);
 
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)");
+
+    const updateMobile = () => setIsMobile(mq.matches);
+    updateMobile();
+
+    mq.addEventListener("change", updateMobile);
+    return () => mq.removeEventListener("change", updateMobile);
+  }, []);
+
   return (
     <>
       <LoaderOverlay off={booted} />
@@ -38,7 +49,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <TeamPage />
         <ThreePanels onNavigate={onNavigate} />
 
-        <GarageDoorEngine modelUrl="/car.glb" />
+        {!isMobile ? <GarageDoorEngine modelUrl="/car.glb" /> : null}
         <ContactGate />
         <FscFooter />
       </main>
