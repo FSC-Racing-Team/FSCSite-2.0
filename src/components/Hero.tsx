@@ -207,10 +207,15 @@ export default function Hero({ booted }: { booted: boolean }) {
     };
 
     // ===== LOCK logic =====
-    let scrollLocked = !isMobileInteraction;
+    const shouldUseScrollLock = !isMobileInteraction && !isLowPerformance;
+    let scrollLocked = shouldUseScrollLock;
+    let introCompleted = !shouldUseScrollLock;
+    let userAttemptedUnlock = false;
+    let lastProgressTs = performance.now();
+    let lastPct = 0;
 
     const setScrollLock = (on: boolean) => {
-      if (isMobileInteraction) {
+      if (!shouldUseScrollLock) {
         scrollLocked = false;
         document.documentElement.classList.remove("lock");
         document.body.classList.remove("lock");
@@ -236,7 +241,7 @@ export default function Hero({ booted }: { booted: boolean }) {
     let pct = 0;
 
     const onScrollCheck = () => {
-      if (isMobileInteraction) return;
+      if (!shouldUseScrollLock || introCompleted) return;
       if (!scrollLocked && heroMostlyInView() && atTop()) {
         targetPct = 100;
         pct = 100;
@@ -246,32 +251,37 @@ export default function Hero({ booted }: { booted: boolean }) {
 
     const blockedKeys = new Set(["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " ", "Spacebar"]);
     const onKeyDown = (e: KeyboardEvent) => {
-      if (isMobileInteraction) return;
+      if (!shouldUseScrollLock) return;
       if (!scrollLocked) return;
       if (!heroMostlyInView()) return;
 
       const wantsDown = e.key === "ArrowDown" || e.key === "PageDown" || e.key === " " || e.key === "Spacebar";
       if (wantsDown && pct >= 99.5) {
+        introCompleted = true;
         setScrollLock(false);
         return;
       }
+      if (wantsDown) userAttemptedUnlock = true;
       if (blockedKeys.has(e.key)) e.preventDefault();
     };
 
     const onTouchMove = (e: TouchEvent) => {
-      if (isMobileInteraction) return;
+      if (!shouldUseScrollLock) return;
       if (!scrollLocked) return;
       if (!heroMostlyInView()) return;
+      userAttemptedUnlock = true;
       e.preventDefault();
     };
 
     const onWheel = (e: WheelEvent) => {
-      if (isMobileInteraction) return;
+      if (!shouldUseScrollLock) return;
       if (!heroMostlyInView()) return;
       const dy = e.deltaY || 0;
 
       if (scrollLocked) {
+        userAttemptedUnlock = true;
         if (dy > 0 && pct >= 99.5) {
+          introCompleted = true;
           setScrollLock(false);
           return;
         }
@@ -282,7 +292,7 @@ export default function Hero({ booted }: { booted: boolean }) {
       }
     };
 
-    if (!isMobileInteraction) {
+    if (shouldUseScrollLock) {
       window.addEventListener("scroll", onScrollCheck, { passive: true });
       window.addEventListener("keydown", onKeyDown, { passive: false });
       window.addEventListener("touchmove", onTouchMove, { passive: false });
@@ -434,6 +444,30 @@ export default function Hero({ booted }: { booted: boolean }) {
       if (targetPct === 100 && pct > 99.5) pct = 100;
       if (targetPct === 0 && pct < 0.5) pct = 0;
 
+      if (scrollLocked) {
+        if (!heroMostlyInView()) {
+          introCompleted = true;
+          setScrollLock(false);
+        } else {
+          if (pct > lastPct + 0.1) {
+            lastPct = pct;
+            lastProgressTs = performance.now();
+          }
+
+          if (targetPct >= 99.5 && pct >= 99.2) {
+            introCompleted = true;
+            setScrollLock(false);
+          }
+
+          if (userAttemptedUnlock && performance.now() - lastProgressTs > 2200) {
+            targetPct = 100;
+            pct = 100;
+            introCompleted = true;
+            setScrollLock(false);
+          }
+        }
+      }
+
       // ColorBends SOLO quando FSC/RACING/TEAM (pct==0)
       const shouldShowRB = !isLowPerformance && heroMostlyInView() && scrollLocked && targetPct <= 0.001 && pct <= 0.001;
       setRB(shouldShowRB);
@@ -557,7 +591,7 @@ export default function Hero({ booted }: { booted: boolean }) {
     targetPct = 0;
     pct = 0;
 
-    setScrollLock(true);
+    setScrollLock(shouldUseScrollLock);
     applyCataniaContent();
     playRevealOnce();
     recalcLayout();
@@ -571,7 +605,7 @@ export default function Hero({ booted }: { booted: boolean }) {
 
       setParallaxOn(false);
 
-      if (!isMobileInteraction) {
+      if (shouldUseScrollLock) {
         window.removeEventListener("scroll", onScrollCheck as any);
         window.removeEventListener("keydown", onKeyDown as any);
         window.removeEventListener("touchmove", onTouchMove as any);

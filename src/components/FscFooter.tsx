@@ -162,7 +162,8 @@ export default function FscFooter() {
           </div>
 
           <div className="brand" aria-hidden="true">
-            FSCRACING
+            <span className="brandMain">FSC</span>
+            <span className="brandTail">RACING</span>
           </div>
         </section>
 

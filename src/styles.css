@@ -2171,6 +2171,12 @@ html.car-lock, body.car-lock{
   overflow: visible;
 }
 
+.fscFooter .brandMain,
+.fscFooter .brandTail{
+  display: inline-block;
+  vertical-align: baseline;
+}
+
 /* legal sotto, leggibile sul rosso */
 .fscFooter .legalOuter{
   display:flex;
@@ -2200,6 +2206,13 @@ html.car-lock, body.car-lock{
   .fscFooter .top .col-platform{ grid-column: 2 / 4; }
   .fscFooter .top .col-sol{ grid-column: 2 / 3; }
   .fscFooter .top .col-about{ grid-column: 3 / 4; }
+  .fscFooter .brand{
+    font-size: clamp(52px, 11vw, 96px);
+    line-height: 1.04;
+    letter-spacing: -.045em;
+    padding: 0 6px 22px;
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 720px){
@@ -2207,7 +2220,27 @@ html.car-lock, body.car-lock{
   .fscFooter .top{ grid-template-columns: 1fr; gap: 18px; }
   .fscFooter .mid{ grid-template-columns: 1fr; gap: 14px; }
   .fscFooter .addr{ justify-self: start; }
+  .fscFooter .brand{
+    font-size: clamp(40px, 13.5vw, 58px);
+    line-height: 1.06;
+    letter-spacing: -.05em;
+    padding: 0 0 24px;
+    max-width: 100%;
+  }
   .fscFooter .legalOuter{ flex-wrap: wrap; gap: 10px 16px; }
+}
+
+@media (max-width: 430px){
+  .fscFooter .brand{
+    font-size: clamp(36px, 16.5vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -.04em;
+    padding: 0 0 26px;
+  }
+  .fscFooter .brandMain,
+  .fscFooter .brandTail{
+    display: block;
+  }
 }
 
 @media (prefers-reduced-motion: reduce){
