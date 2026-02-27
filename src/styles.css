@@ -199,6 +199,24 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 }
 #wheelClick{ transition: transform 420ms var(--ease); }
 
+@media (hover: none) and (pointer: coarse){
+  #wheelBase,
+  #wheelClick{
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+    outline: none;
+    touch-action: manipulation;
+  }
+
+  #wheelBase:focus,
+  #wheelBase:focus-visible,
+  #wheelClick:focus,
+  #wheelClick:focus-visible{
+    outline: none;
+  }
+}
+
 .right{ padding: var(--pad); }
 .right .inner{ gap: 18px; align-items:flex-start; }
 
