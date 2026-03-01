@@ -19,8 +19,7 @@ export default function ThreePanels({ onNavigate }: ThreePanelsProps) {
   const onKey =
     (idx: number) =>
     (e: React.KeyboardEvent<HTMLElement>) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
+      if (e.key === "Enter") {
         setActive(idx);
       }
     };

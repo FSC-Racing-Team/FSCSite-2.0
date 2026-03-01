@@ -110,8 +110,7 @@ export default function MechPage({ onNavigate }: MechPageProps) {
       tabIndex={0}
       onClick={() => setSelectedDetail(item)}
       onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
+        if (e.key === "Enter") {
           setSelectedDetail(item);
         }
       }}
@@ -136,7 +135,7 @@ export default function MechPage({ onNavigate }: MechPageProps) {
       <BackgroundFX lite={isLowPerformance} />
 
       <div className="mech-page electric-page">
-        <PageDrawerMenu onNavigate={onNavigate} />
+        <PageDrawerMenu onNavigate={onNavigate} currentSection="mech" />
 
         <section id="chi-siamo">
           <div className="container">

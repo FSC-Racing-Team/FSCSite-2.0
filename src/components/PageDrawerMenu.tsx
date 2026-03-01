@@ -4,11 +4,20 @@ import FlowingMenu from "./FlowingMenu";
 
 interface PageDrawerMenuProps {
   onNavigate: (page: string) => void;
+  currentSection: "management" | "electric" | "mech";
 }
 
-export default function PageDrawerMenu({ onNavigate }: PageDrawerMenuProps) {
+export default function PageDrawerMenu({ onNavigate, currentSection }: PageDrawerMenuProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const adminUrl = `${import.meta.env.BASE_URL}admin/index.html?v=20260227`;
+
+  const sectionItems = [
+    { key: "management" as const, text: "Management", link: "#management", page: "management" },
+    { key: "electric" as const, text: "Elettrica", link: "#electric", page: "electric" },
+    { key: "mech" as const, text: "Meccanica", link: "#mech", page: "mech" },
+  ];
+
+  const otherSections = sectionItems.filter((item) => item.key !== currentSection);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -46,8 +55,14 @@ export default function PageDrawerMenu({ onNavigate }: PageDrawerMenuProps) {
             <FlowingMenu
               items={[
                 { text: "Home", link: "#home", onClick: () => { setMenuOpen(false); onNavigate("home"); } },
-                { text: "Management", link: "#management", onClick: () => { setMenuOpen(false); onNavigate("management"); } },
-                { text: "Elettrica", link: "#electric", onClick: () => { setMenuOpen(false); onNavigate("electric"); } },
+                ...otherSections.map((item) => ({
+                  text: item.text,
+                  link: item.link,
+                  onClick: () => {
+                    setMenuOpen(false);
+                    onNavigate(item.page);
+                  },
+                })),
                 { text: "Area Riservata", link: adminUrl, onClick: () => { setMenuOpen(false); window.location.assign(adminUrl); } }
               ]}
               bgColor="transparent"

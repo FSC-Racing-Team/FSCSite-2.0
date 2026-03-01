@@ -1,0 +1,22 @@
+html.home-page-active.lock,
+body.home-page-active.lock,
+html.home-page-active.car-lock,
+body.home-page-active.car-lock {
+  overflow: hidden !important;
+  height: 100% !important;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  html.home-page-active.lock,
+  body.home-page-active.lock,
+  html.home-page-active.car-lock,
+  body.home-page-active.car-lock {
+    height: auto !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior-y: auto !important;
+    touch-action: pan-y pinch-zoom !important;
+  }
+}

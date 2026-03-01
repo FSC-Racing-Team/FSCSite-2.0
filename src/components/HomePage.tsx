@@ -9,6 +9,7 @@ import FscFooter from "./FscFooter";
 import ContactGate from "./Contacts";
 import BackgroundFX from "./BackgroundFX";
 import useLowPerformanceMode from "../hooks/useLowPerformanceMode";
+import "./HomeScrollLocks.css";
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
@@ -19,6 +20,9 @@ export default function HomePage({ onNavigate }: HomePageProps) {
   const isLowPerformance = useLowPerformanceMode();
 
   useEffect(() => {
+    document.documentElement.classList.add("home-page-active");
+    document.body.classList.add("home-page-active");
+
     window.scrollTo(0, 0);
 
     const raw = getComputedStyle(document.documentElement)
@@ -27,7 +31,11 @@ export default function HomePage({ onNavigate }: HomePageProps) {
     const fakeLoad = Number.parseInt(raw || "1000", 10);
 
     const t = window.setTimeout(() => setBooted(true), Number.isFinite(fakeLoad) ? fakeLoad : 1000);
-    return () => window.clearTimeout(t);
+    return () => {
+      window.clearTimeout(t);
+      document.documentElement.classList.remove("home-page-active", "lock", "car-lock");
+      document.body.classList.remove("home-page-active", "lock", "car-lock");
+    };
   }, []);
 
   return (

@@ -25,17 +25,16 @@ export default function GarageDoorEngine({ modelUrl = "/car.glb" }: Props) {
     setOpen(false);
   };
 
-  // Fullscreen: blocco scroll body
   useEffect(() => {
-    if (!fullscreen) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const lockOn = fullscreen;
+    document.documentElement.classList.toggle("car-lock", lockOn);
+    document.body.classList.toggle("car-lock", lockOn);
     return () => {
-      document.body.style.overflow = prev;
+      document.documentElement.classList.remove("car-lock");
+      document.body.classList.remove("car-lock");
     };
   }, [fullscreen]);
 
-  // ✅ SHIELD anti-scroll: blocca wheel/touch pagina quando garage OPEN e evento dentro frame (o fullscreen)
   useEffect(() => {
     const onWheelCapture = (e: WheelEvent) => {
       if (!open) return;
@@ -69,6 +68,7 @@ export default function GarageDoorEngine({ modelUrl = "/car.glb" }: Props) {
       window.removeEventListener("touchmove", onTouchMoveCapture as any, true as any);
     };
   }, [open, fullscreen]);
+
 
   // ✅ ESC: chiude SEMPRE il garage (e anche fullscreen)
   useEffect(() => {

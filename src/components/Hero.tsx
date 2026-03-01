@@ -80,6 +80,7 @@ export default function Hero({ booted }: { booted: boolean }) {
 
     const isMobileInteraction = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
 
+
     const heroPage = heroRef.current;
     const stage = stageRef.current;
     if (!heroPage || !stage) return;
@@ -611,6 +612,11 @@ export default function Hero({ booted }: { booted: boolean }) {
     const canStartLocked = shouldUseScrollLock && atTop() && heroMostlyInView();
     if (canStartLocked) {
       setScrollLock(true);
+    } else if (!shouldUseScrollLock) {
+      introCompleted = true;
+      targetPct = 0;
+      pct = 0;
+      setScrollLock(false);
     } else {
       introCompleted = true;
       targetPct = 100;

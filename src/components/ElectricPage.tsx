@@ -78,8 +78,7 @@ export default function ElectricPage({ onNavigate }: ElectricPageProps) {
       tabIndex={0}
       onClick={() => openDetail(item)}
       onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
+        if (e.key === "Enter") {
           openDetail(item);
         }
       }}
@@ -104,7 +103,7 @@ export default function ElectricPage({ onNavigate }: ElectricPageProps) {
       <BackgroundFX lite={isLowPerformance} />
       
       <div className="electric-page">
-        <PageDrawerMenu onNavigate={onNavigate} />
+        <PageDrawerMenu onNavigate={onNavigate} currentSection="electric" />
 
       {/* Header */}
       <section id="chi-siamo">

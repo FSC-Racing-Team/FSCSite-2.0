@@ -128,8 +128,7 @@ export default function ManagementPage({ onNavigate }: ManagementPageProps) {
       tabIndex={0}
       onClick={() => setSelectedDetail(item)}
       onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
+        if (e.key === "Enter") {
           setSelectedDetail(item);
         }
       }}
@@ -154,7 +153,7 @@ export default function ManagementPage({ onNavigate }: ManagementPageProps) {
       <BackgroundFX lite={isLowPerformance} />
 
       <div className="management-page electric-page">
-        <PageDrawerMenu onNavigate={onNavigate} />
+        <PageDrawerMenu onNavigate={onNavigate} currentSection="management" />
 
         <section id="chi-siamo">
           <div className="container">
