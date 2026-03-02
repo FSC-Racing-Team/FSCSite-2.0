@@ -3470,6 +3470,10 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 .cgSubmit{
   margin-top: 16px;
   width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   border: 0;
   border-radius: 999px;
   padding: 16px 18px;
@@ -3483,6 +3487,22 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 }
 .cgSubmit:hover{ transform: translateY(-1px); filter: brightness(1.05) saturate(1.02); }
 .cgSubmit:active{ transform: translateY(0) scale(.99); }
+.cgSubmit:disabled{ opacity: .78; cursor: wait; }
+.cgSubmit.is-loading{ pointer-events: none; }
+
+.cgSubmitSpinner{
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  border: 2px solid rgba(11,13,16,.28);
+  border-top-color: rgba(11,13,16,.9);
+  animation: cgSpin 800ms linear infinite;
+}
+
+@keyframes cgSpin{
+  from{ transform: rotate(0deg); }
+  to{ transform: rotate(360deg); }
+}
 
 /* close button */
 .cgClose{

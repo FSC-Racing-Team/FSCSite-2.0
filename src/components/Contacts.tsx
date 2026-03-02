@@ -1,5 +1,6 @@
 // designed by alongio
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { LaserFlow } from "./LaserFlow";
 import useLowPerformanceMode from "../hooks/useLowPerformanceMode";
 
@@ -27,9 +28,15 @@ function escapeHtml(str: string) {
 }
 
 export default function ContactGate() {
+  const env = import.meta.env as Record<string, string | undefined>;
+  const emailJsPublicKey = env.VITE_EMAILJS_PUBLIC_KEY || "EZoeTiMOVjbTneoi6";
+  const emailJsServiceId = env.VITE_EMAILJS_SERVICE_ID || "fscsiteform";
+  const emailJsTemplateId = env.VITE_EMAILJS_TEMPLATE_ID || "FSCRACING0101";
+
   const isLowPerformance = useLowPerformanceMode();
   const [email, setEmail] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   const okEmail = useMemo(() => isValidEmail(email), [email]);
 
@@ -64,17 +71,62 @@ export default function ContactGate() {
     return () => window.removeEventListener("keydown", onKey);
   }, [isOpen]);
 
-  const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+  useEffect(() => {
+    emailjs.init({ publicKey: emailJsPublicKey });
+  }, [emailJsPublicKey]);
+
+  const onSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
+    if (isSending) {
+      return;
+    }
+
     const form = e.currentTarget;
     const data = new FormData(form);
     data.set("email", email.trim());
 
-    const payload = Object.fromEntries(data.entries());
-    console.log("SUBMIT payload:", payload);
+    const firstName = String(data.get("firstName") || "").trim();
+    const lastName = String(data.get("lastName") || "").trim();
+    const corso = String(data.get("corso") || "").trim();
+    const reparto = String(data.get("reparto") || "").trim();
+    const message = String(data.get("message") || "").trim();
+    const fullName = [firstName, lastName].filter(Boolean).join(" ").trim();
 
-    alert("Inviato! (demo)\nControlla la console per il payload.");
-    closeModal();
+    const params = {
+      from_name: fullName || firstName || "Contatto FSC Site",
+      first_name: firstName,
+      last_name: lastName,
+      corso,
+      reparto,
+      reply_to: email.trim(),
+      email: email.trim(),
+      message: [
+        `Nome: ${firstName || "-"}`,
+        `Cognome: ${lastName || "-"}`,
+        `Email: ${email.trim() || "-"}`,
+        `Corso di laurea: ${corso || "-"}`,
+        `Reparto: ${reparto || "-"}`,
+        "",
+        "Messaggio:",
+        message || "-",
+      ].join("\n"),
+      user_message: message,
+    };
+
+    setIsSending(true);
+
+    try {
+      await emailjs.send(emailJsServiceId, emailJsTemplateId, params);
+      alert("Email inviata con successo!");
+      form.reset();
+      setEmail("");
+      closeModal();
+    } catch (error) {
+      console.error("FAILED...", error);
+      alert("C'è stato un problema nell'invio dell'email.");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -190,7 +242,7 @@ export default function ContactGate() {
               <div className="cgGrid">
                 <div className="cgField">
                   <div className="cgLabel">NOME</div>
-                  <input ref={firstRef} className="cgInput" name="firstName" autoComplete="given-name" />
+                  <input ref={firstRef} className="cgInput" name="firstName" autoComplete="given-name" required />
                 </div>
 
                 <div className="cgField">
@@ -223,7 +275,7 @@ export default function ContactGate() {
 
                 <div className="cgField cgFull">
                   <div className="cgLabel">MESSAGGIO</div>
-                  <textarea className="cgTextarea" name="message" />
+                  <textarea className="cgTextarea" name="message" required />
                 </div>
               </div>
 
@@ -232,8 +284,15 @@ export default function ContactGate() {
                 dangerouslySetInnerHTML={{ __html: `Email utilizzata: <b>${escapeHtml(email.trim())}</b>` }}
               />
 
-              <button className="cgSubmit" type="submit">
-                Invia
+              <button className={`cgSubmit${isSending ? " is-loading" : ""}`} type="submit" disabled={isSending}>
+                {isSending ? (
+                  <>
+                    <span className="cgSubmitSpinner" aria-hidden="true" />
+                    Invio...
+                  </>
+                ) : (
+                  "Invia"
+                )}
               </button>
             </form>
           </div>
