@@ -1,6 +1,7 @@
 // designed by alongio
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+// @ts-ignore - LaserFlow is a JSX component
 import { LaserFlow } from "./LaserFlow";
 import useLowPerformanceMode from "../hooks/useLowPerformanceMode";
 
