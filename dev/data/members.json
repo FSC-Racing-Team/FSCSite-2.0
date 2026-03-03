@@ -38,7 +38,7 @@
       "linkedin": "https://www.linkedin.com/in/francesco-carmelo-alongi-803282274/"
     },
     {
-      "unit": "management",
+      "unit": "business",
       "dept": "management",
       "name": "Cristian Amore",
       "order": 0,
@@ -60,14 +60,14 @@
       "linkedin": "https://www.linkedin.com/in/carla-torrisi-33b2612a0/"
     },
     {
-      "unit": "management",
+      "unit": "business",
       "dept": "management",
       "name": "Giuseppe Romeo",
       "order": 0,
       "visible": true,
       "photo": "/dev/assets/uploads/peppe.png",
-      "role": "Head of Social Network",
-      "special": false,
+      "role": "Head of Business",
+      "special": true,
       "linkedin": "https://www.linkedin.com/in/giuseppe-romeo-653782388/"
     },
     {
@@ -77,7 +77,7 @@
       "order": 0,
       "visible": true,
       "photo": "/dev/assets/uploads/grazianolacagnina.png",
-      "role": "Junior Business and Financial Manager",
+      "role": "Financial Manager",
       "special": false,
       "linkedin": "https://www.linkedin.com/in/graziano-lacagnina-03b48b378/"
     },
