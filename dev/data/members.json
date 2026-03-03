@@ -367,6 +367,15 @@
       "name": "Ruggero Gusmano",
       "dept": "meccanica",
       "unit": "aerodynamics"
+    },
+    {
+      "special": true,
+      "visible": true,
+      "order": 0,
+      "name": "Prof. Gaetano Patti",
+      "dept": "management",
+      "unit": "professori",
+      "role": "."
     }
   ]
 }
