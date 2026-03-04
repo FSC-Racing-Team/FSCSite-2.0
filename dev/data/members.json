@@ -367,6 +367,17 @@
       "name": "Ruggero Gusmano",
       "dept": "meccanica",
       "unit": "aerodynamics"
+    },
+    {
+      "unit": "professori",
+      "dept": "management",
+      "name": "Prof. Gaetano Patti",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/pattium.png",
+      "role": "Project Advisor",
+      "special": true,
+      "linkedin": "https://www.dieei.unict.it/docenti/gaetano.patti"
     }
   ]
 }
