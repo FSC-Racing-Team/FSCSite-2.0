@@ -17,10 +17,10 @@
       "unit": "professori",
       "dept": "management",
       "section": "Management",
-      "name": "Prof. Gaetano Sequenzia",
+      "name": "Gaetano Sequenzia",
       "order": 0,
       "visible": true,
-      "photo": "/dev/assets/uploads/sqnz-removebg-preview.png",
+      "photo": "/dev/assets/uploads/seq.png",
       "role": "Project Advisor",
       "special": true,
       "linkedin": "https://www.dieei.unict.it/docenti/gaetano.sequenzia"
@@ -38,7 +38,7 @@
       "linkedin": "https://www.linkedin.com/in/francesco-carmelo-alongi-803282274/"
     },
     {
-      "unit": "business",
+      "unit": "management",
       "dept": "management",
       "name": "Cristian Amore",
       "order": 0,
@@ -60,14 +60,14 @@
       "linkedin": "https://www.linkedin.com/in/carla-torrisi-33b2612a0/"
     },
     {
-      "unit": "business",
+      "unit": "management",
       "dept": "management",
       "name": "Giuseppe Romeo",
       "order": 0,
       "visible": true,
       "photo": "/dev/assets/uploads/peppe.png",
-      "role": "Head of Business",
-      "special": true,
+      "role": "Head of Social Network",
+      "special": false,
       "linkedin": "https://www.linkedin.com/in/giuseppe-romeo-653782388/"
     },
     {
@@ -77,7 +77,7 @@
       "order": 0,
       "visible": true,
       "photo": "/dev/assets/uploads/grazianolacagnina.png",
-      "role": "Financial Manager",
+      "role": "Junior Business and Financial Manager",
       "special": false,
       "linkedin": "https://www.linkedin.com/in/graziano-lacagnina-03b48b378/"
     },
@@ -367,17 +367,6 @@
       "name": "Ruggero Gusmano",
       "dept": "meccanica",
       "unit": "aerodynamics"
-    },
-    {
-      "unit": "professori",
-      "dept": "management",
-      "name": "Prof. Gaetano Patti",
-      "order": 0,
-      "visible": true,
-      "photo": "/dev/assets/uploads/pattium.png",
-      "role": "Project Advisor",
-      "special": true,
-      "linkedin": "https://www.dieei.unict.it/docenti/gaetano.patti"
     }
   ]
 }
