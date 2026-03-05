@@ -684,8 +684,8 @@ export default function Hero({ booted }: { booted: boolean }) {
             <FlowingMenu
               items={[
                 { text: "Home", link: "#heroPage", onClick: () => goTo("heroPage") },
-                { text: "Team", link: "#teamPage", onClick: () => goTo("teamPage") },
-                { text: "Contacts", link: "#contacts", onClick: () => goTo("contacts") },
+                { text: "Team", link: "#team", onClick: () => goTo("team") },
+                { text: "Contacts", link: "#contatti", onClick: () => goTo("contatti") },
                 { text: "Area Riservata", link: adminUrl, onClick: () => { setMenuOpen(false); window.location.assign(adminUrl); } },
               ]}
               bgColor="transparent"

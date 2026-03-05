@@ -135,12 +135,19 @@ function MenuItem({ link, text, image, speed, textColor, marqueeBgColor, marquee
       .to(marqueeInnerRef.current, { y: edge === 'top' ? '101%' : '-101%' }, 0);
   };
 
+  const handleLinkClick = ev => {
+    if (typeof onClick === 'function') {
+      ev.preventDefault();
+      onClick(ev);
+    }
+  };
+
   return (
     <div className="menu__item" ref={itemRef} style={{ borderColor }}>
       <a
         className="menu__item-link"
         href={link}
-        onClick={onClick}
+        onClick={handleLinkClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         style={{ color: textColor }}

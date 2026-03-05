@@ -9,11 +9,24 @@ import AdminPage from "./components/AdminPage";
 export default function App() {
   const [currentPage, setCurrentPage] = useState<string>("home");
 
+  const resolveRouteFromHash = (hashValue: string): string => {
+    const hash = hashValue.toLowerCase().trim();
+    if (!hash) {
+      return "home";
+    }
+
+    if (hash === "home" || hash === "electric" || hash === "mech" || hash === "management" || hash === "admin") {
+      return hash;
+    }
+
+    return "home";
+  };
+
   useEffect(() => {
     // Gestisce hash URL per navigazione
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1); // Rimuove il #
-      setCurrentPage(hash || "home");
+      setCurrentPage(resolveRouteFromHash(hash));
     };
 
     handleHashChange(); // Controlla hash iniziale
@@ -27,7 +40,7 @@ export default function App() {
 
   const navigateTo = (page: string) => {
     window.location.hash = page;
-    setCurrentPage(page);
+    setCurrentPage(resolveRouteFromHash(page));
   };
 
   if (currentPage === "electric") {

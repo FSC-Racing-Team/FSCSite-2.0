@@ -131,7 +131,8 @@ export default function ContactGate() {
   };
 
   return (
-    <section className="cgPage" aria-label="Contact gate" id="contacts">
+    <section className="cgPage" aria-label="Contact gate" id="contatti">
+      <span id="contacts" aria-hidden="true" />
       <div className="cgVolcanoBg" aria-hidden="true" />
       <header className="cgHeader">
         <h1 className="cgH1">

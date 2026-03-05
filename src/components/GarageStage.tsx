@@ -25,7 +25,7 @@ export default function ThreePanels({ onNavigate }: ThreePanelsProps) {
     };
 
   return (
-    <section className="tpSection" aria-label="3 panels">
+    <section className="tpSection" aria-label="3 panels" id="team">
       {/* ambient SOLO dentro la sezione (non fixed) */}
       <div className="tpAmbient" aria-hidden="true" />
 
