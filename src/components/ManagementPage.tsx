@@ -226,16 +226,34 @@ export default function ManagementPage({ onNavigate }: ManagementPageProps) {
           </section>
         </section>
 
-        <div className="divisore"></div>
+        <section className="mech-section-wrapper mgmt-section-wrapper">
+          <div className="mech-section-container electric-section mgmt-focus mgmt-dept-section mgmt-section-container">
+            <div className="header">
+              <span className="pip"></span> Management
+            </div>
+            <div className="grid-feat">
+              {focusItems.map(renderCard)}
+            </div>
+            <DepartmentMembers title="Team Management" department="management" />
+          </div>
+        </section>
 
-        <section className="electric-section mgmt-focus">
-          <div className="header">
-            <span className="pip"></span> Management
+        <section className="mech-section-wrapper mgmt-section-wrapper mgmt-business-wrapper">
+          <div className="mech-section-container electric-section mgmt-focus mgmt-dept-section mgmt-business-section mgmt-section-container">
+            <div className="header">
+              <span className="pip"></span> Business
+            </div>
+            <DepartmentMembers title="Team Business" department="business" />
           </div>
-          <div className="grid-feat">
-            {focusItems.map(renderCard)}
+        </section>
+
+        <section className="mech-section-wrapper mgmt-section-wrapper mgmt-prof-wrapper">
+          <div className="mech-section-container electric-section mgmt-focus mgmt-dept-section mgmt-prof-section mgmt-section-container">
+            <div className="header">
+              <span className="pip"></span> Professori
+            </div>
+            <DepartmentMembers title="Team Professori" department="professori" />
           </div>
-          <DepartmentMembers title="Team Management" department="management" />
         </section>
 
         <ContactGate />

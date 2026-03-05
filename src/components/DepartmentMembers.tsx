@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import {
   getMembersByDepartment,
+  hasManualMembersOverride,
   loadMembersFromDecapFile,
+  syncTeamMembersFromRemote,
   type TeamDepartment,
   type TeamMember
 } from "../lib/teamMembers";
@@ -13,7 +15,6 @@ interface DepartmentMembersProps {
 
 export default function DepartmentMembers({ title, department }: DepartmentMembersProps) {
   const [version, setVersion] = useState(0);
-  const [remoteMembers, setRemoteMembers] = useState<TeamMember[] | null>(null);
 
   useEffect(() => {
     const onUpdate = () => setVersion((value) => value + 1);
@@ -35,17 +36,24 @@ export default function DepartmentMembers({ title, department }: DepartmentMembe
     let active = true;
 
     const loadRemoteMembers = async () => {
-      const members = await loadMembersFromDecapFile();
-      if (!active) {
+      if (hasManualMembersOverride()) {
         return;
       }
-      setRemoteMembers(members);
+
+      const members = await loadMembersFromDecapFile();
+      if (!active || !members) {
+        return;
+      }
+
+      if (syncTeamMembersFromRemote(members)) {
+        setVersion((value) => value + 1);
+      }
     };
 
     void loadRemoteMembers();
     const timer = window.setInterval(() => {
       void loadRemoteMembers();
-    }, 8000);
+    }, 15000);
 
     return () => {
       active = false;
@@ -54,9 +62,7 @@ export default function DepartmentMembers({ title, department }: DepartmentMembe
   }, []);
 
   const members = useMemo(() => {
-    const source = remoteMembers ?? getMembersByDepartment(department);
-    return source
-      .filter((member) => member.department === department)
+    return getMembersByDepartment(department)
       .sort((first, second) => {
         if (first.cardSize !== second.cardSize) {
           return first.cardSize === "lead" ? -1 : 1;
@@ -68,7 +74,7 @@ export default function DepartmentMembers({ title, department }: DepartmentMembe
         }
         return first.name.localeCompare(second.name);
       });
-  }, [department, remoteMembers, version]);
+  }, [department, version]);
 
   const leadMembers = members.filter((member) => member.cardSize === "lead");
   const regularMembers = members.filter((member) => member.cardSize !== "lead");

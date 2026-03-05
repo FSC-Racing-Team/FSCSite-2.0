@@ -6,7 +6,9 @@ export type TeamDepartment =
   | "mech-vd"
   | "mech-design"
   | "mech-aero"
-  | "management";
+  | "management"
+  | "business"
+  | "professori";
 
 export type TeamCardSize = "lead" | "standard";
 
@@ -36,7 +38,12 @@ interface DecapMemberRaw {
 }
 
 const STORAGE_KEY = "fsc-team-members-v1";
+const SOURCE_KEY = "fsc-team-members-source-v1";
+const SOURCE_UPDATED_AT_KEY = "fsc-team-members-source-updated-at-v1";
 const BASE_URL = import.meta.env.BASE_URL;
+const MANUAL_OVERRIDE_TTL_MS = 5 * 60 * 1000;
+
+type TeamMembersSource = "seed" | "remote" | "manual";
 
 function normalizePublicUrl(value: string): string {
   const trimmed = value.trim();
@@ -66,7 +73,9 @@ export const TEAM_DEPARTMENT_OPTIONS: { value: TeamDepartment; label: string }[]
   { value: "mech-vd", label: "Meccanica — Vehicle Dynamics" },
   { value: "mech-design", label: "Meccanica — Mechanical Design" },
   { value: "mech-aero", label: "Meccanica — Aerodynamics" },
-  { value: "management", label: "Management" }
+  { value: "management", label: "Management" },
+  { value: "business", label: "Business" },
+  { value: "professori", label: "Professori" }
 ];
 
 const defaultMembers: TeamMember[] = (teamMembersData.members || []) as TeamMember[];
@@ -108,15 +117,76 @@ export function getTeamMembers(): TeamMember[] {
   }
 
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultMembers));
+  if (!window.localStorage.getItem(SOURCE_KEY)) {
+    window.localStorage.setItem(SOURCE_KEY, "seed");
+  }
   return defaultMembers;
 }
 
-export function saveTeamMembers(members: TeamMember[]) {
+function readMembersSource(): TeamMembersSource {
+  if (!isBrowser()) {
+    return "seed";
+  }
+
+  const value = (window.localStorage.getItem(SOURCE_KEY) || "").trim().toLowerCase();
+  if (value === "manual" || value === "remote" || value === "seed") {
+    return value;
+  }
+
+  return "seed";
+}
+
+function readSourceUpdatedAt(): number {
+  if (!isBrowser()) {
+    return 0;
+  }
+
+  const raw = window.localStorage.getItem(SOURCE_UPDATED_AT_KEY) || "0";
+  const parsed = Number.parseInt(raw, 10);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+export function hasManualMembersOverride(): boolean {
+  if (readMembersSource() !== "manual") {
+    return false;
+  }
+
+  const updatedAt = readSourceUpdatedAt();
+  if (!updatedAt) {
+    return false;
+  }
+
+  return Date.now() - updatedAt < MANUAL_OVERRIDE_TTL_MS;
+}
+
+export function saveTeamMembers(members: TeamMember[], source: TeamMembersSource = "manual") {
   if (!isBrowser()) {
     return;
   }
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(members));
+  window.localStorage.setItem(SOURCE_KEY, source);
+  window.localStorage.setItem(SOURCE_UPDATED_AT_KEY, `${Date.now()}`);
   emitMembersUpdate();
+}
+
+export function syncTeamMembersFromRemote(members: TeamMember[]): boolean {
+  if (!isBrowser() || members.length === 0) {
+    return false;
+  }
+
+  if (hasManualMembersOverride()) {
+    return false;
+  }
+
+  const current = getTeamMembers();
+  const currentJson = JSON.stringify(current);
+  const nextJson = JSON.stringify(members);
+  if (currentJson === nextJson) {
+    return false;
+  }
+
+  saveTeamMembers(members, "remote");
+  return true;
 }
 
 export function addTeamMember(member: TeamMember) {
@@ -151,6 +221,12 @@ function mapDepartmentFromDecap(raw: DecapMemberRaw): TeamDepartment | null {
   const unit = (raw.unit || "").toLowerCase().trim();
 
   if (dept === "management") {
+    if (unit === "business") {
+      return "business";
+    }
+    if (unit === "professori") {
+      return "professori";
+    }
     return "management";
   }
 

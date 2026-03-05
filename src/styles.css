@@ -1150,7 +1150,85 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 }
 
 .management-page .mgmt-focus{
-  margin-bottom: clamp(20px, 4vw, 48px);
+  margin-bottom: 0;
+}
+
+.management-page .mgmt-dept-section{
+  position: relative;
+  overflow: visible;
+  border-radius: 18px;
+}
+
+.management-page .mgmt-section-container{
+  position: relative;
+  padding-bottom: clamp(20px, 4vw, 48px);
+}
+
+.management-page .mgmt-section-container::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(180deg, rgba(6,10,18,.52), rgba(6,10,18,.36));
+}
+
+.management-page .mgmt-section-container > *{
+  position: relative;
+  z-index: 1;
+}
+
+.management-page .mgmt-prof-section .dept-members-layout,
+.management-page .mgmt-prof-section .dept-members-leads,
+.management-page .mgmt-prof-section .dept-members-regular{
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px;
+}
+
+.management-page .mgmt-prof-section .dept-members-regular .dept-member-card,
+.management-page .mgmt-prof-section .dept-members-leads .dept-member-card--lead{
+  width: 100%;
+  max-width: 100%;
+  min-height: 108px;
+  grid-template-columns: 72px 1fr;
+  gap: 12px;
+  padding: 12px;
+  justify-self: stretch;
+}
+
+.management-page .mgmt-prof-section .dept-member-avatar-wrap,
+.management-page .mgmt-prof-section .dept-members-regular .dept-member-avatar-wrap,
+.management-page .mgmt-prof-section .dept-members-leads .dept-member-card--lead .dept-member-avatar-wrap{
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+  border-bottom: 0;
+  justify-self: start;
+}
+
+.management-page .mgmt-prof-section .dept-member-content,
+.management-page .mgmt-prof-section .dept-members-regular .dept-member-content{
+  padding: 0;
+  text-align: left;
+}
+
+.management-page .mgmt-prof-section .dept-member-name,
+.management-page .mgmt-prof-section .dept-members-regular .dept-member-name,
+.management-page .mgmt-prof-section .dept-members-leads .dept-member-name{
+  font-size: clamp(15px, 1.05vw, 19px);
+}
+
+.management-page .mgmt-prof-section .dept-member-role{
+  font-size: 11px;
+}
+
+.management-page .mgmt-prof-section .dept-member-links,
+.management-page .mgmt-prof-section .dept-members-regular .dept-member-links{
+  justify-content: flex-start;
 }
 
 @media (max-width: 900px){
@@ -1209,6 +1287,12 @@ section.page{ min-height:100vh; width:100%; position:relative; }
     color: rgba(255,255,255,.72);
     margin-top: 8px;
     font-size: .9rem;
+  }
+
+  .management-page .mgmt-prof-section .dept-members-layout,
+  .management-page .mgmt-prof-section .dept-members-leads,
+  .management-page .mgmt-prof-section .dept-members-regular{
+    grid-template-columns: 1fr;
   }
 }
 
