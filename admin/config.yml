@@ -2,6 +2,8 @@ logo:
   src: /logo-active.svg
   show_in_header: true
 
+local_backend: true
+
 backend:
   name: github
   repo: FSC-Racing-Team/FSCSite-2.0
