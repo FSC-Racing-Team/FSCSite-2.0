@@ -243,7 +243,7 @@ export default function ManagementPage({ onNavigate }: ManagementPageProps) {
             <div className="header">
               <span className="pip"></span> Marketing e Comunicazione
             </div>
-            <DepartmentMembers title="Team Marketing e Comunicazione" department="business" />
+            <DepartmentMembers title="Team Marketing e Comunicazione" department="marketing-comunicazione" />
           </div>
         </section>
 

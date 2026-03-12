@@ -35,13 +35,13 @@
       "linkedin": "https://eagle1705.github.io/Portfolio/"
     },
     {
-      "unit": "business",
+      "unit": "marketing-comunicazione",
       "dept": "management",
       "name": "Cristian Amore",
       "order": 0,
       "visible": true,
       "photo": "/dev/assets/uploads/christianamore.png",
-      "role": "Junior Business",
+      "role": "Junior Marketing e Comunicazione",
       "special": false,
       "linkedin": "https://www.linkedin.com/in/christian-amore-882992258/"
     },
@@ -57,13 +57,13 @@
       "linkedin": "https://www.linkedin.com/in/carla-torrisi-33b2612a0/"
     },
     {
-      "unit": "business",
+      "unit": "marketing-comunicazione",
       "dept": "management",
       "name": "Giuseppe Romeo",
       "order": 0,
       "visible": true,
       "photo": "/dev/assets/uploads/peppe.png",
-      "role": "Head of Business",
+      "role": "Head of Marketing e Comunicazione",
       "special": true,
       "linkedin": "https://www.linkedin.com/in/giuseppe-romeo-653782388/"
     },

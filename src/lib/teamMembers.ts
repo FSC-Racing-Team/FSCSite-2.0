@@ -7,7 +7,7 @@ export type TeamDepartment =
   | "mech-design"
   | "mech-aero"
   | "management"
-  | "business"
+  | "marketing-comunicazione"
   | "professori";
 
 export type TeamCardSize = "lead" | "standard";
@@ -74,7 +74,7 @@ export const TEAM_DEPARTMENT_OPTIONS: { value: TeamDepartment; label: string }[]
   { value: "mech-design", label: "Meccanica — Mechanical Design" },
   { value: "mech-aero", label: "Meccanica — Aerodynamics" },
   { value: "management", label: "Management" },
-  { value: "business", label: "Marketing e Comunicazione" },
+  { value: "marketing-comunicazione", label: "Marketing e Comunicazione" },
   { value: "professori", label: "Professori" }
 ];
 
@@ -221,8 +221,8 @@ function mapDepartmentFromDecap(raw: DecapMemberRaw): TeamDepartment | null {
   const unit = (raw.unit || "").toLowerCase().trim();
 
   if (dept === "management") {
-    if (unit === "business") {
-      return "business";
+    if (unit === "marketing-comunicazione") {
+      return "marketing-comunicazione";
     }
     if (unit === "professori") {
       return "professori";
