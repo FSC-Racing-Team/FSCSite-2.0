@@ -1,9 +1,8 @@
-﻿{
+{
   "members": [
     {
       "unit": "management",
       "dept": "management",
-      "section": "Management",
       "bio": "Planning, operation, coordinamento inter-reparti",
       "name": "Emanuele Di Bella",
       "order": 0,
@@ -16,7 +15,6 @@
     {
       "unit": "professori",
       "dept": "management",
-      "section": "Management",
       "name": "Prof. Gaetano Sequenzia",
       "order": 0,
       "visible": true,
@@ -28,14 +26,13 @@
     {
       "unit": "management",
       "dept": "management",
-      "section": "Management",
       "name": "Francesco Carmelo Alongi",
       "order": 0,
       "visible": true,
       "photo": "/dev/assets/uploads/lol.png",
       "role": "Head of Software R&D",
       "special": false,
-      "linkedin": "https://www.linkedin.com/in/francesco-carmelo-alongi-803282274/"
+      "linkedin": "https://eagle1705.github.io/Portfolio/"
     },
     {
       "unit": "business",
@@ -376,7 +373,7 @@
       "visible": true,
       "photo": "/dev/assets/uploads/pattium.png",
       "role": "Project Advisor",
-      "special": false,
+      "special": true,
       "linkedin": "https://www.dieei.unict.it/docenti/gaetano.patti"
     }
   ]

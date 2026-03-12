@@ -42,7 +42,7 @@ collections:
                 widget: "select"
                 options:
                   - { label: "Management", value: "management" }
-                  - { label: "Business", value: "business" }
+                  - { label: "Marketing e Comunicazione", value: "business" }
                   - { label: "Professori", value: "professori" }
                   - { label: "Low Voltage", value: "low_voltage" }
                   - { label: "High Voltage", value: "high_voltage" }

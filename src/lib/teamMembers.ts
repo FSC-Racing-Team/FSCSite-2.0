@@ -74,7 +74,7 @@ export const TEAM_DEPARTMENT_OPTIONS: { value: TeamDepartment; label: string }[]
   { value: "mech-design", label: "Meccanica — Mechanical Design" },
   { value: "mech-aero", label: "Meccanica — Aerodynamics" },
   { value: "management", label: "Management" },
-  { value: "business", label: "Business" },
+  { value: "business", label: "Marketing e Comunicazione" },
   { value: "professori", label: "Professori" }
 ];
 

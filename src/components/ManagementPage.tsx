@@ -241,9 +241,9 @@ export default function ManagementPage({ onNavigate }: ManagementPageProps) {
         <section className="mech-section-wrapper mgmt-section-wrapper mgmt-business-wrapper">
           <div className="mech-section-container electric-section mgmt-focus mgmt-dept-section mgmt-business-section mgmt-section-container">
             <div className="header">
-              <span className="pip"></span> Business
+              <span className="pip"></span> Marketing e Comunicazione
             </div>
-            <DepartmentMembers title="Team Business" department="business" />
+            <DepartmentMembers title="Team Marketing e Comunicazione" department="business" />
           </div>
         </section>
 
