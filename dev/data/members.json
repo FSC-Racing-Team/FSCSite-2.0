@@ -373,7 +373,7 @@
       "visible": true,
       "photo": "/dev/assets/uploads/pattium.png",
       "role": "Project Advisor",
-      "special": false,
+      "special": true,
       "linkedin": "https://www.dieei.unict.it/docenti/gaetano.patti"
     }
   ]
