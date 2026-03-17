@@ -327,43 +327,52 @@
       "name": "Giovanni di Maria",
       "role": "Aerodynamics Engineer",
       "dept": "meccanica",
-      "unit": "aerodynamics"
+      "unit": "aerodynamics",
+      "photo": "/dev/assets/uploads/fidel.png"
     },
     {
-      "special": false,
-      "visible": true,
-      "order": 0,
-      "role": "Aerodynamics Engineer",
+      "unit": "aerodynamics",
+      "dept": "meccanica",
       "name": "Carla Gravina",
-      "dept": "meccanica",
-      "unit": "aerodynamics"
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/grv.png",
+      "role": "Aerodynamics Engineer",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/carlagravina?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
     },
     {
-      "special": false,
-      "visible": true,
-      "order": 0,
+      "unit": "aerodynamics",
+      "dept": "meccanica",
       "name": "Alex Cosma",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/cosm.png",
       "role": "Aerodynamics Engineer",
-      "dept": "meccanica",
-      "unit": "aerodynamics"
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/vlad-alexandru-cosma-3600001a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
-      "special": false,
-      "visible": true,
-      "order": 0,
-      "role": "Aerodynamics Engineer",
+      "unit": "aerodynamics",
+      "dept": "meccanica",
       "name": "Paolo Battiato",
-      "dept": "meccanica",
-      "unit": "aerodynamics"
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/battiat.png",
+      "role": "Aerodynamics Engineer",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/paolo-battiato-97bbb6379?utm_source=share_via&utm_content=profile&utm_medium=member_android"
     },
     {
-      "special": false,
-      "visible": true,
-      "order": 0,
-      "role": "Aerodynamics Engineer",
-      "name": "Ruggero Gusmano",
+      "unit": "aerodynamics",
       "dept": "meccanica",
-      "unit": "aerodynamics"
+      "name": "Ruggero Gusmano",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/gusm.png",
+      "role": "Aerodynamics Engineer",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/ruggero-gusmano-337b39369?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       "unit": "professori",
