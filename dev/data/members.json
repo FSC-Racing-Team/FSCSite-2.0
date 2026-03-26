@@ -384,6 +384,15 @@
       "role": "Project Advisor",
       "special": true,
       "linkedin": "https://www.dieei.unict.it/docenti/gaetano.patti"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Salvatore Camiolo",
+      "role": "Aerodynamics",
+      "dept": "meccanica",
+      "unit": "aerodynamics"
     }
   ]
 }
