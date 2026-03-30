@@ -392,7 +392,8 @@
       "name": "Salvatore Camiolo",
       "role": "Aerodynamics",
       "dept": "meccanica",
-      "unit": "aerodynamics"
+      "unit": "aerodynamics",
+      "photo": "/dev/assets/uploads/salvatore-camiolo.png"
     }
   ]
 }
