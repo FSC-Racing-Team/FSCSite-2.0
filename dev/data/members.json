@@ -144,9 +144,9 @@
       "visible": true,
       "order": 0,
       "name": "Luigi Tinnirello",
-      "role": "Junior LV",
+      "role": "High Voltage Engineer",
       "dept": "elettrica",
-      "unit": "low_voltage"
+      "unit": "high_voltage"
     },
     {
       "unit": "low_voltage",
@@ -394,6 +394,17 @@
       "dept": "meccanica",
       "unit": "aerodynamics",
       "photo": "/dev/assets/uploads/salvatore-camiolo.png"
+    },
+    {
+      "unit": "high_voltage",
+      "dept": "elettrica",
+      "name": "Angelo Pettinato",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/angelo-pettinato.png",
+      "role": "High Voltage Engineer",
+      "special": false,
+      "linkedin": "www.linkedin.com/in/angelo-pettinato"
     }
   ]
 }
