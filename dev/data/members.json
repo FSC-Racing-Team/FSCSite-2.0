@@ -405,6 +405,17 @@
       "role": "High Voltage Engineer",
       "special": false,
       "linkedin": "https://www.linkedin.com/in/angelo-pettinato/"
+    },
+    {
+      "unit": "mechanical_design",
+      "dept": "elettrica",
+      "name": "Luca Guarnaccia",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/lcgrncc.png",
+      "role": "Design Engineer",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/luca-guarnaccia"
     }
   ]
 }
