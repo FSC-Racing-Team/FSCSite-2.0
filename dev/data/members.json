@@ -144,9 +144,9 @@
       "visible": true,
       "order": 0,
       "name": "Luigi Tinnirello",
-      "role": "High Voltage Engineer",
+      "role": "Junior LV",
       "dept": "elettrica",
-      "unit": "high_voltage"
+      "unit": "low_voltage"
     },
     {
       "unit": "low_voltage",
@@ -384,38 +384,6 @@
       "role": "Project Advisor",
       "special": true,
       "linkedin": "https://www.dieei.unict.it/docenti/gaetano.patti"
-    },
-    {
-      "special": false,
-      "visible": true,
-      "order": 0,
-      "name": "Salvatore Camiolo",
-      "role": "Aerodynamics Engineer",
-      "dept": "meccanica",
-      "unit": "aerodynamics",
-      "photo": "/dev/assets/uploads/salvatore-camiolo.png"
-    },
-    {
-      "unit": "high_voltage",
-      "dept": "elettrica",
-      "name": "Angelo Pettinato",
-      "order": 0,
-      "visible": true,
-      "photo": "/dev/assets/uploads/angelo-pettinato.png",
-      "role": "High Voltage Engineer",
-      "special": false,
-      "linkedin": "https://www.linkedin.com/in/angelo-pettinato/"
-    },
-    {
-      "unit": "mechanical_design",
-      "dept": "meccanica",
-      "name": "Luca Guarnaccia",
-      "order": 0,
-      "visible": true,
-      "photo": "/dev/assets/uploads/lcgrncc.png",
-      "role": "Design Engineer",
-      "special": false,
-      "linkedin": "https://www.linkedin.com/in/luca-guarnaccia"
     }
   ]
 }
