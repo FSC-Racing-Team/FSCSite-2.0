@@ -89,6 +89,7 @@ export default function ContactGate() {
     const firstName = String(data.get("firstName") || "").trim();
     const lastName = String(data.get("lastName") || "").trim();
     const corso = String(data.get("corso") || "").trim();
+    const anno = String(data.get("anno") || "").trim();
     const reparto = String(data.get("reparto") || "").trim();
     const message = String(data.get("message") || "").trim();
     const fullName = [firstName, lastName].filter(Boolean).join(" ").trim();
@@ -98,6 +99,7 @@ export default function ContactGate() {
       first_name: firstName,
       last_name: lastName,
       corso,
+      anno,
       reparto,
       reply_to: email.trim(),
       email: email.trim(),
@@ -106,6 +108,7 @@ export default function ContactGate() {
         `Cognome: ${lastName || "-"}`,
         `Email: ${email.trim() || "-"}`,
         `Corso di laurea: ${corso || "-"}`,
+        `Anno: ${anno || "-"}`,
         `Reparto: ${reparto || "-"}`,
         "",
         "Messaggio:",
@@ -291,14 +294,25 @@ export default function ContactGate() {
                 </div>
 
                 <div className="cgField cgFull">
+                  <div className="cgLabel">ANNO DI ISCRIZIONE</div>
+                  <select className="cgSelect" name="anno" defaultValue="" required>
+                    <option value="" disabled>
+                      Seleziona l'anno…
+                    </option>
+                    <option>1°</option>
+                    <option>2°</option>
+                    <option>3°</option>
+                  </select>
+                </div>
+
+                <div className="cgField cgFull">
                   <div className="cgLabel">REPARTO</div>
                   <select className="cgSelect" name="reparto" defaultValue="">
                     <option value="" disabled>
                       Seleziona un reparto…
                     </option>
-                    <option>Telaio</option>
-                    <option>Motore</option>
-                    <option>Sospensioni</option>
+                    <option>Progettazione Meccanica</option>
+                    <option>Dinamica del Veicolo</option>
                     <option>Aerodinamica</option>
                     <option>Elettronica</option>
                     <option>Informatica</option>
@@ -318,6 +332,10 @@ export default function ContactGate() {
                 className="cgMetaEmail"
                 dangerouslySetInnerHTML={{ __html: `Email utilizzata: <b>${escapeHtml(email.trim())}</b>` }}
               />
+
+              <div className="cgFormDisclaimer">
+                Autorizzo il trattamento dei dati personali ai sensi del Regolamento UE 2016/679 e del D.Lgs. 196/2003, per le finalità indicate nel modulo di contatto.
+              </div>
 
               <button className={`cgSubmit${isSending ? " is-loading" : ""}`} type="submit" disabled={isSending}>
                 {isSending ? (
