@@ -3,10 +3,9 @@ import { useEffect, useState } from "react";
 import LoaderOverlay from "./LoaderOverlay";
 import HeroPage from "./Hero";
 import TeamPage from "./Team";
-import GarageDoorEngine from "./GarageDoorEngine";
 import ThreePanels from "./GarageStage";
-import FscFooter from "./FscFooter";
 import ContactGate from "./Contacts";
+import FscFooter from "./FscFooter";
 import BackgroundFX from "./BackgroundFX";
 import useLowPerformanceMode from "../hooks/useLowPerformanceMode";
 import "./HomeScrollLocks.css";
@@ -44,11 +43,9 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       <BackgroundFX lite={isLowPerformance} />
 
       <main>
-        <HeroPage booted={booted} />
+        <HeroPage booted={booted} onNavigate={onNavigate} />
         <TeamPage />
         <ThreePanels onNavigate={onNavigate} />
-
-        {!isLowPerformance ? <GarageDoorEngine modelUrl="/car.glb" /> : null}
         <ContactGate />
         <FscFooter />
       </main>

@@ -5,8 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import { animate, stagger } from "animejs";
 import LogoActive from "./LogoActive";
 import CataniaParallax from "./CataniaParallax";
-
-import ColorBends from "./ColorBends";
 import FlowingMenu from "./FlowingMenu";
 import useLowPerformanceMode from "../hooks/useLowPerformanceMode";
 
@@ -16,7 +14,7 @@ const smootherstep = (t: number) => t * t * t * (t * (t * 6 - 15) + 10);
 
 type XYWH = { x: number; y: number; w: number; h: number };
 
-export default function Hero({ booted }: { booted: boolean }) {
+export default function Hero({ booted, onNavigate }: { booted: boolean; onNavigate?: (page: string) => void }) {
   const heroRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const isLowPerformance = useLowPerformanceMode();
@@ -686,6 +684,9 @@ export default function Hero({ booted }: { booted: boolean }) {
                 { text: "Home", link: "#heroPage", onClick: () => goTo("heroPage") },
                 { text: "Team", link: "#team", onClick: () => goTo("team") },
                 { text: "Contacts", link: "#contatti", onClick: () => goTo("contatti") },
+                { text: "Elettrica", link: "#electric", onClick: () => { setMenuOpen(false); onNavigate?.("electric"); } },
+                { text: "Meccanica", link: "#mech", onClick: () => { setMenuOpen(false); onNavigate?.("mech"); } },
+                { text: "Garage", link: "#garage", onClick: () => { setMenuOpen(false); onNavigate?.("garage"); } },
                 { text: "Area Riservata", link: adminUrl, onClick: () => { setMenuOpen(false); window.location.assign(adminUrl); } },
               ]}
               bgColor="transparent"
@@ -695,26 +696,7 @@ export default function Hero({ booted }: { booted: boolean }) {
         </div>
       </aside>
 
-      {/* ColorBends SOLO quando FSC/RACING/TEAM */}
-      {!isLowPerformance && rbMounted && (
-        <div className={`rbBgWrap ${rbVisible ? "is-on" : ""}`} aria-hidden="true">
-          <ColorBends
-            colors={["#ff0000", "#000000", "#ff0000"]}
-            rotation={0}
-            speed={0.2}
-            scale={1}
-            frequency={1}
-            warpStrength={1}
-            mouseInfluence={1}
-            parallax={0.5}
-            noise={0.1}
-            transparent
-            autoRotate={0}
-            color="#000000"
-          />
-          <div className="rbBgVignette" />
-        </div>
-      )}
+
       {/* ✅ PARALLAX ancorato all'hero, full viewport, sotto le scritte */}
       <div className={`heroParallax ${!isLowPerformance && parallaxOn ? "is-on" : ""}`} aria-hidden={!parallaxOn || isLowPerformance}>
         <CataniaParallax active={parallaxOn} />

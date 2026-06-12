@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import HomePage from "./components/HomePage";
 import ElectricPage from "./components/ElectricPage";
 import MechPage from "./components/MechPage";
+import GaragePage from "./components/GaragePage";
 import ManagementPage from "./components/ManagementPage";
 import AdminPage from "./components/AdminPage";
 
@@ -15,7 +16,7 @@ export default function App() {
       return "home";
     }
 
-    if (hash === "home" || hash === "electric" || hash === "mech" || hash === "management" || hash === "admin") {
+    if (hash === "home" || hash === "electric" || hash === "mech" || hash === "garage" || hash === "management" || hash === "admin") {
       return hash;
     }
 
@@ -49,6 +50,10 @@ export default function App() {
 
   if (currentPage === "mech") {
     return <MechPage onNavigate={navigateTo} />;
+  }
+
+  if (currentPage === "garage") {
+    return <GaragePage onNavigate={navigateTo} />;
   }
 
   if (currentPage === "management") {

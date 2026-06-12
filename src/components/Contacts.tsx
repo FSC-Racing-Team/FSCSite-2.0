@@ -1,9 +1,6 @@
 // designed by alongio
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-// @ts-ignore - LaserFlow is a JSX component
-import { LaserFlow } from "./LaserFlow";
-import useLowPerformanceMode from "../hooks/useLowPerformanceMode";
 
 function isValidEmail(value: string) {
   const v = value.trim();
@@ -34,7 +31,6 @@ export default function ContactGate() {
   const emailJsServiceId = env.VITE_EMAILJS_SERVICE_ID || "fscsiteform";
   const emailJsTemplateId = env.VITE_EMAILJS_TEMPLATE_ID || "FSCRACING0101";
 
-  const isLowPerformance = useLowPerformanceMode();
   const [email, setEmail] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [isSending, setIsSending] = useState(false);
@@ -145,18 +141,7 @@ export default function ContactGate() {
         </h1>
       </header>
 
-      {!isLowPerformance ? (
-        <LaserFlow
-          color="#A80000"
-          horizontalSizing={1.24}
-          verticalSizing={1.2}
-          wispDensity={5}
-          wispSpeed={12}
-          wispIntensity={0}
-          horizontalBeamOffset={0.0}
-          verticalBeamOffset={-0.5}
-        />
-      ) : null}
+
 
       <main className="cgHero">
         <div className="cgGate">

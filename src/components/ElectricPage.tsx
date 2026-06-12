@@ -1,10 +1,6 @@
 // designed by alongio
 import { useState } from "react";
 import "./ElectricPage.css";
-// @ts-ignore - Lightning is a JSX component
-import Lightning from "./Lightning";
-// @ts-ignore - FaultyTerminal is a JSX component
-import FaultyTerminal from "./FaultyTerminal";
 import ContactGate from "./Contacts";
 import FscFooter from "./FscFooter";
 import PageDrawerMenu from "./PageDrawerMenu";
@@ -127,17 +123,6 @@ export default function ElectricPage({ onNavigate }: ElectricPageProps) {
 
       {/* HIGH VOLTAGE */}
       <section className="hv-wrapper">
-        {!isLowPerformance ? (
-          <div className="hv-bg">
-            <Lightning
-              hue={260}
-              xOffset={0}
-              speed={1}
-              intensity={1}
-              size={1}
-            />
-          </div>
-        ) : null}
         <div className="hv-container">
           <div className="header">
             <span className="pip"></span> High Voltage
@@ -167,29 +152,6 @@ export default function ElectricPage({ onNavigate }: ElectricPageProps) {
 
       {/* LOW VOLTAGE */}
       <section className="glv-wrapper">
-        {!isLowPerformance ? (
-          <div className="glv-bg">
-            <FaultyTerminal
-              scale={1.5}
-              gridMul={[2, 1]}
-              digitSize={1.2}
-              timeScale={0.5}
-              pause={false}
-              scanlineIntensity={0.5}
-              glitchAmount={1}
-              flickerAmount={1}
-              noiseAmp={1}
-              chromaticAberration={0}
-              dither={0}
-              curvature={0.1}
-              tint="#A7EF9E"
-              mouseReact
-              mouseStrength={0.5}
-              pageLoadAnimation
-              brightness={0.6}
-            />
-          </div>
-        ) : null}
         <div className="glv-container">
           <div className="header">
             <span className="pip"></span> Low Voltage & Control

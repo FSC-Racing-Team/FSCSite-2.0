@@ -4,7 +4,7 @@ import FlowingMenu from "./FlowingMenu";
 
 interface PageDrawerMenuProps {
   onNavigate: (page: string) => void;
-  currentSection: "management" | "electric" | "mech";
+  currentSection: "management" | "electric" | "mech" | "garage";
 }
 
 export default function PageDrawerMenu({ onNavigate, currentSection }: PageDrawerMenuProps) {
@@ -15,6 +15,7 @@ export default function PageDrawerMenu({ onNavigate, currentSection }: PageDrawe
     { key: "management" as const, text: "Management", link: "#management", page: "management" },
     { key: "electric" as const, text: "Elettrica", link: "#electric", page: "electric" },
     { key: "mech" as const, text: "Meccanica", link: "#mech", page: "mech" },
+    { key: "garage" as const, text: "Garage", link: "#garage", page: "garage" },
   ];
 
   const otherSections = sectionItems.filter((item) => item.key !== currentSection);
