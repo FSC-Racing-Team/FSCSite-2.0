@@ -1,27 +1,25 @@
 // designed by alongio
 import React from "react";
-import BlurText from "./BlurText";
 import ScrollVelocity from "./ScrollVelocity";
 
 export default function Team(): React.ReactElement {
   return (
     <section id="teamPage" className="teamV3" aria-label="Sezione Team">
-      {/* BG: Threads - Rimosso per alleggerire */}
-
-      {/* Contenuto */}
+      {/* Contenuto principale: Title, lead paragraph, stat */}
       <div className="teamV3Inner">
-        <BlurText
-          text={`FSC Racing è il team Formula SAE dell’Università di Catania.\n
-Progettiamo e realizziamo una vettura da competizione come esercizio di ingegneria applicata.\n
-Un progetto universitario con standard competitivi.`}
-          animateBy="words"
-          direction="top"
-          delay={140}
-          className="teamV3Title"
-        />
+        <h2 className="teamV3Title">CHI SIAMO</h2>
+
+        <p className="teamV3Lead">
+          FSC Racing è un team di corse gestito da studenti situato presso l'Università di Catania. Il team è composto da un gruppo eterogeneo di ragazze e ragazzi, che cercano di portare la propria istruzione fuori dalle aule universitarie e nel mondo reale.
+        </p>
+
+        <div className="teamV3Stat">
+          <div className="teamV3StatNumber">40+</div>
+          <div className="teamV3StatSub">Membri attivi provenienti da diverse facoltà</div>
+        </div>
       </div>
 
-      {/* Marquee a limite sezione */}
+      {/* Marquee a limite sezione (preservata) */}
       <div className="teamV3Marquee" aria-hidden="true">
         <ScrollVelocity
           texts={["FSC RACING TEAM •", "FSC RACING TEAM •"]}
