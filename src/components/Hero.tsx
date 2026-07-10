@@ -106,7 +106,7 @@ export default function Hero({ booted, onNavigate }: HeroProps) {
 
       <div className="stage">
         <div className="stageBottom">
-          {/* Slideshow placeholder */}
+          <HeroSlideshow />
         </div>
         <section className={`reveal ${revealed ? "is-on" : ""}`}>
           <div className="wipe" />

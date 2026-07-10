@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface SlideshowImage {
   src: string;
@@ -7,10 +7,11 @@ interface SlideshowImage {
 
 export default function HeroSlideshow() {
   const [images, setImages] = useState<SlideshowImage[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [incomingIndex, setIncomingIndex] = useState<number | null>(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
-    // List of all images in public/images/slideshow
     const imagePaths = [
       "/images/slideshow/IMG_4150.JPG",
       "/images/slideshow/IMG_4178.JPG",
@@ -23,7 +24,6 @@ export default function HeroSlideshow() {
       "/images/slideshow/PXL_20260314_113345627.jpg",
     ];
 
-    // Randomize order
     const shuffled = [...imagePaths].sort(() => Math.random() - 0.5);
     const imageObjects = shuffled.map((src, index) => ({
       src,
@@ -33,29 +33,61 @@ export default function HeroSlideshow() {
     setImages(imageObjects);
   }, []);
 
-  // Auto-advance slideshow every 5 seconds
   useEffect(() => {
     if (images.length === 0) return;
 
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 5000);
+    let timeoutId: number | undefined;
 
-    return () => clearInterval(timer);
-  }, [images.length]);
+    const advance = () => {
+      const nextIndex = (activeIndex + 1) % images.length;
+      setIncomingIndex(nextIndex);
+      setIsTransitioning(true);
+
+      timeoutId = window.setTimeout(() => {
+        setActiveIndex(nextIndex);
+        setIncomingIndex(null);
+        setIsTransitioning(false);
+      }, 1800);
+    };
+
+    const timer = window.setInterval(advance, 5000);
+
+    return () => {
+      window.clearInterval(timer);
+      if (timeoutId) window.clearTimeout(timeoutId);
+    };
+  }, [activeIndex, images.length]);
 
   if (images.length === 0) return null;
 
   return (
-    <div className="heroSlideshowContainer">
-      {images.map((img, index) => (
-        <div
-          key={img.key}
-          className={`heroSlideshowSlide ${index === currentIndex ? "is-active" : ""}`}
-        >
-          <img src={img.src} alt={`Slideshow image ${index + 1}`} />
-        </div>
-      ))}
+    <div className="heroSlideshowContainer" aria-live="polite" aria-label="Hero slideshow">
+      {images.map((image, index) => {
+        const isActive = index === activeIndex;
+        const isIncoming = index === incomingIndex && isTransitioning;
+        const isOutgoing = index === activeIndex && isTransitioning;
+
+        return (
+          <div
+            key={image.key}
+            className={[
+              "heroSlideshowSlide",
+              isActive ? "is-active" : "",
+              isIncoming ? "is-incoming" : "",
+              isOutgoing ? "is-outgoing" : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            <img
+              className="heroSlideshowImage"
+              src={image.src}
+              alt={`Slideshow image ${index + 1}`}
+            />
+          </div>
+        );
+      })}
+      <div className="heroSlideshowBlurLayer" aria-hidden="true" />
     </div>
   );
 }

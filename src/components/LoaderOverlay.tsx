@@ -1,4 +1,3 @@
-import React from "react";
 
 export default function LoaderOverlay({ off }: { off: boolean }) {
   return (
