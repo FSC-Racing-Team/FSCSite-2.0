@@ -420,6 +420,15 @@
       "role": "IT engineer",
       "dept": "elettrica",
       "unit": "low_voltage"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Gabriele Cassaniti",
+      "role": "IT engineer",
+      "dept": "elettrica",
+      "unit": "low_voltage"
     }
   ]
 }
