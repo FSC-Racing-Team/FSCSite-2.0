@@ -411,6 +411,15 @@
       "role": "LV engineer",
       "dept": "elettrica",
       "unit": "low_voltage"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Luigi Tinnirello",
+      "role": "LV engineer",
+      "dept": "elettrica",
+      "unit": "low_voltage"
     }
   ]
 }
