@@ -408,9 +408,9 @@
       "visible": true,
       "order": 0,
       "name": "Luigi Tinnirello",
-      "role": "LV engineer",
+      "role": "HV engineer",
       "dept": "elettrica",
-      "unit": "low_voltage"
+      "unit": "high_voltage"
     }
   ]
 }
