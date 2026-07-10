@@ -399,9 +399,9 @@
       "visible": true,
       "order": 0,
       "name": "Angelo Pettinato",
-      "role": "LV engineer",
+      "role": "HV engineer",
       "dept": "elettrica",
-      "unit": "low_voltage"
+      "unit": "high_voltage"
     },
     {
       "special": false,
