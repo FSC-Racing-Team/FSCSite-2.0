@@ -411,6 +411,15 @@
       "role": "HV engineer",
       "dept": "elettrica",
       "unit": "high_voltage"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Cristiano Calì",
+      "role": "IT engineer",
+      "dept": "elettrica",
+      "unit": "low_voltage"
     }
   ]
 }
