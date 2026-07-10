@@ -341,8 +341,7 @@ export default function CarBlueprintIndex({
         let extV = new THREE.Vector3();
 
         let longIdx = 2,
-            latIdx = 0,
-            upIdx = 1;
+            latIdx = 0;
 
         // toggles (match index defaults: rearIsMax true, sideSign +1 => RIGHT)
         let rearIsMax = true;
@@ -352,11 +351,7 @@ export default function CarBlueprintIndex({
         let p = 0;
         let pGoal = 0;
         let pVel = 0;
-        let completed = false; // ✅ trigger una volta sola
         let goalV = 0;
-
-        // progress bar state
-        let currentProgress = 0;
 
         // expose progress setter
         progressRef.current = {
@@ -506,8 +501,6 @@ export default function CarBlueprintIndex({
 
             centerV = visualBox.getCenter(centerV);
             extV = visualBox.getSize(extV);
-
-            upIdx = 1;
 
             const xz = [
                 { idx: 0, len: extV.x },
@@ -1567,7 +1560,6 @@ export default function CarBlueprintIndex({
                 p = 0;
                 pVel = 0;
                 goalV = 0;
-                completed = false;
             }
             if (k === "v") {
                 sideSign *= -1;
@@ -1616,7 +1608,6 @@ export default function CarBlueprintIndex({
             p = 0;
             pVel = 0;
             goalV = 0;
-            completed = false; // ✅ ogni volta che carichi/resetti modello
             isLoaded = true;
         };
 
@@ -1668,7 +1659,6 @@ export default function CarBlueprintIndex({
             }
 
             // update progress bar
-            currentProgress = p;
             setProgressBarValue(p);
 
             // CAMERA
