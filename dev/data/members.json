@@ -402,6 +402,15 @@
       "role": "Aerodynamics Engineer",
       "dept": "meccanica",
       "unit": "aerodynamics"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Angelo Pettinato",
+      "role": "LV engineer",
+      "dept": "elettrica",
+      "unit": "low_voltage"
     }
   ]
 }
