@@ -216,8 +216,101 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 #heroPage .stageBottom{
   grid-column: 1;
   grid-row: 1;
-  background: #000;
+  background: #001f3e;
   z-index: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroSlideshowContainer{
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #001f3e;
+}
+
+.heroSlideshowContainer::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.heroSlideshowBlurLayer{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 260px;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 31, 62, 0) 0%, rgba(0, 31, 62, 0.2) 20%, rgba(0, 31, 62, 0.45) 45%, rgba(0, 31, 62, 0.7) 70%, rgba(0, 31, 62, 1) 100%);
+  z-index: 10;
+}
+
+.heroSlideshowSlide{
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(0);
+  z-index: 1;
+  background: #001f3e;
+}
+
+.heroSlideshowSlide.is-active{
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 2;
+}
+
+.heroSlideshowSlide.is-incoming{
+  animation: heroSlideIn 2.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  z-index: 3;
+}
+
+.heroSlideshowSlide.is-outgoing{
+  animation: heroSlideOut 2.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  z-index: 2;
+}
+
+.heroSlideshowImage{
+  position: absolute;
+  inset: 0;
+  width: 110%;
+  min-width: 110%;
+  height: 110%;
+  min-height: 110%;
+  object-fit: cover;
+  object-position: center 35%;
+  display: block;
+  transform: translateX(-2%);
+}
+
+@keyframes heroSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20%);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes heroSlideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(20%);
+  }
 }
 
 #heroPage .heroCentral{
@@ -251,6 +344,7 @@ section.page{ min-height:100vh; width:100%; position:relative; }
   text-align: left;
   max-width: min(520px, 100%);
   transform: translateX(-50%);
+  text-shadow: 0 45px 135px rgba(0,0,0,.775);
 }
 
 #heroPage .heroTitle span{
@@ -301,9 +395,13 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 .eleWrap{
   width: min(560px, 72vw);
   translate: -32% 0;
-  filter: drop-shadow(0 20px 55px rgba(0,0,0,.55));
+  filter: drop-shadow(0 51px 150px rgba(0,0,0,.85));
 }
 .eleWrap svg{ width:100%; height:auto; display:block; overflow: visible; }
+
+#heroPage .heroTitle{
+  text-shadow: 0 30px 90px rgba(0,0,0,.85);
+}
 
 #wheelBase, #wheelClick{
   cursor:pointer;
@@ -2825,6 +2923,7 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 
 .tpSection{
   --tpMgmt: #b18cff;
+  --tpPanelBg: #001f3e;
   --tpRevealDur: 560ms;
   --tpGap: 160ms;
   --tpShadow: 0 26px 80px rgba(0,0,0,.45);
@@ -2849,6 +2948,59 @@ section.page{ min-height:100vh; width:100%; position:relative; }
     radial-gradient(700px 520px at 60% 78%, color-mix(in oklab, var(--tpMgmt) 14%, transparent) 0%, transparent 65%);
 }
 
+/* top bar */
+.tpTopBar{
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: clamp(24px, 4vw, 42px) clamp(24px, 4vw, 48px) 0;
+  background: #001f3e;
+}
+
+.tpTopTitle{
+  margin: 0;
+  padding: 0 0 12px;
+  font-size: clamp(34px, 4.4vw, 58px);
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(232,238,247,.96);
+}
+
+.tpBottomBar{
+  position: relative;
+  z-index: 2;
+  padding: 0;
+}
+
+.tpTopButton{
+  display: block;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 18px 24px;
+  border-top: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  background: var(--tpPanelBg);
+  color: rgba(232,238,247,.96);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: clamp(12px, 1.3vw, 15px);
+  font-weight: 700;
+  transition: background 220ms var(--ease2), color 220ms var(--ease2), transform 220ms var(--ease2);
+}
+
+.tpTopButton:hover,
+.tpTopButton:focus-visible{
+  background: rgba(255,255,255,.08);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
 /* grid */
 .tpGrid{
   position: relative;
@@ -2868,10 +3020,8 @@ section.page{ min-height:100vh; width:100%; position:relative; }
   padding: clamp(20px, 4vw, 56px);
   min-height: 100vh;
 
-  background:
-    radial-gradient(900px 560px at 50% 12%, rgba(255,255,255,.04), rgba(0,0,0,0) 60%),
-    linear-gradient(180deg, #0e1015, #0b0d10);
-  border-right: 1px solid rgba(255,255,255,.07);
+  background: var(--tpPanelBg);
+  border-right: 2px solid #ffffff;
 
   opacity: 0;
   transform: translate3d(0, 18px, 0);
@@ -2915,6 +3065,307 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 /* content */
 .tpContent{ max-width: 44ch; position: relative; z-index: 2; }
 
+.tpPanel[data-panel="electric"] {
+  padding: 0;
+}
+
+.tpPanel[data-panel="electric"] .tpContent {
+  max-width: none;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.tpElectricDefault,
+.tpElectricHover{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tpElectricDefault{
+  display: grid;
+  place-items: center;
+  gap: 16px;
+  padding: 44px 32px 32px;
+  box-sizing: border-box;
+}
+
+.tpElectricHover{
+  padding: 0;
+}
+
+.tpElectricHover{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 0;
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+  transition: opacity 220ms var(--ease2), transform 220ms var(--ease2);
+  z-index: 2;
+}
+
+.tpPanelMech .tpElectricHover{
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+
+.tpElectricLink{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,.06);
+  border: 2px solid #ffffff;
+  color: rgba(232,238,247,.92);
+  text-decoration: none;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 220ms var(--ease2), border-color 220ms var(--ease2), color 220ms var(--ease2);
+}
+
+.tpElectricLink:hover,
+.tpElectricLink:focus-visible{
+  background: rgba(255,255,255,.14);
+  border-color: rgba(232,238,247,.28);
+}
+
+.tpPanel[data-panel="electric"]:hover .tpElectricDefault,
+.tpPanel[data-panel="electric"]:focus-within .tpElectricDefault{
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+}
+
+.tpPanel[data-panel="electric"]:hover .tpElectricHover,
+.tpPanel[data-panel="electric"]:focus-within .tpElectricHover{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.tpPanel[data-panel="electric"]:hover .tpIcon,
+.tpPanel[data-panel="electric"]:focus-within .tpIcon{
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+}
+
+.tpActions{
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.tpPanelControls{
+  position: relative;
+  min-height: 220px;
+}
+
+.tpPanelBody,
+.tpBranchGrid{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  display: grid;
+  gap: 16px;
+}
+
+.tpBranchGrid{
+  grid-template-columns: 1fr;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+  transition: opacity 220ms var(--ease2), transform 220ms var(--ease2);
+  height: 100%;
+}
+
+.tpBranchGridStacked{
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 0;
+}
+
+.tpBranchCard{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 0;
+  padding: 0 18px;
+  border-radius: 24px;
+  background: rgba(255,255,255,.06);
+  border: 2px solid #ffffff;
+  color: rgba(232,238,247,.92);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  transition: background 220ms var(--ease2), border-color 220ms var(--ease2), color 220ms var(--ease2), transform 220ms var(--ease2);
+}
+
+.tpBranchCard:hover,
+.tpBranchCard:focus-visible{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.12);
+  border-color: rgba(232,238,247,.24);
+}
+
+.tpPanel[data-panel="electric"]:hover .tpPanelBody,
+.tpPanel[data-panel="electric"]:focus-within .tpPanelBody{
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+}
+
+.tpPanel[data-panel="electric"] .tpPanelBody{
+  transition: opacity 220ms var(--ease2), transform 220ms var(--ease2);
+}
+
+.tpPanel[data-panel="electric"] .tpBranchGrid{
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+.tpPanel[data-panel="electric"]:hover .tpBranchGrid,
+.tpPanel[data-panel="electric"]:focus-within .tpBranchGrid{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.tpPanel[data-panel="electric"]:hover .tpTitle,
+.tpPanel[data-panel="electric"]:focus-within .tpTitle,
+.tpPanel[data-panel="electric"]:hover .tpDesc,
+.tpPanel[data-panel="electric"]:focus-within .tpDesc,
+.tpPanel[data-panel="electric"]:hover .tpBtn,
+.tpPanel[data-panel="electric"]:focus-within .tpBtn,
+.tpPanel[data-panel="electric"]:hover .tpIcon,
+.tpPanel[data-panel="electric"]:focus-within .tpIcon{
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+.tpPanel[data-panel="electric"] .tpTitle,
+.tpPanel[data-panel="electric"] .tpDesc,
+.tpPanel[data-panel="electric"] .tpBtn{
+  transition: opacity 220ms var(--ease2), transform 220ms var(--ease2);
+}
+
+.tpPanel[data-panel="mech"],
+.tpPanel[data-panel="management"]{
+  padding: 0;
+}
+
+.tpPanelShell{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.tpPanel[data-panel="mech"] .tpContent,
+.tpPanel[data-panel="management"] .tpContent{
+  position: relative;
+  flex: 1;
+  width: 100%;
+  max-width: none;
+  padding: 0;
+}
+
+.tpPanelDefault,
+.tpBranchOverlay{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tpPanelDefault{
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  align-content: center;
+  gap: 12px;
+  padding: clamp(24px, 4vw, 56px);
+  padding-top: clamp(112px, 16vh, 220px);
+  text-align: center;
+  transition: opacity 220ms var(--ease2), transform 220ms var(--ease2);
+}
+
+.tpBranchOverlay{
+  display: grid;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+  transition: opacity 220ms var(--ease2), transform 220ms var(--ease2);
+}
+
+.tpPanel[data-panel="mech"] .tpBranchCard,
+.tpPanel[data-panel="management"] .tpBranchCard{
+  height: 100%;
+  min-height: 0;
+  border-radius: 0;
+  background: rgba(255,255,255,.06);
+  border: 2px solid #ffffff;
+}
+
+.tpPanel[data-panel="mech"]:hover .tpPanelDefault,
+.tpPanel[data-panel="mech"]:focus-within .tpPanelDefault,
+.tpPanel[data-panel="management"]:hover .tpPanelDefault,
+.tpPanel[data-panel="management"]:focus-within .tpPanelDefault{
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+}
+
+.tpPanel[data-panel="mech"]:hover .tpBranchOverlay,
+.tpPanel[data-panel="mech"]:focus-within .tpBranchOverlay,
+.tpPanel[data-panel="management"]:hover .tpBranchOverlay,
+.tpPanel[data-panel="management"]:focus-within .tpBranchOverlay{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.tpPanel[data-panel="mech"]:hover .tpTitle,
+.tpPanel[data-panel="mech"]:focus-within .tpTitle,
+.tpPanel[data-panel="mech"]:hover .tpDesc,
+.tpPanel[data-panel="mech"]:focus-within .tpDesc,
+.tpPanel[data-panel="mech"]:hover .tpBtn,
+.tpPanel[data-panel="mech"]:focus-within .tpBtn,
+.tpPanel[data-panel="management"]:hover .tpTitle,
+.tpPanel[data-panel="management"]:focus-within .tpTitle,
+.tpPanel[data-panel="management"]:hover .tpDesc,
+.tpPanel[data-panel="management"]:focus-within .tpDesc,
+.tpPanel[data-panel="management"]:hover .tpBtn,
+.tpPanel[data-panel="management"]:focus-within .tpBtn{
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+.tpPanel[data-panel="mech"]:hover .tpIcon,
+.tpPanel[data-panel="mech"]:focus-within .tpIcon,
+.tpPanel[data-panel="management"]:hover .tpIcon,
+.tpPanel[data-panel="management"]:focus-within .tpIcon{
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+}
+
 .tpTitle{
   margin: 0 0 12px 0;
   font-size: clamp(26px, 2.4vw, 42px);
@@ -2930,6 +3381,14 @@ section.page{ min-height:100vh; width:100%; position:relative; }
   letter-spacing: .22em;
   text-transform: uppercase;
   color: rgba(232,238,247,.52);
+  transition: opacity 220ms var(--ease2), transform 220ms var(--ease2);
+}
+
+.tpActions:hover .tpDesc,
+.tpActions:focus-within .tpDesc{
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
 }
 
 .tpBtn{
@@ -2958,34 +3417,22 @@ section.page{ min-height:100vh; width:100%; position:relative; }
   z-index: 3;
 }
 
-.tpPanel.tpActive[data-accent="cyan"]{
-  background:
-    radial-gradient(900px 600px at 50% 35%, rgba(0,0,0,.18), rgba(0,0,0,.72)),
-    linear-gradient(180deg,
-      color-mix(in oklab, var(--cyan) 86%, #000) 0%,
-      color-mix(in oklab, var(--cyan) 58%, #000) 100%);
-}
-
-.tpPanel.tpActive[data-accent="red"]{
-  background:
-    radial-gradient(900px 600px at 50% 35%, rgba(0,0,0,.18), rgba(0,0,0,.72)),
-    linear-gradient(180deg,
-      color-mix(in oklab, var(--red) 86%, #000) 0%,
-      color-mix(in oklab, var(--red) 58%, #000) 100%);
-}
-
+.tpPanel.tpActive[data-accent="cyan"],
+.tpPanel.tpActive[data-accent="red"],
 .tpPanel.tpActive[data-accent="mgmt"]{
-  background:
-    radial-gradient(900px 600px at 50% 35%, rgba(0,0,0,.18), rgba(0,0,0,.72)),
-    linear-gradient(180deg,
-      color-mix(in oklab, var(--tpMgmt) 72%, #000) 0%,
-      color-mix(in oklab, var(--tpMgmt) 42%, #000) 100%);
+  background: var(--tpPanelBg);
 }
 
 .tpPanel.tpActive .tpTitle{ color: rgba(255,255,255,.96); }
 .tpPanel.tpActive .tpDesc{ color: rgba(255,255,255,.75); }
 
 .tpPanel.tpActive .tpBtn{
+  background: rgba(0,0,0,.70);
+  border-color: transparent;
+  color: rgba(255,255,255,.90);
+}
+
+.tpPanel.tpActive .tpBranchBtn{
   background: rgba(0,0,0,.70);
   border-color: transparent;
   color: rgba(255,255,255,.90);

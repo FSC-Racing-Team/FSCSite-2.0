@@ -1,5 +1,5 @@
 // designed by alongio
-import React, { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 export default function FscFooter() {
   const panelRef = useRef<HTMLElement | null>(null);

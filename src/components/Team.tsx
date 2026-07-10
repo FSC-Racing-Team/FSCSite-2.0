@@ -1,8 +1,8 @@
 // designed by alongio
-import React from "react";
+import type { ReactElement } from "react";
 import ScrollVelocity from "./ScrollVelocity";
 
-export default function Team(): React.ReactElement {
+export default function Team(): ReactElement {
   return (
     <section id="teamPage" className="teamV3" aria-label="Sezione Team">
       {/* Contenuto principale: Title, lead paragraph, stat */}
