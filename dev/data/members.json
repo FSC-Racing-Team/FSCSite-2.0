@@ -393,6 +393,15 @@
       "role": "Design Engineer",
       "dept": "meccanica",
       "unit": "mechanical_design"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Salvatore Camiolo",
+      "role": "Aerodynamics Engineer",
+      "dept": "meccanica",
+      "unit": "aerodynamics"
     }
   ]
 }
