@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-// @ts-ignore - FlowingMenu is a JSX component
-import FlowingMenu from "./FlowingMenu";
 
 interface PageDrawerMenuProps {
   onNavigate: (page: string) => void;
-  currentSection: "management" | "electric" | "mech";
+  currentSection: "management" | "electric" | "mech" | "garage";
 }
 
 export default function PageDrawerMenu({ onNavigate, currentSection }: PageDrawerMenuProps) {
@@ -15,6 +13,7 @@ export default function PageDrawerMenu({ onNavigate, currentSection }: PageDrawe
     { key: "management" as const, text: "Management", link: "#management", page: "management" },
     { key: "electric" as const, text: "Elettrica", link: "#electric", page: "electric" },
     { key: "mech" as const, text: "Meccanica", link: "#mech", page: "mech" },
+    { key: "garage" as const, text: "Garage", link: "#garage", page: "garage" },
   ];
 
   const otherSections = sectionItems.filter((item) => item.key !== currentSection);
@@ -52,22 +51,48 @@ export default function PageDrawerMenu({ onNavigate, currentSection }: PageDrawe
 
         <div className="drawerBody">
           {menuOpen ? (
-            <FlowingMenu
-              items={[
-                { text: "Home", link: "#home", onClick: () => { setMenuOpen(false); onNavigate("home"); } },
-                ...otherSections.map((item) => ({
-                  text: item.text,
-                  link: item.link,
-                  onClick: () => {
+            <nav className="simple-menu" aria-label="Menu">
+              <div className="menu-item">
+                <a
+                  href="#home"
+                  onClick={(e) => {
+                    e.preventDefault();
                     setMenuOpen(false);
-                    onNavigate(item.page);
-                  },
-                })),
-                { text: "Area Riservata", link: adminUrl, onClick: () => { setMenuOpen(false); window.location.assign(adminUrl); } }
-              ]}
-              bgColor="transparent"
-              speed={5}
-            />
+                    onNavigate("home");
+                  }}
+                >
+                  Home
+                </a>
+              </div>
+
+              {otherSections.map((item) => (
+                <div className="menu-item" key={item.key}>
+                  <a
+                    href={item.link}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setMenuOpen(false);
+                      onNavigate(item.page);
+                    }}
+                  >
+                    {item.text}
+                  </a>
+                </div>
+              ))}
+
+              <div className="menu-item">
+                <a
+                  href={adminUrl}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMenuOpen(false);
+                    window.location.assign(adminUrl);
+                  }}
+                >
+                  Area Riservata
+                </a>
+              </div>
+            </nav>
           ) : null}
         </div>
       </aside>

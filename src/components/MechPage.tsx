@@ -2,12 +2,6 @@ import { useState } from "react";
 import "./ElectricPage.css";
 import ContactGate from "./Contacts";
 import FscFooter from "./FscFooter";
-// @ts-ignore - Hyperspeed is a JSX component
-import Hyperspeed from "./Hyperspeed";
-// @ts-ignore - Silk is a JSX component
-import Silk from "./Silk";
-// @ts-ignore - Beams is a JSX component
-import Beams from "./Beams";
 import PageDrawerMenu from "./PageDrawerMenu";
 import DepartmentMembers from "./DepartmentMembers";
 import BackgroundFX from "./BackgroundFX";
@@ -62,41 +56,7 @@ const aerodynamicsItems: DetailItem[] = [
   }
 ];
 
-const VEHICLE_DYNAMICS_HYPERSPEED_OPTIONS = {
-  distortion: "LongRaceDistortion",
-  length: 400,
-  roadWidth: 10,
-  islandWidth: 5,
-  lanesPerRoad: 2,
-  fov: 90,
-  fovSpeedUp: 150,
-  speedUp: 2,
-  carLightsFade: 0.4,
-  totalSideLightSticks: 50,
-  lightPairsPerRoadWay: 70,
-  shoulderLinesWidthPercentage: 0.05,
-  brokenLinesWidthPercentage: 0.1,
-  brokenLinesLengthPercentage: 0.5,
-  lightStickWidth: [0.12, 0.5],
-  lightStickHeight: [1.3, 1.7],
-  movingAwaySpeed: [60, 80],
-  movingCloserSpeed: [-120, -160],
-  carLightsLength: [20, 60],
-  carLightsRadius: [0.05, 0.14],
-  carWidthPercentage: [0.3, 0.5],
-  carShiftX: [-0.2, 0.2],
-  carFloorSeparation: [0.05, 1],
-  colors: {
-    roadColor: 526344,
-    islandColor: 657930,
-    background: 0,
-    shoulderLines: 1250072,
-    brokenLines: 1250072,
-    leftCars: [16736115, 15158624, 16715818],
-    rightCars: [10806246, 8442324, 5489350],
-    sticks: 10806246
-  }
-};
+
 
 export default function MechPage({ onNavigate }: MechPageProps) {
   const [selectedDetail, setSelectedDetail] = useState<DetailItem | null>(null);
@@ -158,11 +118,6 @@ export default function MechPage({ onNavigate }: MechPageProps) {
         <div className="divisore"></div>
 
         <section className="mech-section-wrapper mech-vd-wrapper">
-          {!isLowPerformance ? (
-            <div className="mech-vd-bg" aria-hidden="true">
-              <Hyperspeed effectOptions={VEHICLE_DYNAMICS_HYPERSPEED_OPTIONS} />
-            </div>
-          ) : null}
           <div className="mech-section-container electric-section">
             <div className="header">
               <span className="pip"></span> Vehicle Dynamics & Suspensions
@@ -188,22 +143,6 @@ export default function MechPage({ onNavigate }: MechPageProps) {
         </section>
 
         <section className="mech-section-wrapper mech-design-wrapper">
-          {!isLowPerformance ? (
-            <div className="mech-design-bg" aria-hidden="true">
-              <div className="mech-design-beams-host">
-                <Beams
-                  beamWidth={3.4}
-                  beamHeight={30}
-                  beamNumber={20}
-                  lightColor="#0084ff"
-                  speed={4.8}
-                  noiseIntensity={1.75}
-                  scale={0.2}
-                  rotation={30}
-                />
-              </div>
-            </div>
-          ) : null}
           <div className="mech-section-container electric-section">
             <div className="header">
               <span className="pip"></span> Mechanic Designing
@@ -229,17 +168,6 @@ export default function MechPage({ onNavigate }: MechPageProps) {
         </section>
 
         <section className="mech-section-wrapper mech-aero-wrapper">
-          {!isLowPerformance ? (
-            <div className="mech-aero-bg" aria-hidden="true">
-              <Silk
-                speed={20}
-                scale={1}
-                color="#ff0000"
-                noiseIntensity={1.5}
-                rotation={0}
-              />
-            </div>
-          ) : null}
           <div className="mech-section-container electric-section">
             <div className="header">
               <span className="pip"></span> Aerodynamics

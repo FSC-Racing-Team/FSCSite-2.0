@@ -41,7 +41,9 @@
   --overlayFontSize: clamp(46px, 6.2vw, 105px);
 
   --teamTitleSize: clamp(30px, 4vw, 56px);
-  --teamTextSize: clamp(14px, 1.2vw, 18px);
+  /* increased by 50% as requested */
+  --teamTitleSize: clamp(45px, 6vw, 84px);
+  --teamTextSize: clamp(24px, 2.4vw, 30px);
 
   --holePad: clamp(14px, 2.2vw, 26px);
   --holeBorder: 1px solid rgba(255,255,255,.10);
@@ -88,7 +90,8 @@ html{ height:100%; overflow:auto; scroll-behavior:auto; }
 body{
   margin:0;
   min-height:100%;
-  background:var(--bg);
+  /* Use a fixed background color behind components (top color provided by user) */
+  background-color: #001f3e; /* deep navy */
   color:var(--fg);
   font-family: var(--font-body);
   overflow:auto;
@@ -122,14 +125,11 @@ body::-webkit-scrollbar {
 }
 
 .bg{
-  position:fixed; inset:-20%;
-  background:
-    radial-gradient(900px 620px at 18% 25%, color-mix(in oklab, var(--cyan) 42%, transparent) 0%, transparent 60%),
-    radial-gradient(860px 560px at 78% 34%, color-mix(in oklab, var(--red) 40%, transparent) 0%, transparent 60%),
-    radial-gradient(720px 520px at 52% 72%, rgba(255,255,255,.06) 0%, transparent 62%),
-    linear-gradient(180deg, rgba(255,255,255,.03), transparent 55%);
-  filter: blur(14px);
-  opacity: .95;
+  position:fixed; inset:0; /* cover viewport */
+  /* solid background color behind all components */
+  background-color: #001f3e;
+  filter: none;
+  opacity: 1;
   pointer-events:none;
   transform: translateZ(0);
   z-index:0;
@@ -149,12 +149,9 @@ body::-webkit-scrollbar {
 .bg.bg-lite{
   inset: 0;
   filter: none;
-  opacity: .78;
-  background:
-    radial-gradient(65% 42% at 16% 22%, color-mix(in oklab, var(--cyan) 34%, transparent) 0%, transparent 72%),
-    radial-gradient(62% 40% at 84% 28%, color-mix(in oklab, var(--red) 32%, transparent) 0%, transparent 72%),
-    radial-gradient(56% 44% at 52% 82%, color-mix(in oklab, var(--blue) 22%, transparent) 0%, transparent 74%),
-    linear-gradient(180deg, rgba(255,255,255,.02), transparent 60%);
+  opacity: 1;
+  /* same solid background for lite variant */
+  background-color: #001f3e;
 }
 
 .grain.grain-lite{
@@ -180,8 +177,91 @@ section.page{ min-height:100vh; width:100%; position:relative; }
   height:100vh;
   width:100vw;
   display:grid;
-  grid-template-columns: minmax(280px, 520px) 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.stageTop{
+  flex: 1;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
   align-items:center;
+  gap: clamp(28px, 5vw, 60px);
+  padding: 0 clamp(24px, 4vw, 60px);
+}
+
+.stageBottom{
+  grid-column: 1;
+  grid-row: 1;
+  background: #000;
+  z-index: 0;
+}
+
+#heroPage .stage{
+  display:grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+#heroPage .stageTop{
+  flex: 1;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 5vw, 60px);
+  align-items:center;
+  justify-content:center;
+  padding: 0 clamp(24px, 4vw, 60px);
+}
+
+#heroPage .stageBottom{
+  grid-column: 1;
+  grid-row: 1;
+  background: #000;
+  z-index: 0;
+}
+
+#heroPage .heroCentral{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(28px, 5vw, 60px);
+  width: 100%;
+  height: 100%;
+  padding: 0 clamp(24px, 4vw, 60px);
+}
+
+#heroPage .heroLeft,
+#heroPage .heroRight{
+  display:flex;
+  align-items:center;
+}
+
+#heroPage .heroRight{
+  justify-content:flex-start;
+}
+
+#heroPage .heroTitle{
+  font-family: var(--font-title);
+  font-size: var(--teamTitleSize);
+  font-weight: 950;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: left;
+  max-width: min(520px, 100%);
+  transform: translateX(-50%);
+}
+
+#heroPage .heroTitle span{
+  display: block;
+}
+
+#heroPage .eleWrap{
+  width: min(520px, 68vw);
+  max-width: 100%;
+  margin: 0;
+  transform: translateX(-12%);
 }
 
 .reveal{
@@ -189,6 +269,9 @@ section.page{ min-height:100vh; width:100%; position:relative; }
   height:100%;
   overflow:hidden;
   background: transparent;
+  z-index: 1;
+  grid-column: 1;
+  grid-row: 1;
 }
 .reveal .wipe{
   content:"";
@@ -665,6 +748,10 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 .panel{ position:absolute; z-index:20; }  /* lascia la panel assoluta */
 .topbar{ position:fixed; top:18px; right:18px; left:auto; z-index:60; }
 
+/* Ensure the menu toggle sits above everything */
+.topbar{ z-index: 10050; }
+.topbar .hamb{ z-index: 10060; position: relative; }
+
 /* Hamburger -> X */
 .hamb{
   width:52px; height:44px;
@@ -707,17 +794,17 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 .drawer{
   position:fixed;
   top:0;
-  left:0;          /* ✅ da sinistra */
-  right:auto;
+  right:0;          /* ora si apre da destra */
+  left:auto;
   height:100vh;
   width:min(420px, 88vw);
 
   background: rgba(11,13,16,.72);
-  border-right:1px solid rgba(255,255,255,.10); /* ✅ bordo lato interno */
-  border-left:0;
+  border-left:1px solid rgba(255,255,255,.10); /* bordo lato interno */
+  border-right:0;
   backdrop-filter: blur(14px);
 
-  transform: translateX(-110%); /* ✅ fuori a sinistra */
+  transform: translateX(110%); /* fuori a destra */
   transition: transform 320ms cubic-bezier(.2,.9,.2,1);
   z-index:5000;
 
@@ -727,7 +814,8 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 .drawer.is-on{ transform: translateX(0); }
 
 .drawerHead{
-  padding: 22px 20px 12px;
+  /* aumentato padding top/bottom per bilanciare la X (chiudi) */
+  padding: 30px 20px 30px;
   border-bottom:1px solid rgba(255,255,255,.08);
 }
 .drawerTitle{
@@ -737,8 +825,52 @@ section.page{ min-height:100vh; width:100%; position:relative; }
   opacity:.86;
 }
 .drawerBody{
-  padding: 16px 14px;
+  /* remove top padding so list starts immediately below header; keep bottom padding */
+  padding: 0 14px 16px;
 }
+
+/* Simple menu to replace FlowingMenu */
+.drawerBody .simple-menu{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:flex-start;
+  height: calc(100vh - 76px);
+  padding-top: 0;
+}
+.drawerBody .simple-menu .menu-item{
+  /* make items size to content and reduce vertical spacing; padding increased proportionally */
+  flex: 0 0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width: 100%;
+  text-align:center;
+  padding: 8px 24px; /* slightly larger padding */
+  border-bottom: 2px solid rgba(255,255,255,.10);
+  box-sizing: border-box;
+}
+.drawerBody .simple-menu .menu-item:last-child{ border-bottom: none; }
+.drawerBody .simple-menu .menu-item a{
+  color: var(--fg);
+  font-family: var(--font-title);
+  font-weight: 900;
+  /* slightly increased font-size proportionally (~20% up) */
+  font-size: clamp(13px, 3.17vw, 26px);
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+  display:block;
+  width:100%;
+  padding: 8px 0; /* matching increased padding */
+}
+.drawerBody .simple-menu .menu-item a:focus,
+.drawerBody .simple-menu .menu-item a:hover{
+  color: var(--fg);
+  opacity: 0.95;
+  text-decoration: none;
+}
+
 /* ===== reveal (match test.html behaviour) ===== */
 .reveal{ --delay: 0ms; }
 .reveal.is-on .wipe{
@@ -1455,27 +1587,53 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 .teamV3Vignette{
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(70% 65% at 50% 40%, rgba(0,0,0,.25), rgba(0,0,0,.78)),
-    linear-gradient(to bottom, rgba(0,0,0,.22), rgba(0,0,0,.72));
+  text-align: center;
+  max-width: min(960px, 92vw);
+  background: linear-gradient(to bottom, rgba(0,0,0,.22), rgba(0,0,0,.72));
 }
-
-.teamV3Inner{
-  position: relative;
-  z-index: 2;
-  text-align: left;
-  max-width: min(980px, 92vw);
-}
-
 .teamV3Title{
-  margin: 0;
+  margin: 0 0 18px 0;
   font-weight: 950;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   line-height: .95;
-  font-size: clamp(30px, 2vw, 120px);
-  text-shadow: 0 22px 70px rgba(0,0,0,.55);
+  font-size: clamp(34px, 5.6vw, 64px);
+  text-shadow: 0 12px 40px rgba(0,0,0,.45);
 }
+
+/* Ensure BlurText inner spans inherit the same letter-spacing */
+.teamV3Title .inline-block{ letter-spacing: 0.06em; }
+
+.teamV3Lead{
+  margin: 6px auto 18px auto;
+  color: rgba(232,238,247,.9);
+  /* increase lead font size by 50% */
+  font-size: clamp(27px, 3.6vw, 33px);
+  line-height: 1.8;
+  max-width: 780px;
+  text-align: center;
+}
+
+.teamV3Stat{
+  margin-top: 18px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 8px;
+}
+.teamV3StatNumber{
+  font-family: var(--font-title);
+  font-weight: 950;
+  /* increased by 50% */
+  font-size: clamp(60px, 10.8vw, 126px);
+  letter-spacing: 0.02em;
+}
+.teamV3StatSub{
+  font-size: var(--teamTextSize);
+  color: rgba(232,238,247,.9);
+  padding-bottom: 18px;
+}
+/* cleaned stray properties removed */
 
 
 /* Marquee bottom */
@@ -1573,29 +1731,38 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 
   /* prima era place-items:center */
   align-items: center;     /* centro verticale */
-  justify-items: start;    /* sinistra orizzontale */
+  justify-items: center;   /* centra orizzontalmente */
 }
 .teamV3Inner{
   position: relative;
   z-index: 2;
-  text-align: left;
+  text-align: center;
 
   /* prima: max-width: min(980px, 92vw) */
-  width: min(66vw, 980px);
+  /* increase container size by 50% */
+  width: min(99vw, 1470px);
   max-width: none;
 }
-.teamV3Title{
-  margin-left: 5%;
-  margin-top: 5%;
-  margin-bottom: 20%;
-  font-weight: 950;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  line-height: 1.05;
+.teamV3Inner{ margin-left: auto; margin-right: auto; }
 
-  /* prima arrivava fino a 120px */
-  font-size: var(--teamTitleSize); /* clamp(30px, 4vw, 56px) */
-  text-shadow: 0 22px 70px rgba(0,0,0,.55);
+/* Ensure BlurText titles center and have no stray left margin from older rules */
+.blur-text.teamV3Title,
+.teamV3Inner .teamV3Title{
+  text-align: center !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.teamV3Title{
+  /* reduce top margin by 70% (8px -> ~2px) and increase bottom padding */
+  margin: 2px 0 30px 0;
+  font-weight: 950;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.02;
+  font-size: var(--teamTitleSize);
+  text-shadow: 0 20px 60px rgba(0,0,0,.45);
 }
 @media (max-width: 900px){
   .teamV3Inner{ width: 92vw; }
@@ -2875,7 +3042,7 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 .cgVolcanoBg{
   position: absolute;
   inset: 0;
-  background-image: url('/volcano.png');
+  background-image: url('/team.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

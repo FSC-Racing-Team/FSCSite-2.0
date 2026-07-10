@@ -1,272 +1,336 @@
 # FSC Site 2.0
 
-Sito ufficiale FSC Racing Team sviluppato con React + TypeScript + Vite.
+Sito ufficiale FSC Racing Team sviluppato con **React + TypeScript + Vite**.
 
-Include:
-- homepage narrativa con animazioni,
-- pagine reparto (Elettrica, Meccanica, Management),
-- area admin,
-- integrazione Decap CMS per gestione contenuti team.
+Il progetto contiene il frontend pubblico, le pagine dei reparti, l'area admin e l'integrazione con Decap CMS per la gestione dei contenuti del team.
 
 ---
 
-## 1) Panoramica progetto
+## Stato attuale del progetto
 
-Il progetto è una Single Page Application (SPA) con navigazione basata su hash (`#home`, `#electric`, `#mech`, `#management`, `#admin`).
+La repo è organizzata così:
 
-La logica di routing è gestita in `src/App.tsx` senza React Router: cambia la pagina in base a `window.location.hash`.
+- `main` contiene il codice sorgente del sito.
+- `gh-pages` contiene il sito compilato e pubblicato.
+- Il dominio di produzione è `https://www.fscracing.it`.
+- Il deploy viene fatto manualmente tramite `npm run deploy`.
+- Decap CMS è configurato per lavorare sulla repo `FSC-Racing-Team/FSCSite-2.0` e sul branch `gh-pages`.
 
----
-
-## 2) Linguaggi e tecnologie usate
-
-### Linguaggi
-- **TypeScript / TSX**: logica applicativa e componenti principali.
-- **JavaScript / JSX**: alcuni componenti visual/FX legacy.
-- **CSS**: styling globale e dei singoli componenti.
-- **HTML**: entry point (`index.html`) e admin statico (`public/admin/index.html`).
-- **YAML**: configurazione Decap CMS (`public/admin/config.yml`).
-- **JSON**: dati iniziali membri (`src/data/team-members.json`).
-
-### Framework / toolchain
-- **React 19**
-- **Vite 7**
-- **TypeScript 5**
-- **ESLint 9**
-- **Tailwind CSS 4** (plugin Vite)
-
-### Librerie principali
-- **three**, **@react-three/fiber**, **@react-three/drei**
-- **gsap**, **animejs**, **motion**, **ogl**, **postprocessing**
-- **lucide-react**, **radix-ui**, utility class packages
-- **Decap CMS** (via cartella `public/admin` + `decap-server` in locale)
+> Importante: lavorare su `main` o su un branch di sviluppo non modifica direttamente il sito online.  
+> Il sito online viene aggiornato solo quando viene eseguito il deploy verso `gh-pages`.
 
 ---
 
-## 3) Struttura cartelle (tree dettagliato)
+## Stack
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Three.js / React Three Fiber
+- GSAP / animazioni custom
+- Decap CMS
+- GitHub Pages
+
+---
+
+## Struttura principale
 
 ```text
-fscsite2/
-├─ index.html
-├─ package.json
-├─ vite.config.ts
-├─ tsconfig.json
-├─ tsconfig.app.json
-├─ tsconfig.node.json
-├─ eslint.config.js
-├─ components.json
-├─ README.md
+FSCSite-2.0/
 ├─ public/
-│  ├─ CNAME
 │  ├─ admin/
 │  │  ├─ index.html
 │  │  └─ config.yml
 │  ├─ dev/
-│  │  ├─ assets/
 │  │  └─ data/
 │  │     └─ members.json
-│  ├─ fonts/
 │  ├─ images/
-│  │  ├─ collage-elect/
-│  │  ├─ collage-mgmt/
-│  │  ├─ people/
-│  │  └─ sfondi/
-│  └─ parallax/
-└─ src/
-   ├─ main.tsx
-   ├─ App.tsx
-   ├─ index.css
-   ├─ styles.css
-   ├─ assets/
-   ├─ hooks/
-   │  └─ useLowPerformanceMode.ts
-   ├─ data/
-   │  └─ team-members.json
-   ├─ lib/
-   │  └─ teamMembers.ts
-   └─ components/
-      ├─ HomePage.tsx
-      ├─ Hero.tsx
-      ├─ Team.tsx
-      ├─ GarageStage.tsx
-      ├─ GarageDoorEngine.tsx
-      ├─ ElectricPage.tsx
-      ├─ MechPage.tsx
-      ├─ ManagementPage.tsx
-      ├─ AdminPage.tsx
-      ├─ DepartmentMembers.tsx
-      ├─ PageDrawerMenu.tsx
-      ├─ Contacts.tsx
-      ├─ FscFooter.tsx
-      ├─ BackgroundFX.tsx
-      ├─ LoaderOverlay.tsx
-      ├─ ... (componenti FX e visual: Lightning, Beams, Silk, Hyperspeed, ecc.)
+│  ├─ fonts/
+│  └─ CNAME
+├─ src/
+│  ├─ components/
+│  ├─ data/
+│  ├─ hooks/
+│  ├─ lib/
+│  ├─ App.tsx
+│  ├─ main.tsx
+│  └─ styles.css
+├─ index.html
+├─ package.json
+├─ vite.config.ts
+└─ README.md
 ```
 
 ---
 
-## 4) Architettura e funzionamento componenti
+## Prerequisiti
 
-### 4.1 Bootstrap app
+Per lavorare in locale servono:
 
-- `src/main.tsx`
-  - monta `<App />` dentro `#root`.
-  - importa `styles.css` globale.
-
-- `src/App.tsx`
-  - stato `currentPage` (default `home`).
-  - ascolta `hashchange` e aggiorna la pagina attiva.
-  - fa `scrollTo(0,0)` a cambio pagina.
-  - render condizionale:
-    - `home` → `HomePage`
-    - `electric` → `ElectricPage`
-    - `mech` → `MechPage`
-    - `management` → `ManagementPage`
-    - `admin` → `AdminPage`
-
-### 4.2 Home
-
-- `HomePage.tsx`
-  - mostra `LoaderOverlay` iniziale (tempo da CSS var `--fakeLoad`).
-  - applica `BackgroundFX`.
-  - costruisce la pagina con:
-    - `Hero`
-    - `Team`
-    - `GarageStage` (3 pannelli navigazione reparti)
-    - `GarageDoorEngine` (solo se non low-performance)
-    - `Contacts`
-    - `FscFooter`
-
-- `Hero.tsx`
-  - sezione hero avanzata con animazioni testo e menu.
-  - usa `FlowingMenu` per navigazioni interne.
-  - gestisce lock/scroll intro e reveal animation.
-
-- `Team.tsx`
-  - testo animato + background Threads + marquee.
-
-- `GarageStage.tsx`
-  - 3 card interattive (Elettrica, Meccanica, Management).
-  - bottone `Explore` richiama `onNavigate(page)`.
-
-### 4.3 Pagine reparto
-
-- `ElectricPage.tsx`
-  - intro reparto + sezioni HV/LV.
-  - effetti visuali (`Lightning`, `FaultyTerminal`) condizionati da performance mode.
-  - cards di approfondimento aprono modal dettaglio.
-  - membri reparto via `DepartmentMembers` (`electric-hv`, `electric-lv`).
-
-- `MechPage.tsx`
-  - sezioni Vehicle Dynamics, Mechanical Design, Aerodynamics.
-  - FX specifici (`Hyperspeed`, `Beams`, `Silk`) se performance adeguate.
-  - cards + modal dettaglio.
-  - membri reparto via `DepartmentMembers` (`mech-vd`, `mech-design`, `mech-aero`).
-
-- `ManagementPage.tsx`
-  - intro management + collage desktop + stack swipe mobile.
-  - cards focus management con modal.
-  - membri reparto via `DepartmentMembers` (`management`).
-
-### 4.4 Componenti condivisi
-
-- `PageDrawerMenu.tsx`
-  - drawer laterale con `FlowingMenu`.
-  - link rapidi verso Home/reparti + `Area Riservata` (`/admin/index.html`).
-
-- `DepartmentMembers.tsx`
-  - legge membri dal layer dati (`lib/teamMembers.ts`).
-  - filtra per reparto, ordina (lead prima, poi ordine alfabetico/ordine custom).
-  - aggiorna UI tramite eventi (`fsc-members-updated`) e polling file Decap ogni 8s.
-
-- `Contacts.tsx`
-  - gate email + form modale di contatto.
-  - validazione email e payload demo su console.
-
-- `FscFooter.tsx`
-  - footer con effetti pointer-based e blocchi legali/brand.
-
-- `BackgroundFX.tsx`
-  - layer visivo base `bg` + `grain`, versione `lite` in low-performance.
-
-- `LoaderOverlay.tsx`
-  - overlay di caricamento iniziale Home.
-
-### 4.5 Performance mode
-
-- `hooks/useLowPerformanceMode.ts`
-  - abilita modalità ridotta su:
-    - mobile/coarse pointer,
-    - `prefers-reduced-motion`,
-    - device poco potente (core/memory/network).
-  - aggiunge classe `low-performance` a `documentElement`.
-  - i componenti pesanti vengono disattivati condizionalmente.
-
----
-
-## 5) Strato dati team (core business)
-
-- `src/data/team-members.json`
-  - seed locale iniziale delle card membro.
-
-- `src/lib/teamMembers.ts`
-  - modelli: `TeamMember`, `TeamDepartment`, `TeamCardSize`.
-  - persistenza locale in `localStorage` (`fsc-team-members-v1`).
-  - funzioni principali:
-    - `getTeamMembers`, `saveTeamMembers`
-    - `addTeamMember`, `removeTeamMember`
-    - `getMembersByDepartment`
-    - `loadMembersFromDecapFile` (fetch `dev/data/members.json`).
-  - mapping Decap `dept/unit` → dipartimento interno (`electric-hv`, `mech-vd`, ecc.).
-
----
-
-## 6) Area admin
-
-- `src/components/AdminPage.tsx`
-  - login “soft” con username GitHub (API pubblica GitHub users).
-  - allowlist tramite variabile `VITE_ADMIN_GITHUB_ALLOWLIST`.
-  - CRUD locale card team (aggiunta/rimozione) con refresh immediato.
-  - salva sessione admin in `localStorage` (`fsc-admin-session-v1`).
-
-Nota: l’admin in-app e Decap sono due canali diversi; convergono sullo stesso obiettivo (gestione contenuti team), ma con flussi separati.
-
----
-
-## 7) Decap CMS
-
-- `public/admin/config.yml`
-  - backend GitHub branch `gh-pages` con OAuth proxy.
-  - collection `team` che scrive su `dev/data/members.json`.
-  - campi principali: nome, ruolo, dept, unit, linkedin, special, photo, visible, order.
-
-- `public/admin/index.html`
-  - interfaccia admin Decap raggiungibile da `/admin/`.
-
-### Mapping usato nel codice
-
-- `dept: elettrica` + `unit: high_voltage` → `electric-hv`
-- `dept: elettrica` + `unit: low_voltage` → `electric-lv`
-- `dept: meccanica` + `unit: vehicle_dynamics` → `mech-vd`
-- `dept: meccanica` + `unit: mechanical_design` → `mech-design`
-- `dept: meccanica` + `unit: aerodynamics` → `mech-aero`
-- `dept: management` → `management`
-
----
-
-## 8) Configurazione ambiente
-
-### Prerequisiti
 - Node.js 20+
 - npm 10+
 
-### Installazione
+Verifica versioni:
 
 ```bash
-npm install
+node -v
+npm -v
 ```
 
-### Variabili ambiente (`.env`)
+---
+
+## Installazione locale
+
+Clona la repo:
+
+```bash
+git clone https://github.com/FSC-Racing-Team/FSCSite-2.0.git
+cd FSCSite-2.0
+```
+
+Installa le dipendenze:
+
+```bash
+npm ci
+```
+
+Avvia il sito in sviluppo:
+
+```bash
+npm run dev
+```
+
+Poi apri:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## Lavorare in sicurezza
+
+Per sviluppare una nuova versione del sito, non lavorare direttamente su `main`.
+
+Crea un branch dedicato:
+
+```bash
+git checkout main
+git pull
+git checkout -b revamp-2026
+```
+
+Poi lavora sempre su quel branch:
+
+```bash
+git status
+git add .
+git commit -m "Descrizione modifiche"
+git push -u origin revamp-2026
+```
+
+Quando il lavoro è pronto, apri una Pull Request verso `main`.
+
+---
+
+# GitHub Codespaces
+
+Il progetto può essere aperto direttamente in GitHub Codespaces, senza configurare tutto il PC locale.
+
+## Avvio rapido Codespace
+
+Da GitHub:
+
+1. Apri la repo `FSC-Racing-Team/FSCSite-2.0`.
+2. Clicca su **Code**.
+3. Vai su **Codespaces**.
+4. Crea un Codespace sul branch di lavoro, ad esempio `revamp-2026`.
+5. Attendi l'apertura dell'ambiente VS Code online.
+
+Nel terminale del Codespace:
+
+```bash
+npm ci
+npm run dev -- --host 0.0.0.0
+```
+
+Apri la porta `5173` dalla tab **Ports**.
+
+Il sito sarà visibile tramite l'URL generato da Codespaces.
+
+---
+
+## Configurazione consigliata Codespaces
+
+Per rendere Codespaces più semplice e automatico, aggiungere questo file:
+
+```text
+.devcontainer/devcontainer.json
+```
+
+Contenuto consigliato:
+
+```json
+{
+  "name": "FSC Site 2.0",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
+
+  "postCreateCommand": "npm ci",
+
+  "forwardPorts": [5173, 8081],
+
+  "portsAttributes": {
+    "5173": {
+      "label": "Vite dev server",
+      "onAutoForward": "openPreview"
+    },
+    "8081": {
+      "label": "Decap local proxy"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  }
+}
+```
+
+Dopo averlo aggiunto:
+
+```bash
+git add .devcontainer/devcontainer.json
+git commit -m "Add Codespaces configuration"
+git push
+```
+
+I nuovi Codespace installeranno automaticamente le dipendenze e inoltreranno la porta del server Vite.
+
+---
+
+## Script disponibili
+
+Gli script principali sono definiti in `package.json`.
+
+```bash
+npm run dev
+```
+
+Avvia il server di sviluppo Vite.
+
+```bash
+npm run build
+```
+
+Esegue type-check e build di produzione.
+
+```bash
+npm run build:pages
+```
+
+Esegue il build pensato per GitHub Pages.
+
+```bash
+npm run preview
+```
+
+Mostra in locale il risultato del build.
+
+```bash
+npm run lint
+```
+
+Controlla il codice con ESLint.
+
+```bash
+npm run decap:proxy
+```
+
+Avvia il proxy locale Decap.
+
+```bash
+npm run deploy
+```
+
+Pubblica la cartella `dist/` sul branch `gh-pages`.
+
+---
+
+## Comandi consigliati durante lo sviluppo
+
+Durante lo sviluppo normale:
+
+```bash
+npm run dev
+```
+
+Prima di aprire una Pull Request:
+
+```bash
+npm run lint
+npm run build
+```
+
+Per controllare il build finale:
+
+```bash
+npm run preview
+```
+
+In Codespaces usare preferibilmente:
+
+```bash
+npm run dev -- --host 0.0.0.0
+```
+
+---
+
+## Decap CMS
+
+L'area Decap si trova in:
+
+```text
+/admin/
+```
+
+La configurazione è in:
+
+```text
+public/admin/config.yml
+```
+
+Attualmente il backend Decap è configurato su GitHub:
+
+```yml
+backend:
+  name: github
+  repo: FSC-Racing-Team/FSCSite-2.0
+  branch: gh-pages
+  base_url: https://fscracing-decap-proxy.fsc-generale.workers.dev
+  auth_endpoint: /auth
+```
+
+I dati dei membri vengono gestiti nel file:
+
+```text
+dev/data/members.json
+```
+
+Attenzione: il CMS lavora sul branch `gh-pages`. Prima di modificare contenuti dal CMS, verificare sempre che il flusso sia quello desiderato.
+
+---
+
+## Variabili ambiente
+
+Creare un file `.env` locale solo se necessario.
+
+Esempio:
 
 ```env
 VITE_ADMIN_GITHUB_ALLOWLIST=username1,username2
@@ -275,91 +339,124 @@ VITE_EMAILJS_SERVICE_ID=your_service_id
 VITE_EMAILJS_TEMPLATE_ID=your_template_id
 ```
 
-Se non impostata, la allowlist è vuota (nessun filtro specifico lato username).
-
-Per il form contatti, se non imposti le variabili `VITE_EMAILJS_*`, il componente usa i fallback correnti del progetto.
+Non committare file `.env` contenenti chiavi private o configurazioni sensibili.
 
 ---
 
-## 9) Script npm
+## Deploy
 
-Da `package.json`:
+Il deploy pubblico avviene su GitHub Pages tramite branch `gh-pages`.
 
-- `npm run dev` → avvio sviluppo Vite
-- `npm run decap:proxy` → proxy locale Decap
-- `npm run build` → typecheck + build Vite
-- `npm run build:pages` → build Vite per pubblicazione
-- `npm run preview` → preview build
-- `npm run lint` → lint progetto
-- `npm run predeploy` → hook pre deploy (build pages)
-- `npm run deploy` → deploy `dist/` su GitHub Pages
-
----
-
-## 10) Avvio locale
-
-### Solo frontend
-
-```bash
-npm run dev
-```
-
-### Frontend + Decap CMS locale
-
-In 2 terminali:
-
-```bash
-npm run dev
-npm run decap:proxy
-```
-
-Poi apri:
-- frontend: `http://localhost:5173`
-- admin Decap: `http://localhost:5173/admin/`
-
----
-
-## 11) Deploy
-
-### GitHub Pages (manuale)
+Per pubblicare:
 
 ```bash
 npm run build:pages
 npm run deploy
 ```
 
-### Note Vite
-- `vite.config.ts` usa `base: '/'`.
-- alias `@` punta a `src`.
+oppure direttamente:
+
+```bash
+npm run deploy
+```
+
+perché `predeploy` esegue automaticamente `npm run build:pages`.
+
+> Non eseguire `npm run deploy` da branch di test se non si vuole aggiornare il sito online.
 
 ---
 
-## 12) Convenzioni operative utili
+## Workflow consigliato
 
-- Usa sempre percorsi asset con `import.meta.env.BASE_URL` dove previsto nei componenti.
-- Per nuove card membri, mantieni coerenza con i valori `TeamDepartment` in `teamMembers.ts`.
-- Se aggiungi nuovi sottoreparti Decap, aggiorna anche il mapping in `toTeamMember/mapDepartmentFromDecap`.
-- Evita di inserire logica routing in più punti: il controllo pagina resta centralizzato in `App.tsx`.
+### Sviluppo nuova versione
+
+```bash
+git checkout main
+git pull
+git checkout -b revamp-2026
+npm ci
+npm run dev
+```
+
+### Test prima della PR
+
+```bash
+npm run lint
+npm run build
+npm run preview
+```
+
+### Merge
+
+Aprire Pull Request:
+
+```text
+revamp-2026 -> main
+```
+
+### Pubblicazione
+
+Dopo merge e controllo finale:
+
+```bash
+npm run deploy
+```
 
 ---
 
-## 13) Troubleshooting rapido
+## Troubleshooting rapido
 
-- **Le immagini non si vedono in produzione**
-  - verifica path asset e uso corretto di `BASE_URL`.
+### Il sito non parte
 
-- **Le card team non si aggiornano**
-  - verifica `public/dev/data/members.json` e mapping `dept/unit`.
-  - controlla console network sul fetch di `dev/data/members.json`.
+```bash
+rm -rf node_modules package-lock.json
+npm install
+npm run dev
+```
 
-- **Login admin rifiutato**
-  - controlla `VITE_ADMIN_GITHUB_ALLOWLIST`.
+### Le immagini non si vedono
 
-- **Animazioni troppo pesanti su device lenti**
-  - verifica trigger di `low-performance` e rendering condizionale FX.
+Controllare:
+
+- percorsi in `public/`
+- uso corretto di `import.meta.env.BASE_URL`
+- maiuscole/minuscole nei nomi file
+
+### Le modifiche ai membri non compaiono
+
+Controllare:
+
+- `public/dev/data/members.json`
+- mapping reparto/sottoreparto
+- console Network del browser
+
+### Il Codespace non apre il sito
+
+Controllare che il comando sia:
+
+```bash
+npm run dev -- --host 0.0.0.0
+```
+
+e che la porta `5173` sia inoltrata nella tab **Ports**.
+
+### Il deploy ha aggiornato il sito per errore
+
+Controllare subito il branch `gh-pages` e, se necessario, ripristinare il commit precedente da GitHub.
 
 ---
 
-## 14) Licenza
+## Note operative
 
-Repository FSC Racing Team – uso interno/progetto team salvo diversa indicazione del maintainer.
+- Non usare `npm run deploy` durante lo sviluppo normale.
+- Usare sempre branch separati per modifiche grosse.
+- Testare sempre con `npm run build` prima della Pull Request.
+- Le modifiche strutturali al CMS vanno coordinate con la configurazione Decap e il branch `gh-pages`.
+- Il branch `gh-pages` è produzione: trattarlo come ramo sensibile.
+
+---
+
+## Licenza
+
+Repository FSC Racing Team.  
+Uso interno/progetto team salvo diversa indicazione del maintainer.
