@@ -1,10 +1,15 @@
 // designed by alongio
 import { useEffect, useState } from "react";
 import HomePage from "./components/HomePage";
-import ElectricPage from "./components/ElectricPage";
-import MechPage from "./components/MechPage";
+import ElectricHighVoltagePage from "./components/ElectricHighVoltagePage";
+import ElectricLowVoltagePage from "./components/ElectricLowVoltagePage";
+import MechVehicleDynamicsPage from "./components/MechVehicleDynamicsPage";
+import MechMechanicalDesignPage from "./components/MechMechanicalDesignPage";
+import MechAerodynamicsPage from "./components/MechAerodynamicsPage";
+import ManagementStrategyPage from "./components/ManagementStrategyPage";
+import ManagementMarketingPage from "./components/ManagementMarketingPage";
+import ManagementProfessoriPage from "./components/ManagementProfessoriPage";
 import GaragePage from "./components/GaragePage";
-import ManagementPage from "./components/ManagementPage";
 import AdminPage from "./components/AdminPage";
 
 export default function App() {
@@ -16,7 +21,31 @@ export default function App() {
       return "home";
     }
 
-    if (hash === "home" || hash === "electric" || hash === "mech" || hash === "garage" || hash === "management" || hash === "admin") {
+    if (hash === "electric") {
+      return "electric-hv";
+    }
+
+    if (hash === "mech") {
+      return "mech-vd";
+    }
+
+    if (hash === "management") {
+      return "management-strategy";
+    }
+
+    if (
+      hash === "home" ||
+      hash === "electric-hv" ||
+      hash === "electric-lv" ||
+      hash === "mech-vd" ||
+      hash === "mech-design" ||
+      hash === "mech-aero" ||
+      hash === "management-strategy" ||
+      hash === "management-marketing" ||
+      hash === "management-prof" ||
+      hash === "garage" ||
+      hash === "admin"
+    ) {
       return hash;
     }
 
@@ -44,20 +73,40 @@ export default function App() {
     setCurrentPage(resolveRouteFromHash(page));
   };
 
-  if (currentPage === "electric") {
-    return <ElectricPage onNavigate={navigateTo} />;
+  if (currentPage === "electric-hv") {
+    return <ElectricHighVoltagePage onNavigate={navigateTo} />;
   }
 
-  if (currentPage === "mech") {
-    return <MechPage onNavigate={navigateTo} />;
+  if (currentPage === "electric-lv") {
+    return <ElectricLowVoltagePage onNavigate={navigateTo} />;
+  }
+
+  if (currentPage === "mech-vd") {
+    return <MechVehicleDynamicsPage onNavigate={navigateTo} />;
+  }
+
+  if (currentPage === "mech-design") {
+    return <MechMechanicalDesignPage onNavigate={navigateTo} />;
+  }
+
+  if (currentPage === "mech-aero") {
+    return <MechAerodynamicsPage onNavigate={navigateTo} />;
   }
 
   if (currentPage === "garage") {
     return <GaragePage onNavigate={navigateTo} />;
   }
 
-  if (currentPage === "management") {
-    return <ManagementPage onNavigate={navigateTo} />;
+  if (currentPage === "management-strategy") {
+    return <ManagementStrategyPage onNavigate={navigateTo} />;
+  }
+
+  if (currentPage === "management-marketing") {
+    return <ManagementMarketingPage onNavigate={navigateTo} />;
+  }
+
+  if (currentPage === "management-prof") {
+    return <ManagementProfessoriPage onNavigate={navigateTo} />;
   }
 
   if (currentPage === "admin") {

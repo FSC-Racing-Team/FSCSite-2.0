@@ -7,10 +7,9 @@ import HeroSlideshow from "./HeroSlideshow";
 
 type HeroProps = {
   booted: boolean;
-  onNavigate?: (page: string) => void;
 };
 
-export default function Hero({ booted, onNavigate }: HeroProps) {
+export default function Hero({ booted }: HeroProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [revealed, setRevealed] = useState(false);
   const [wheelAngle, setWheelAngle] = useState(0);
@@ -71,7 +70,7 @@ export default function Hero({ booted, onNavigate }: HeroProps) {
               </div>
               <div className="menu-item">
                 <a href="#team" onClick={(e) => { e.preventDefault(); goTo("team"); }}>
-                  Team
+                  il team
                 </a>
               </div>
               <div className="menu-item">
@@ -80,17 +79,7 @@ export default function Hero({ booted, onNavigate }: HeroProps) {
                 </a>
               </div>
               <div className="menu-item">
-                <a href="#electric" onClick={(e) => { e.preventDefault(); setMenuOpen(false); onNavigate?.("electric"); }}>
-                  Elettrica
-                </a>
-              </div>
-              <div className="menu-item">
-                <a href="#mech" onClick={(e) => { e.preventDefault(); setMenuOpen(false); onNavigate?.("mech"); }}>
-                  Meccanica
-                </a>
-              </div>
-              <div className="menu-item">
-                <a href="#garage" onClick={(e) => { e.preventDefault(); setMenuOpen(false); onNavigate?.("garage"); }}>
+                <a href="#garage" onClick={(e) => { e.preventDefault(); setMenuOpen(false); window.location.hash = "garage"; }}>
                   Garage
                 </a>
               </div>

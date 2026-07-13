@@ -14,21 +14,21 @@ interface ThreePanelsProps {
 
 const departmentBranches: Record<number, DepartmentBranch[]> = {
   0: [
-    { label: "High Voltage", href: "#electric" },
-    { label: "Low Voltage", href: "#electric" },
+    { label: "High Voltage", href: "#electric-hv" },
+    { label: "Low Voltage", href: "#electric-lv" },
   ],
   1: [
-    { label: "Vehicle Dynamics", href: "#mech" },
-    { label: "Mechanical Design", href: "#mech" },
-    { label: "Aerodynamics", href: "#mech" },
+    { label: "Vehicle Dynamics", href: "#mech-vd" },
+    { label: "Mechanical Design", href: "#mech-design" },
+    { label: "Aerodynamics", href: "#mech-aero" },
   ],
   2: [
-    { label: "Strategy & Ops", href: "#management" },
-    { label: "Marketing & Communication", href: "#management" },
+    { label: "Management", href: "#management-strategy" },
+    { label: "Marketing & Comunicazione", href: "#management-marketing" },
   ],
 };
 
-export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProps) {
+export default function ThreePanels({ onNavigate }: ThreePanelsProps) {
   const [active, setActive] = useState<number>(1); // default: Meccanica
   const [isOn, setIsOn] = useState(false);
 
@@ -86,7 +86,7 @@ export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProp
                   </g>
                 </svg>
               </div>
-              <h2 className="tpTitle">Elettrica</h2>
+              <h2 className="tpTitle">ELETTRICA</h2>
               <p className="tpDesc">
                 Architettura elettronica, cablaggi, sensori e integrazione. Dati affidabili, sistemi
                 robusti.
@@ -98,7 +98,11 @@ export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProp
                   key={branch.label}
                   className="tpElectricLink"
                   href={branch.href}
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    onNavigate(branch.href.slice(1));
+                  }}
                 >
                   {branch.label}
                 </a>
@@ -138,7 +142,7 @@ export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProp
                   </g>
                 </svg>
               </div>
-              <h2 className="tpTitle">Meccanica</h2>
+              <h2 className="tpTitle">MECCANICA</h2>
               <p className="tpDesc">
                 Telaio, sospensioni, powertrain e manufacturing. Prestazioni misurabili, iterazione
                 rapida.
@@ -150,7 +154,11 @@ export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProp
                   key={branch.label}
                   className="tpElectricLink"
                   href={branch.href}
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    onNavigate(branch.href.slice(1));
+                  }}
                 >
                   {branch.label}
                 </a>
@@ -192,7 +200,7 @@ export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProp
                   </g>
                 </svg>
               </div>
-              <h2 className="tpTitle">Management</h2>
+              <h2 className="tpTitle">MANAGEMENT</h2>
               <p className="tpDesc">
                 Pianificazione, risorse, sponsor e coordinamento. Un progetto coerente, dall’idea al
                 risultato.
@@ -204,7 +212,11 @@ export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProp
                   key={branch.label}
                   className="tpElectricLink"
                   href={branch.href}
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    onNavigate(branch.href.slice(1));
+                  }}
                 >
                   {branch.label}
                 </a>
@@ -215,8 +227,16 @@ export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProp
       </div>
 
       <div className="tpBottomBar">
-        <a className="tpTopButton" href="#management" onClick={() => setActive(2)}>
-          supporto accademico
+        <a
+          className="tpTopButton"
+          href="#management-prof"
+          onClick={(e) => {
+            e.preventDefault();
+            setActive(2);
+            onNavigate("management-prof");
+          }}
+        >
+          SUPPORTO ACCADEMICO
         </a>
       </div>
     </section>

@@ -1395,16 +1395,8 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 }
 
 .management-page .mgmt-section-container::before{
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 100vw;
-  transform: translateX(-50%);
-  pointer-events: none;
-  z-index: 0;
-  background: linear-gradient(180deg, rgba(6,10,18,.52), rgba(6,10,18,.36));
+  content: none;
+  display: none;
 }
 
 .management-page .mgmt-section-container > *{
@@ -1412,54 +1404,6 @@ section.page{ min-height:100vh; width:100%; position:relative; }
   z-index: 1;
 }
 
-.management-page .mgmt-prof-section .dept-members-layout,
-.management-page .mgmt-prof-section .dept-members-leads,
-.management-page .mgmt-prof-section .dept-members-regular{
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 12px;
-}
-
-.management-page .mgmt-prof-section .dept-members-regular .dept-member-card,
-.management-page .mgmt-prof-section .dept-members-leads .dept-member-card--lead{
-  width: 100%;
-  max-width: 100%;
-  min-height: 108px;
-  grid-template-columns: 72px 1fr;
-  gap: 12px;
-  padding: 12px;
-  justify-self: stretch;
-}
-
-.management-page .mgmt-prof-section .dept-member-avatar-wrap,
-.management-page .mgmt-prof-section .dept-members-regular .dept-member-avatar-wrap,
-.management-page .mgmt-prof-section .dept-members-leads .dept-member-card--lead .dept-member-avatar-wrap{
-  width: 72px;
-  height: 72px;
-  border-radius: 10px;
-  border-bottom: 0;
-  justify-self: start;
-}
-
-.management-page .mgmt-prof-section .dept-member-content,
-.management-page .mgmt-prof-section .dept-members-regular .dept-member-content{
-  padding: 0;
-  text-align: left;
-}
-
-.management-page .mgmt-prof-section .dept-member-name,
-.management-page .mgmt-prof-section .dept-members-regular .dept-member-name,
-.management-page .mgmt-prof-section .dept-members-leads .dept-member-name{
-  font-size: clamp(15px, 1.05vw, 19px);
-}
-
-.management-page .mgmt-prof-section .dept-member-role{
-  font-size: 11px;
-}
-
-.management-page .mgmt-prof-section .dept-member-links,
-.management-page .mgmt-prof-section .dept-members-regular .dept-member-links{
-  justify-content: flex-start;
-}
 
 @media (max-width: 900px){
   .management-page .mgmt-collage-wrap{
@@ -1519,11 +1463,6 @@ section.page{ min-height:100vh; width:100%; position:relative; }
     font-size: .9rem;
   }
 
-  .management-page .mgmt-prof-section .dept-members-layout,
-  .management-page .mgmt-prof-section .dept-members-leads,
-  .management-page .mgmt-prof-section .dept-members-regular{
-    grid-template-columns: 1fr;
-  }
 }
 
   /* ===== Mech Vehicle Dynamics Background ===== */
@@ -2957,6 +2896,7 @@ section.page{ min-height:100vh; width:100%; position:relative; }
   align-items: center;
   gap: 14px;
   padding: clamp(24px, 4vw, 42px) clamp(24px, 4vw, 48px) 0;
+  border-bottom: 2px solid #ffffff;
   background: #001f3e;
 }
 
@@ -3367,19 +3307,21 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 }
 
 .tpTitle{
-  margin: 0 0 12px 0;
+  margin: 0 0 4px 0;
   font-size: clamp(26px, 2.4vw, 42px);
-  letter-spacing: -0.02em;
-  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 400;
   color: rgba(232,238,247,.92);
 }
 
 .tpDesc{
   margin: 0 0 18px 0;
-  font-size: 11px;
-  line-height: 1.55;
-  letter-spacing: .22em;
-  text-transform: uppercase;
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  text-align: center;
   color: rgba(232,238,247,.52);
   transition: opacity 220ms var(--ease2), transform 220ms var(--ease2);
 }

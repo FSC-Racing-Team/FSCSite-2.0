@@ -2,21 +2,19 @@ import { useEffect, useState } from "react";
 
 interface PageDrawerMenuProps {
   onNavigate: (page: string) => void;
-  currentSection: "management" | "electric" | "mech" | "garage";
+  currentSection: "management" | "management-strategy" | "management-marketing" | "management-prof" | "electric-hv" | "electric-lv" | "mech-vd" | "mech-design" | "mech-aero" | "garage";
 }
 
-export default function PageDrawerMenu({ onNavigate, currentSection }: PageDrawerMenuProps) {
+export default function PageDrawerMenu({ onNavigate }: PageDrawerMenuProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const adminUrl = `${import.meta.env.BASE_URL}admin/index.html?v=20260227`;
 
-  const sectionItems = [
-    { key: "management" as const, text: "Management", link: "#management", page: "management" },
-    { key: "electric" as const, text: "Elettrica", link: "#electric", page: "electric" },
-    { key: "mech" as const, text: "Meccanica", link: "#mech", page: "mech" },
-    { key: "garage" as const, text: "Garage", link: "#garage", page: "garage" },
-  ];
-
-  const otherSections = sectionItems.filter((item) => item.key !== currentSection);
+  const goHomeAndScroll = (sectionId: string) => {
+    onNavigate("home");
+    window.setTimeout(() => {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 0);
+  };
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -65,20 +63,44 @@ export default function PageDrawerMenu({ onNavigate, currentSection }: PageDrawe
                 </a>
               </div>
 
-              {otherSections.map((item) => (
-                <div className="menu-item" key={item.key}>
-                  <a
-                    href={item.link}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setMenuOpen(false);
-                      onNavigate(item.page);
-                    }}
-                  >
-                    {item.text}
-                  </a>
-                </div>
-              ))}
+              <div className="menu-item">
+                <a
+                  href="#team"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMenuOpen(false);
+                    goHomeAndScroll("team");
+                  }}
+                >
+                  il team
+                </a>
+              </div>
+
+              <div className="menu-item">
+                <a
+                  href="#contatti"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMenuOpen(false);
+                    goHomeAndScroll("contatti");
+                  }}
+                >
+                  Contacts
+                </a>
+              </div>
+
+              <div className="menu-item">
+                <a
+                  href="#garage"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMenuOpen(false);
+                    onNavigate("garage");
+                  }}
+                >
+                  Garage
+                </a>
+              </div>
 
               <div className="menu-item">
                 <a

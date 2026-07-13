@@ -15,20 +15,20 @@ interface DetailItem {
   name: string;
 }
 
-interface MechPageProps {
+interface MechVehicleDynamicsPageProps {
   onNavigate: (page: string) => void;
 }
 
 const vehicleDynamicsItems: DetailItem[] = [
   {
-    title: "Suspensions — Cinematica & geometrie",
-    desc: "Progettazione di bracci, push/pull-rod e pivot; definizione di camber, caster, toe; analisi di roll center, anti-dive/anti-squat e bump steer lungo l’escursione.",
+    title: "Suspensions - Cinematica & geometrie",
+    desc: "Progettazione di bracci, push/pull-rod e pivot; definizione di camber, caster, toe; analisi di roll center, anti-dive/anti-squat e bump steer lungo l'escursione.",
     img: "/images/collage-elect/Immagine2.jpg",
     role: "Suspensions",
     name: "Cinematica & geometrie"
   },
   {
-    title: "Vehicle Dynamics — Pneumatici & dinamica",
+    title: "Vehicle Dynamics - Pneumatici & dinamica",
     desc: "Modelli pneumatico (es. Pacejka), mappatura grip e temperature, trasferimenti di carico e gestione di sotto/sovrasterzo; validazione tramite telemetria.",
     img: "/images/collage-elect/collage-3.jpg",
     role: "Vehicle Dynamics",
@@ -36,29 +36,7 @@ const vehicleDynamicsItems: DetailItem[] = [
   }
 ];
 
-const mechanicalDesignItems: DetailItem[] = [
-  {
-    title: "Mechanical Design — CAD & FEA",
-    desc: "Progettazione componenti (uprights, mozzi, staffe); scelta materiali; analisi FEM statica/fatica; ottimizzazione topologica e rispetto dei fattori di sicurezza.",
-    img: "/images/collage-elect/Immagine6.jpg",
-    role: "Mechanical Design",
-    name: "CAD & FEA strutturale"
-  }
-];
-
-const aerodynamicsItems: DetailItem[] = [
-  {
-    title: "Aerodynamics — Aero package & CFD",
-    desc: "Studio di ali, endplate, fondo e diffusore; simulazioni CFD (steady/transient), correlazione con assetto (ride-height, rake) e post-processing dei risultati.",
-    img: "/images/collage-elect/Immagine5.png",
-    role: "Aerodynamics",
-    name: "Aero package & CFD"
-  }
-];
-
-
-
-export default function MechPage({ onNavigate }: MechPageProps) {
+export default function MechVehicleDynamicsPage({ onNavigate }: MechVehicleDynamicsPageProps) {
   const [selectedDetail, setSelectedDetail] = useState<DetailItem | null>(null);
   const isLowPerformance = useLowPerformanceMode();
   const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
@@ -97,33 +75,13 @@ export default function MechPage({ onNavigate }: MechPageProps) {
       <div className="mech-page electric-page">
         <PageDrawerMenu onNavigate={onNavigate} currentSection="mech-vd" />
 
-        <section id="chi-siamo">
-          <div className="container">
-            <section className="intro" aria-label="Presentazione del team">
-              <div className="logo-box">
-                <img src={withBase("/images/logo.png")} alt="Logo FSC Racing Team" />
-              </div>
-              <div className="about">
-                <h2>Reparto Meccanica</h2>
-                <p>
-                  Rappresenta il cuore pulsante dell'innovazione tecnica e progettuale del Team FSC.
-                  Il reparto si dedica alla progettazione, sviluppo e realizzazione di componenti
-                  meccanici avanzati per la vettura da competizione.
-                </p>
-              </div>
-            </section>
-          </div>
-        </section>
-
-        <div className="divisore"></div>
-
         <section className="mech-section-wrapper mech-vd-wrapper">
           <div className="mech-section-container electric-section">
-            <div className="header">
-              <span className="pip"></span> Vehicle Dynamics & Suspensions
-            </div>
+            <h2 className="teamV3Title deptSectionTitle">VEHICLE DYNAMICS</h2>
 
             <section aria-label="Vehicle Dynamics approfondimenti">
+              <DepartmentMembers title="Team Vehicle Dynamics" department="mech-vd" />
+
               <div className="intro-feat">
                 <div className="media-feat">
                   <img src={withBase("/images/collage-elect/setup.avif")} alt="VD Hero" onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
@@ -137,57 +95,6 @@ export default function MechPage({ onNavigate }: MechPageProps) {
               <div className="grid-feat">
                 {vehicleDynamicsItems.map(renderCard)}
               </div>
-              <DepartmentMembers title="Team Vehicle Dynamics" department="mech-vd" />
-            </section>
-          </div>
-        </section>
-
-        <section className="mech-section-wrapper mech-design-wrapper">
-          <div className="mech-section-container electric-section">
-            <div className="header">
-              <span className="pip"></span> Mechanic Designing
-            </div>
-
-            <section aria-label="Mechanical Design approfondimenti">
-              <div className="intro-feat">
-                <div className="media-feat">
-                  <img src={withBase("/images/collage-elect/lv-hero.jpg")} alt="Design Hero" onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
-                </div>
-                <div className="copy-feat">
-                  <h2>CAD, Simulations & Designing</h2>
-                  <p>Progettazione CAD, analisi delle sollecitazioni, modellazione e studio delle componenti meccaniche.</p>
-                </div>
-              </div>
-
-              <div className="grid-feat">
-                {mechanicalDesignItems.map(renderCard)}
-              </div>
-              <DepartmentMembers title="Team Mechanical Design" department="mech-design" />
-            </section>
-          </div>
-        </section>
-
-        <section className="mech-section-wrapper mech-aero-wrapper">
-          <div className="mech-section-container electric-section">
-            <div className="header">
-              <span className="pip"></span> Aerodynamics
-            </div>
-
-            <section aria-label="Aerodynamics approfondimenti">
-              <div className="intro-feat">
-                <div className="media-feat">
-                  <img src={withBase("/images/collage-elect/aero.jpeg")} alt="Aero Hero" onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
-                </div>
-                <div className="copy-feat">
-                  <h2>CFD, CAD & Aerodynamic Analysis</h2>
-                  <p>Simulazione CFD, Simulazioni CAD e ottimizzazione delle superfici aerodinamiche.</p>
-                </div>
-              </div>
-
-              <div className="grid-feat">
-                {aerodynamicsItems.map(renderCard)}
-              </div>
-              <DepartmentMembers title="Team Aerodynamics" department="mech-aero" />
             </section>
           </div>
         </section>

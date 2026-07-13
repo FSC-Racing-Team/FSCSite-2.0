@@ -99,7 +99,7 @@ export default function ElectricPage({ onNavigate }: ElectricPageProps) {
       <BackgroundFX lite={isLowPerformance} />
       
       <div className="electric-page">
-        <PageDrawerMenu onNavigate={onNavigate} currentSection="electric" />
+        <PageDrawerMenu onNavigate={onNavigate} currentSection="electric-hv" />
 
       {/* Header */}
       <section id="chi-siamo">

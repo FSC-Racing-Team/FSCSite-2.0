@@ -43,7 +43,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       <BackgroundFX lite={isLowPerformance} />
 
       <main>
-        <HeroPage booted={booted} onNavigate={onNavigate} />
+        <HeroPage booted={booted} />
         <TeamPage />
         <ThreePanels onNavigate={onNavigate} />
         <ContactGate />
