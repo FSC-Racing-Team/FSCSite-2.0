@@ -2,7 +2,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import LogoActive from "./LogoActive";
 import HeroSlideshow from "./HeroSlideshow";
 
 type HeroProps = {
@@ -12,8 +11,8 @@ type HeroProps = {
 export default function Hero({ booted }: HeroProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [revealed, setRevealed] = useState(false);
-  const [wheelAngle, setWheelAngle] = useState(0);
   const adminUrl = `${import.meta.env.BASE_URL}admin/index.html?v=20260227`;
+  const logoWithTextUrl = `${import.meta.env.BASE_URL}logo-con-scritta.png`;
 
   const goTo = (id: string) => {
     setMenuOpen(false);
@@ -21,8 +20,6 @@ export default function Hero({ booted }: HeroProps) {
     if (!el) return;
     el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
-
-  const handleWheelClick = () => setWheelAngle((prev) => prev + 180);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -44,6 +41,17 @@ export default function Hero({ booted }: HeroProps) {
   return (
     <section className="page" id="heroPage">
       <div className="topbar">
+        <a
+          className="topbarBrand"
+          href="#heroPage"
+          aria-label="Torna alla sezione iniziale"
+          onClick={(e) => {
+            e.preventDefault();
+            goTo("heroPage");
+          }}
+        >
+          <img className="topbarLogo" src={logoWithTextUrl} alt="FSC Racing Team" />
+        </a>
         <button
           className={`hamb ${menuOpen ? "is-on" : ""}`}
           aria-label={menuOpen ? "Chiudi menu" : "Apri menu"}
@@ -100,16 +108,12 @@ export default function Hero({ booted }: HeroProps) {
         <section className={`reveal ${revealed ? "is-on" : ""}`}>
           <div className="wipe" />
           <div className="inner heroCentral">
-            <div className="heroLeft">
-              <div className="eleWrap" aria-label="Liotru logo">
-                <LogoActive wheelRotation={wheelAngle} onWheelClick={handleWheelClick} />
-              </div>
-            </div>
             <div className="heroRight">
-              <div className="heroTitle" aria-label="FSC Racing Team">
-                <span>FSC</span>
-                <span>RACING</span>
-                <span>TEAM</span>
+              <div className="heroHeading">
+                <div className="heroTitle" aria-label="Formula Student Catania">
+                  <span>FORMULA STUDENT CATANIA</span>
+                </div>
+                <p className="heroSubtitle">Formula Student Team dell'Università di Catania</p>
               </div>
             </div>
           </div>

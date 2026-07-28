@@ -8,6 +8,7 @@ interface PageDrawerMenuProps {
 export default function PageDrawerMenu({ onNavigate }: PageDrawerMenuProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const adminUrl = `${import.meta.env.BASE_URL}admin/index.html?v=20260227`;
+  const logoWithTextUrl = `${import.meta.env.BASE_URL}logo-con-scritta.png`;
 
   const goHomeAndScroll = (sectionId: string) => {
     onNavigate("home");
@@ -30,6 +31,18 @@ export default function PageDrawerMenu({ onNavigate }: PageDrawerMenuProps) {
   return (
     <>
       <div className="topbar">
+        <a
+          className="topbarBrand"
+          href="#home"
+          aria-label="Torna alla home"
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigate("home");
+            setMenuOpen(false);
+          }}
+        >
+          <img className="topbarLogo" src={logoWithTextUrl} alt="FSC Racing Team" />
+        </a>
         <button
           className={`hamb ${menuOpen ? "is-on" : ""}`}
           aria-label={menuOpen ? "Chiudi menu" : "Apri menu"}

@@ -314,41 +314,103 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 }
 
 #heroPage .heroCentral{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   align-items: center;
-  gap: clamp(28px, 5vw, 60px);
+  justify-content: center;
   width: 100%;
   height: 100%;
   padding: 0 clamp(24px, 4vw, 60px);
 }
 
-#heroPage .heroLeft,
 #heroPage .heroRight{
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-#heroPage .heroRight{
-  justify-content:flex-start;
+#heroPage .heroHeading{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 1.1vw, 12px);
+  width: min(94vw, 1200px);
+  margin: 0 auto;
+  text-align: center;
 }
 
 #heroPage .heroTitle{
   font-family: var(--font-title);
-  font-size: var(--teamTitleSize);
+  font-size: clamp(2rem, 4.1vw, 3.75rem);
   font-weight: 950;
-  letter-spacing: -0.02em;
-  line-height: 1;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
   text-transform: uppercase;
   color: #ffffff;
-  text-align: left;
-  max-width: min(520px, 100%);
-  transform: translateX(-50%);
-  text-shadow: 0 45px 135px rgba(0,0,0,.775);
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+  transform: none;
+  text-shadow: 0 30px 90px rgba(0,0,0,.85);
+  white-space: normal;
+  text-wrap: balance;
 }
 
 #heroPage .heroTitle span{
+  display: inline-block;
+}
+
+#heroPage .heroSubtitle{
   display: block;
+  width: fit-content;
+  margin: clamp(2px, 0.35vw, 8px) auto 0;
+  max-width: 100%;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: clamp(1.8rem, 2.85vw, 2.85rem);
+  font-weight: 520;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  text-transform: none;
+  white-space: nowrap;
+  color: rgba(232,238,247,.86);
+  text-shadow: 0 10px 30px rgba(0,0,0,.52);
+}
+
+@media (max-width: 1024px){
+  #heroPage .heroHeading{
+    width: min(92vw, 900px);
+  }
+
+  #heroPage .heroTitle{
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+  }
+
+  #heroPage .heroSubtitle{
+    font-size: clamp(1.575rem, 3.525vw, 2.175rem);
+    max-width: min(720px, 100%);
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 640px){
+  #heroPage .heroHeading{
+    width: min(92vw, 560px);
+    gap: 8px;
+  }
+
+  #heroPage .heroTitle{
+    font-size: clamp(1.55rem, 8vw, 2.25rem);
+    line-height: 1.08;
+  }
+
+  #heroPage .heroSubtitle{
+    font-size: clamp(1.47rem, 6.9vw, 1.8rem);
+    line-height: 1.32;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
 }
 
 #heroPage .eleWrap{
@@ -398,10 +460,6 @@ section.page{ min-height:100vh; width:100%; position:relative; }
   filter: drop-shadow(0 51px 150px rgba(0,0,0,.85));
 }
 .eleWrap svg{ width:100%; height:auto; display:block; overflow: visible; }
-
-#heroPage .heroTitle{
-  text-shadow: 0 30px 90px rgba(0,0,0,.85);
-}
 
 #wheelBase, #wheelClick{
   cursor:pointer;
@@ -758,7 +816,7 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 
   #heroPage,
   #heroPage.page {
-    min-height: 40vh;
+    min-height: 100vh;
   }
 
   .stage {
@@ -768,10 +826,25 @@ section.page{ min-height:100vh; width:100%; position:relative; }
     width: 100%;
   }
 
+  #heroPage .stage {
+    height: 100vh;
+    min-height: 100vh;
+  }
+
   .reveal,
   .reveal > .inner {
     height: auto;
     min-height: 0;
+  }
+
+  #heroPage .reveal,
+  #heroPage .reveal > .inner {
+    height: 100%;
+    min-height: 100%;
+  }
+
+  #heroPage .heroCentral {
+    padding: 0 clamp(16px, 6vw, 28px);
   }
 
   .bg:not(.bg-lite),
@@ -844,11 +917,55 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 
 .stage{ position:relative; z-index:2; }   /* ok */
 .panel{ position:absolute; z-index:20; }  /* lascia la panel assoluta */
-.topbar{ position:fixed; top:18px; right:18px; left:auto; z-index:60; }
+.topbar{
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  left: auto;
+  z-index: 60;
+  display: block;
+  pointer-events: none;
+}
 
 /* Ensure the menu toggle sits above everything */
 .topbar{ z-index: 10050; }
 .topbar .hamb{ z-index: 10060; position: relative; }
+.topbar .hamb{ pointer-events: auto; }
+
+.topbarBrand{
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 10060;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.topbarLogo{
+  display: block;
+  width: clamp(99px, 13.3vw, 182px);
+  height: auto;
+  filter: drop-shadow(0 7px 18px rgba(0,0,0,.46));
+}
+
+@media (max-width: 640px){
+  .topbar{
+    right: 10px;
+    left: auto;
+    top: 12px;
+  }
+
+  .topbarBrand{
+    left: 10px;
+    top: 12px;
+  }
+
+  .topbarLogo{
+    width: clamp(84px, 29.4vw, 122px);
+  }
+}
 
 /* Hamburger -> X */
 .hamb{
