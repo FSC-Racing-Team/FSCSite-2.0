@@ -95,7 +95,7 @@ export default function MechPage({ onNavigate }: MechPageProps) {
       <BackgroundFX lite={isLowPerformance} />
 
       <div className="mech-page electric-page">
-        <PageDrawerMenu onNavigate={onNavigate} currentSection="mech" />
+        <PageDrawerMenu onNavigate={onNavigate} currentSection="mech-vd" />
 
         <section id="chi-siamo">
           <div className="container">
