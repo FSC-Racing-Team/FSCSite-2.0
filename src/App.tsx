@@ -6,6 +6,7 @@ import MechPage from "./components/MechPage";
 import GaragePage from "./components/GaragePage";
 import ManagementPage from "./components/ManagementPage";
 import AdminPage from "./components/AdminPage";
+import FAQPage from "./components/FAQPage";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<string>("home");
@@ -16,7 +17,7 @@ export default function App() {
       return "home";
     }
 
-    if (hash === "home" || hash === "electric" || hash === "mech" || hash === "garage" || hash === "management" || hash === "admin") {
+    if (hash === "home" || hash === "electric" || hash === "mech" || hash === "garage" || hash === "management" || hash === "admin" || hash === "faq") {
       return hash;
     }
 
@@ -62,6 +63,10 @@ export default function App() {
 
   if (currentPage === "admin") {
     return <AdminPage onNavigate={navigateTo} />;
+  }
+
+  if (currentPage === "faq") {
+    return <FAQPage onNavigate={navigateTo} />;
   }
 
   return <HomePage onNavigate={navigateTo} />;

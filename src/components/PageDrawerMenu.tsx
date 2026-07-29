@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 interface PageDrawerMenuProps {
   onNavigate: (page: string) => void;
-  currentSection: "management" | "electric" | "mech" | "garage";
+  currentSection: "management" | "electric" | "mech" | "garage" | "faq";
 }
 
 export default function PageDrawerMenu({ onNavigate, currentSection }: PageDrawerMenuProps) {
@@ -79,6 +79,19 @@ export default function PageDrawerMenu({ onNavigate, currentSection }: PageDrawe
                   </a>
                 </div>
               ))}
+
+              <div className="menu-item">
+                <a
+                  href="#faq"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMenuOpen(false);
+                    onNavigate("faq");
+                  }}
+                >
+                  FAQ
+                </a>
+              </div>
 
               <div className="menu-item">
                 <a
