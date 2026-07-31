@@ -130,7 +130,8 @@ export default function ContactGate() {
   };
 
   return (
-    <section className="cgPage" aria-label="Contact gate" id="contatti">
+    <>
+      <section className="cgPage" aria-label="Contact gate" id="contatti">
       <span id="contacts" aria-hidden="true" />
       <div className="cgVolcanoBg" aria-hidden="true" />
       <header className="cgHeader">
@@ -337,5 +338,88 @@ export default function ContactGate() {
         </div>
       </div>
     </section>
+
+//designed by elisabetta
+
+    <section className="contactSection" aria-label="Sezione contatti">
+      <div className="contactSection__inner">
+        <div className="contactSection__header">
+          <h2 className="contactSection__title">I NOSTRI CONTATTI</h2>
+          <p className="contactSection__description">
+            Il nostro progetto è in continua evoluzione e siamo sempre alla ricerca di nuove sfide e di professionisti con cui confrontarci. <br /> Che si tratti di uno scambio di idee tecniche, di scoprire i nostri futuri ingegneri o semplicemente di curiosità verso il nostro lavoro, le porte del nostro team sono sempre aperte.
+          </p>
+        </div>
+
+        <div className="contactSection__content">
+          <div className="contactSection__contacts">
+            <h3 className="contactSection__subheading">LE NOSTRE EMAIL:</h3>
+            <p className="contactSection__email">fsc_generale@outlook.it</p>
+            <p className="contactSection__email">Per collaborazioni o proposte di sponsorship:</p>
+            <p className="contactSection__email">Managementarea@fscracing.it</p>
+
+            <h3 className="contactSection__subheading">I NOSTRI SOCIAL</h3>
+            <div className="contactSection__socials" aria-label="Social FSC Racing">
+              <a
+                className="contactSection__socialLink"
+                href="https://www.instagram.com/fsc_racingteam/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram FSC Racing"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" className="contactSection__icon">
+                  <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" strokeWidth="1.8" />
+                  <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1.8" />
+                  <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" />
+                </svg>
+              </a>
+
+              <a
+                className="contactSection__socialLink"
+                href="https://www.linkedin.com/company/fsc-racing-team/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn FSC Racing"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" className="contactSection__icon">
+                  <rect x="3" y="3" width="18" height="18" rx="3" ry="3" fill="none" stroke="currentColor" strokeWidth="1.8" />
+                  <circle cx="8" cy="9" r="1.3" fill="currentColor" />
+                  <path d="M6.8 11.2V17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  <path d="M11 17v-3.3c0-1.5 1.1-2.6 2.5-2.6s2.5 1.1 2.5 2.6V17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  <path d="M11 11.2V17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                </svg>
+              </a>
+
+              <a
+                className="contactSection__socialLink"
+                href="https://www.tiktok.com/@fsc_racingteam"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok FSC Racing"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" className="contactSection__icon">
+                  <path d="M14.5 3h2.2a4.2 4.2 0 0 0 4.2 4.2v2.3a6.5 6.5 0 0 1-4.2-1.4v7.7a5.8 5.8 0 1 1-5.8-5.8c.3 0 .6 0 1 .1v2.4a3.4 3.4 0 1 0 1.8 3.1V3Z" fill="currentColor" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div className="contactSection__mapWrapper">
+            <div className="contactSection__mapCard">
+              <iframe
+                className="contactSection__mapFrame"
+                title="Posizione FSC Racing"
+                src="https://www.google.com/maps?q=Edificio%20n.3%20Universit%C3%A0%20degli%20studi%20di%20Catania%20Via%20Santa%20Sofia%2064%20Catania&z=17&output=embed"
+                loading="lazy"
+                allowFullScreen
+              />
+            </div>
+            <p className="contactSection__address">
+              📍 Edificio n.3 - piano 6, stanza 34, <br /> Università degli studi di Catania; <br /> Via Santa Sofia 64, Catania
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    </>
   );
 }

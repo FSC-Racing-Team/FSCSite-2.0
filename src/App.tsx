@@ -11,6 +11,7 @@ import ManagementMarketingPage from "./components/ManagementMarketingPage";
 import ManagementProfessoriPage from "./components/ManagementProfessoriPage";
 import GaragePage from "./components/GaragePage";
 import AdminPage from "./components/AdminPage";
+import FAQPage from "./components/FAQPage";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<string>("home");
@@ -111,6 +112,10 @@ export default function App() {
 
   if (currentPage === "admin") {
     return <AdminPage onNavigate={navigateTo} />;
+  }
+
+  if (currentPage === "faq") {
+    return <FAQPage onNavigate={navigateTo} />;
   }
 
   return <HomePage onNavigate={navigateTo} />;

@@ -92,6 +92,11 @@ export default function Hero({ booted }: HeroProps) {
                 </a>
               </div>
               <div className="menu-item">
+                <a href="#faq" onClick={(e) => { e.preventDefault(); setMenuOpen(false); onNavigate?.("faq"); }}>
+                  FAQ
+                </a>
+              </div>
+              <div className="menu-item">
                 <a href={adminUrl} onClick={(e) => { e.preventDefault(); setMenuOpen(false); window.location.assign(adminUrl); }}>
                   Area Riservata
                 </a>
