@@ -27,9 +27,9 @@ function escapeHtml(str: string) {
 
 export default function ContactGate() {
   const env = import.meta.env as Record<string, string | undefined>;
-  const emailJsPublicKey = env.VITE_EMAILJS_PUBLIC_KEY || "EZoeTiMOVjbTneoi6";
-  const emailJsServiceId = env.VITE_EMAILJS_SERVICE_ID || "fscsiteform";
-  const emailJsTemplateId = env.VITE_EMAILJS_TEMPLATE_ID || "FSCRACING0101";
+  const emailJsPublicKey = env.VITE_EMAILJS_PUBLIC_KEY || "VNSyf_E5HvAzplZzr";
+  const emailJsServiceId = env.VITE_EMAILJS_SERVICE_ID || "service_0sp7qqg";
+  const emailJsTemplateId = env.VITE_EMAILJS_TEMPLATE_ID || "template_2bdph0h";
 
   const [email, setEmail] = useState("");
   const [isOpen, setIsOpen] = useState(false);

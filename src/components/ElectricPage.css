@@ -101,45 +101,22 @@
 /* HV Section - Full Width */
 .hv-wrapper {
   position: relative;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  min-height: 600px;
+  width: 100%;
+  margin-left: 0;
+  min-height: auto;
+  padding: clamp(48px, 6vw, 80px) 0 0;
   margin-bottom: 0;
   overflow: visible;
 }
 
 .hv-wrapper::before {
-  content: '';
-  display: block;
-  height: 8px;
-  background: linear-gradient(90deg, 
-    transparent 0%,
-    rgba(0, 212, 255, 0.6) 25%,
-    rgba(102, 0, 255, 0.6) 50%,
-    rgba(0, 212, 255, 0.6) 75%,
-    transparent 100%
-  );
-  box-shadow: 0 0 30px rgba(102, 0, 255, 0.4), inset 0 0 10px rgba(0, 212, 255, 0.2);
+  content: none;
+  display: none;
 }
 
 .hv-wrapper::after {
-  content: '';
-  display: block;
-  height: 8px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(102, 0, 255, 0.6) 25%,
-    rgba(0, 212, 255, 0.6) 50%,
-    rgba(102, 0, 255, 0.6) 75%,
-    transparent 100%
-  );
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.4), inset 0 0 10px rgba(102, 0, 255, 0.2);
-  margin-top: calc(600px - 8px);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
+  content: none;
+  display: none;
 }
 
 .hv-bg {
@@ -155,9 +132,323 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: clamp(20px, 3vw, 40px) clamp(16px, 2vw, 24px);
+  max-width: none;
+  margin: 0;
+  padding: 0 clamp(20px, 4vw, 48px) clamp(24px, 4vw, 48px);
+}
+
+.hvTitle {
+  margin: 0 0 clamp(18px, 3vw, 36px);
+  color: #ffffff;
+  text-align: center;
+  font-family: var(--font-title);
+  font-size: clamp(27px, 4.48vw, 51px);
+}
+
+.lvTitle {
+  margin: 0 0 clamp(18px, 3vw, 36px);
+  color: #ffffff;
+  text-align: center;
+  font-family: var(--font-title);
+  font-size: clamp(27px, 4.48vw, 51px);
+}
+
+.deptSectionTitle {
+  margin: 0 0 clamp(18px, 3vw, 36px);
+  color: #ffffff;
+  text-align: center;
+  font-family: var(--font-title);
+  font-size: clamp(27px, 4.48vw, 51px);
+}
+
+.management-page .mgmt-prof-section .teamV3Title.deptSectionTitle {
+  margin-bottom: clamp(64px, 9vw, 110px);
+  font-size: clamp(32px, 4.8vw, 56px);
+  letter-spacing: 0.03em;
+}
+
+.management-page .mgmt-business-section .teamV3Title.deptSectionTitle {
+  margin-bottom: clamp(25px, 4.2vw, 49px);
+}
+
+.management-page .mgmt-prof-section .teamV3Title.deptSectionTitle .inline-block {
+  letter-spacing: 0.03em;
+}
+
+.management-page .mgmt-prof-section .dept-members {
+  margin-top: clamp(12px, 2vw, 20px);
+}
+
+.mech-page .mech-section-wrapper,
+.management-page .mech-section-wrapper {
+  position: relative;
+  width: 100%;
+  margin-left: 0;
+  min-height: auto;
+  padding: clamp(48px, 6vw, 80px) 0 0;
+  margin-bottom: 0;
+  overflow: visible;
+}
+
+.mech-page .mech-section-wrapper::before,
+.mech-page .mech-section-wrapper::after,
+.management-page .mech-section-wrapper::before,
+.management-page .mech-section-wrapper::after {
+  content: none;
+  display: none;
+}
+
+.mech-page .mech-section-container,
+.management-page .mech-section-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 clamp(20px, 4vw, 48px) clamp(24px, 4vw, 48px);
+}
+
+.management-page .mgmt-section-container::before {
+  content: none;
+  display: none;
+}
+
+.hv-container .dept-members,
+.glv-container .dept-members,
+.mech-page .mech-section-container .dept-members,
+.management-page .mgmt-section-container .dept-members {
+  margin-bottom: clamp(18px, 3vw, 32px);
+}
+
+.hv-container .dept-members-title,
+.glv-container .dept-members-title,
+.mech-page .mech-section-container .dept-members-title,
+.management-page .mgmt-section-container .dept-members-title {
+  display: none;
+}
+
+.hv-container .dept-members-layout,
+.glv-container .dept-members-layout,
+.mech-page .mech-section-container .dept-members-layout,
+.management-page .mgmt-section-container .dept-members-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(18px, 3vw, 28px);
+}
+
+.hv-container .dept-members-leads,
+.hv-container .dept-members-regular,
+.glv-container .dept-members-leads,
+.glv-container .dept-members-regular,
+.mech-page .mech-section-container .dept-members-leads,
+.mech-page .mech-section-container .dept-members-regular,
+.management-page .mgmt-section-container .dept-members-leads,
+.management-page .mgmt-section-container .dept-members-regular {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(14px, 2vw, 18px);
+}
+
+.hv-container .dept-members-leads,
+.glv-container .dept-members-leads,
+.mech-page .mech-section-container .dept-members-leads,
+.management-page .mgmt-section-container .dept-members-leads {
+  width: 100%;
+}
+
+.hv-container .dept-members-leads .dept-member-card--lead,
+.glv-container .dept-members-leads .dept-member-card--lead,
+.mech-page .mech-section-container .dept-members-leads .dept-member-card--lead,
+.management-page .mgmt-section-container .dept-members-leads .dept-member-card--lead {
+  width: min(100%, 320px);
+  margin-inline: auto;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.hv-container .dept-members-leads .dept-member-card--lead .dept-member-avatar-wrap,
+.glv-container .dept-members-leads .dept-member-card--lead .dept-member-avatar-wrap,
+.mech-page .mech-section-container .dept-members-leads .dept-member-card--lead .dept-member-avatar-wrap,
+.management-page .mgmt-section-container .dept-members-leads .dept-member-card--lead .dept-member-avatar-wrap {
+  background: rgba(232, 238, 247, 0.14);
+  border: 1px solid rgba(232, 238, 247, 0.18);
+  border-radius: 18px;
+  border-bottom: 1px solid rgba(232, 238, 247, 0.18);
+}
+
+.hv-container .dept-members-leads .dept-member-card--lead .dept-member-avatar,
+.glv-container .dept-members-leads .dept-member-card--lead .dept-member-avatar,
+.mech-page .mech-section-container .dept-members-leads .dept-member-card--lead .dept-member-avatar,
+.management-page .mgmt-section-container .dept-members-leads .dept-member-card--lead .dept-member-avatar {
+  border-radius: 18px;
+  transform: translateY(0) scale(1);
+}
+
+.hv-container .dept-members-regular,
+.glv-container .dept-members-regular,
+.mech-page .mech-section-container .dept-members-regular,
+.management-page .mgmt-section-container .dept-members-regular {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: calc((256px * 4) + (18px * 3));
+  margin-inline: auto;
+}
+
+.management-page .mgmt-prof-section .dept-members-leads,
+.management-page .mgmt-prof-section .dept-members-regular {
+  width: 100%;
+  max-width: calc((256px * 4) + (18px * 3));
+  margin-inline: auto;
+}
+
+.management-page .mgmt-prof-section .dept-members-leads {
+  gap: clamp(84px, 12vw, 120px);
+}
+
+.hv-container .dept-members-regular .dept-member-card,
+.glv-container .dept-members-regular .dept-member-card,
+.mech-page .mech-section-container .dept-members-regular .dept-member-card,
+.management-page .mgmt-section-container .dept-members-regular .dept-member-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex: 0 1 256px;
+  width: min(100%, 256px);
+  max-width: 256px;
+  min-height: 100%;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.management-page .mgmt-prof-section .dept-members-leads .dept-member-card--lead {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex: 0 1 256px;
+  width: min(100%, 256px);
+  max-width: 256px;
+  min-height: 100%;
+  margin-inline: 0;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.hv-container .dept-members-regular .dept-member-avatar-wrap,
+.glv-container .dept-members-regular .dept-member-avatar-wrap,
+.mech-page .mech-section-container .dept-members-regular .dept-member-avatar-wrap,
+.management-page .mgmt-section-container .dept-members-regular .dept-member-avatar-wrap {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  background: rgba(232, 238, 247, 0.14);
+  border: 1px solid rgba(232, 238, 247, 0.18);
+  border-radius: 18px;
+  border-bottom: 1px solid rgba(232, 238, 247, 0.18);
+}
+
+.management-page .mgmt-prof-section .dept-members-leads .dept-member-card--lead .dept-member-avatar-wrap {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  display: block;
+  background: rgba(232, 238, 247, 0.14);
+  border: 1px solid rgba(232, 238, 247, 0.18);
+  border-radius: 18px;
+  border-bottom: 1px solid rgba(232, 238, 247, 0.18);
+}
+
+.hv-container .dept-members-regular .dept-member-avatar,
+.glv-container .dept-members-regular .dept-member-avatar,
+.mech-page .mech-section-container .dept-members-regular .dept-member-avatar,
+.management-page .mgmt-section-container .dept-members-regular .dept-member-avatar {
+  border-radius: 18px;
+}
+
+.management-page .mgmt-prof-section .dept-members-leads .dept-member-card--lead .dept-member-avatar {
+  border-radius: 18px;
+  object-position: center;
+  transform: translateY(0) scale(1);
+}
+
+.hv-container .dept-members-regular .dept-member-content,
+.glv-container .dept-members-regular .dept-member-content,
+.mech-page .mech-section-container .dept-members-regular .dept-member-content,
+.management-page .mgmt-section-container .dept-members-regular .dept-member-content {
+  padding: 12px 8px 14px;
+  text-align: center;
+}
+
+.management-page .mgmt-prof-section .dept-members-leads .dept-member-content {
+  padding: 12px 8px 14px;
+  text-align: center;
+}
+
+.hv-container .dept-members-regular .dept-member-links,
+.glv-container .dept-members-regular .dept-member-links,
+.mech-page .mech-section-container .dept-members-regular .dept-member-links,
+.management-page .mgmt-section-container .dept-members-regular .dept-member-links {
+  justify-content: center;
+}
+
+.management-page .mgmt-prof-section .dept-members-leads .dept-member-links {
+  justify-content: center;
+}
+
+.management-page .mgmt-prof-section .dept-members-leads .dept-member-name {
+  font-size: clamp(16px, 1.2vw, 22px);
+}
+
+.hv-container .dept-members-leads .dept-member-name,
+.glv-container .dept-members-leads .dept-member-name,
+.mech-page .mech-section-container .dept-members-leads .dept-member-name,
+.management-page .mgmt-section-container .dept-members-leads .dept-member-name {
+  font-size: clamp(26px, 2.5vw, 42px);
+}
+
+.management-page .mgmt-prof-section.mgmt-section-container .dept-members-leads .dept-member-name {
+  font-size: clamp(16px, 1.4vw, 22px);
+}
+
+@media (max-width: 1200px) {
+  .hv-container .dept-members-regular .dept-member-card,
+  .glv-container .dept-members-regular .dept-member-card,
+  .mech-page .mech-section-container .dept-members-regular .dept-member-card,
+  .management-page .mgmt-section-container .dept-members-regular .dept-member-card {
+    flex-basis: 256px;
+    max-width: 256px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hv-container .dept-members-regular .dept-member-card,
+  .glv-container .dept-members-regular .dept-member-card,
+  .mech-page .mech-section-container .dept-members-regular .dept-member-card,
+  .management-page .mgmt-section-container .dept-members-regular .dept-member-card {
+    flex-basis: 256px;
+    max-width: 256px;
+  }
+}
+
+@media (max-width: 620px) {
+  .hv-container .dept-members-regular .dept-member-card,
+  .glv-container .dept-members-regular .dept-member-card,
+  .mech-page .mech-section-container .dept-members-regular .dept-member-card,
+  .management-page .mgmt-section-container .dept-members-regular .dept-member-card {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  .management-page .mgmt-prof-section .dept-members-leads .dept-member-card--lead {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
 }
 
 .electric-section .header,
@@ -480,45 +771,22 @@
 /* GLV Section - Full Width */
 .glv-wrapper {
   position: relative;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  min-height: 600px;
+  width: 100%;
+  margin-left: 0;
+  min-height: auto;
+  padding: clamp(48px, 6vw, 80px) 0 0;
   margin-bottom: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .glv-wrapper::before {
-  content: '';
-  display: block;
-  height: 8px;
-  background: linear-gradient(90deg, 
-    transparent 0%,
-    rgba(0, 255, 127, 0.6) 25%,
-    rgba(0, 200, 100, 0.6) 50%,
-    rgba(0, 255, 127, 0.6) 75%,
-    transparent 100%
-  );
-  box-shadow: 0 0 30px rgba(0, 255, 127, 0.4), inset 0 0 10px rgba(0, 200, 100, 0.2);
+  content: none;
+  display: none;
 }
 
 .glv-wrapper::after {
-  content: '';
-  display: block;
-  height: 8px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(0, 200, 100, 0.6) 25%,
-    rgba(0, 255, 127, 0.6) 50%,
-    rgba(0, 200, 100, 0.6) 75%,
-    transparent 100%
-  );
-  box-shadow: 0 0 30px rgba(0, 200, 100, 0.4), inset 0 0 10px rgba(0, 255, 127, 0.2);
-  margin-top: calc(600px - 8px);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
+  content: none;
+  display: none;
 }
 
 .glv-bg {
@@ -545,9 +813,9 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: clamp(20px, 3vw, 40px) clamp(16px, 2vw, 24px);
+  max-width: none;
+  margin: 0;
+  padding: 0 clamp(20px, 4vw, 48px) clamp(24px, 4vw, 48px);
 }
 
 .glv-container .header {
