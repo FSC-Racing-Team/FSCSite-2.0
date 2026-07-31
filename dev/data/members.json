@@ -20,7 +20,7 @@
       "visible": true,
       "photo": "/dev/assets/uploads/sqnz-removebg-preview.png",
       "role": "Project Advisor",
-      "special": false,
+      "special": true,
       "linkedin": "https://www.dieei.unict.it/docenti/gaetano.sequenzia"
     },
     {
@@ -135,6 +135,15 @@
       "visible": true,
       "order": 0,
       "name": "Manuel Biancolilla",
+      "role": "Junior LV",
+      "dept": "elettrica",
+      "unit": "low_voltage"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Luigi Tinnirello",
       "role": "Junior LV",
       "dept": "elettrica",
       "unit": "low_voltage"
@@ -373,62 +382,8 @@
       "visible": true,
       "photo": "/dev/assets/uploads/pattium.png",
       "role": "Project Advisor",
-      "special": false,
+      "special": true,
       "linkedin": "https://www.dieei.unict.it/docenti/gaetano.patti"
-    },
-    {
-      "special": false,
-      "visible": true,
-      "order": 0,
-      "name": "Luca Guarnaccia",
-      "role": "Design Engineer",
-      "dept": "meccanica",
-      "unit": "mechanical_design"
-    },
-    {
-      "special": false,
-      "visible": true,
-      "order": 0,
-      "name": "Salvatore Camiolo",
-      "role": "Aerodynamics Engineer",
-      "dept": "meccanica",
-      "unit": "aerodynamics"
-    },
-    {
-      "special": false,
-      "visible": true,
-      "order": 0,
-      "name": "Angelo Pettinato",
-      "role": "HV engineer",
-      "dept": "elettrica",
-      "unit": "high_voltage"
-    },
-    {
-      "special": false,
-      "visible": true,
-      "order": 0,
-      "name": "Luigi Tinnirello",
-      "role": "HV engineer",
-      "dept": "elettrica",
-      "unit": "high_voltage"
-    },
-    {
-      "special": false,
-      "visible": true,
-      "order": 0,
-      "name": "Cristiano Calì",
-      "role": "IT engineer",
-      "dept": "elettrica",
-      "unit": "low_voltage"
-    },
-    {
-      "special": false,
-      "visible": true,
-      "order": 0,
-      "name": "Gabriele Cassaniti",
-      "role": "IT engineer",
-      "dept": "elettrica",
-      "unit": "low_voltage"
     }
   ]
 }
