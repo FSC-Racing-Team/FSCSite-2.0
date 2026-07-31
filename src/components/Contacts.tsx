@@ -136,9 +136,8 @@ export default function ContactGate() {
       <div className="cgVolcanoBg" aria-hidden="true" />
       <header className="cgHeader">
         <h1 className="cgH1">
-          Sei pronto a 
-          <br />
-            Correre con noi?
+          <br></br>
+          Sei pronto a correre con noi?
         </h1>
       </header>
 
@@ -187,62 +186,6 @@ export default function ContactGate() {
           </div>
         </div>
       </main>
-
-      <div className="cgDivider" aria-hidden="true" />
-
-      <footer className="cgFooter">
-        <div className="cgFootRow">
-          <div>
-            <div className="cgFootSmall">
-              CONTATTACI PER
-              <br />
-              SAPERNE DI PIÙ.
-            </div>
-          </div>
-
-          <div className="cgFootCenter">
-
-          </div>
-
-          <div className="cgFootRight">
-            <div className="cgFootSmall">CONTATTI GENERALI</div>
-            <div className="cgFootBig">fsc_generale@outlook.it</div>
-            <div className="cgSocialRow" aria-label="Social FSC Racing">
-              <a
-                className="cgSocialLink"
-                href="https://www.instagram.com/fsc_racingteam/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram FSC Racing"
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" className="cgSocialIcon">
-                  <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" strokeWidth="1.8" />
-                  <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1.8" />
-                  <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" />
-                </svg>
-                <span>Instagram</span>
-              </a>
-
-              <a
-                className="cgSocialLink"
-                href="https://www.linkedin.com/company/fsc-racing-team/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn FSC Racing"
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" className="cgSocialIcon">
-                  <rect x="3" y="3" width="18" height="18" rx="3" ry="3" fill="none" stroke="currentColor" strokeWidth="1.8" />
-                  <circle cx="8" cy="9" r="1.3" fill="currentColor" />
-                  <path d="M6.8 11.2V17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                  <path d="M11 17v-3.3c0-1.5 1.1-2.6 2.5-2.6s2.5 1.1 2.5 2.6V17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                  <path d="M11 11.2V17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                </svg>
-                <span>LinkedIn</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
 
       {/* Overlay */}
       <div
@@ -338,8 +281,6 @@ export default function ContactGate() {
         </div>
       </div>
     </section>
-
-//designed by elisabetta
 
     <section className="contactSection" aria-label="Sezione contatti">
       <div className="contactSection__inner">
