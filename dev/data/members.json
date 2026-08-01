@@ -386,13 +386,15 @@
       "linkedin": "https://www.dieei.unict.it/docenti/gaetano.patti"
     },
     {
-      "special": false,
-      "visible": true,
-      "order": 0,
-      "name": "Elisabetta Baldoni",
-      "role": "Software Developer",
+      "unit": "management",
       "dept": "management",
-      "unit": "management"
+      "name": "Elisabetta Baldoni",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/elisabetta-baldoni.png",
+      "role": "Software Developer",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/elisabetta-baldoni-ba9a18280/"
     }
   ]
 }
