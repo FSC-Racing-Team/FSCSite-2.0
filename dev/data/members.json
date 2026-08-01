@@ -415,6 +415,24 @@
       "role": "Aerodynamics Engineer",
       "special": false,
       "linkedin": "https://www.linkedin.com/in/salvatore-camiolo-065492408/"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Cristiano Calì",
+      "role": "IT Specialist",
+      "dept": "elettrica",
+      "unit": "low_voltage"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Gabriele Cassaniti",
+      "role": "IT Specialist",
+      "dept": "elettrica",
+      "unit": "low_voltage"
     }
   ]
 }
