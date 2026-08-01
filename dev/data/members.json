@@ -395,6 +395,26 @@
       "role": "Software Developer",
       "special": false,
       "linkedin": "https://www.linkedin.com/in/elisabetta-baldoni-ba9a18280/"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Luca Guarnaccia",
+      "role": "Design Engineer",
+      "dept": "meccanica",
+      "unit": "mechanical_design"
+    },
+    {
+      "unit": "aerodynamics",
+      "dept": "meccanica",
+      "name": "Salvatore Camiolo",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/salvatore-camiolo.png",
+      "role": "Aerodynamics Engineer",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/salvatore-camiolo-065492408/"
     }
   ]
 }
