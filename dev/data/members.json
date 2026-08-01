@@ -144,9 +144,9 @@
       "visible": true,
       "order": 0,
       "name": "Luigi Tinnirello",
-      "role": "Junior LV",
+      "role": "Electonic Engineer",
       "dept": "elettrica",
-      "unit": "low_voltage"
+      "unit": "high_voltage"
     },
     {
       "unit": "low_voltage",
