@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 interface PageDrawerMenuProps {
   onNavigate: (page: string) => void;
-  currentSection: "management" | "management-strategy" | "management-marketing" | "management-prof" | "electric-hv" | "electric-lv" | "mech-vd" | "mech-design" | "mech-aero" | "garage";
+  currentSection: "management" | "management-strategy" | "management-marketing" | "management-prof" | "electric-hv" | "electric-lv" | "mech-vd" | "mech-design" | "mech-aero" | "garage" | "faq";
 }
 
 export default function PageDrawerMenu({ onNavigate }: PageDrawerMenuProps) {
@@ -15,6 +15,11 @@ export default function PageDrawerMenu({ onNavigate }: PageDrawerMenuProps) {
     window.setTimeout(() => {
       document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 0);
+  };
+
+  const handleNavigate = (page: string) => {
+    setMenuOpen(false);
+    onNavigate(page);
   };
 
   useEffect(() => {
@@ -120,8 +125,7 @@ export default function PageDrawerMenu({ onNavigate }: PageDrawerMenuProps) {
                   href="#faq"
                   onClick={(e) => {
                     e.preventDefault();
-                    setMenuOpen(false);
-                    onNavigate("faq");
+                    handleNavigate("faq");
                   }}
                 >
                   FAQ

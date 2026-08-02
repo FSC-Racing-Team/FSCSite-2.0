@@ -6,9 +6,10 @@ import HeroSlideshow from "./HeroSlideshow";
 
 type HeroProps = {
   booted: boolean;
+  onNavigate?: (page: string) => void;
 };
 
-export default function Hero({ booted }: HeroProps) {
+export default function Hero({ booted, onNavigate }: HeroProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [revealed, setRevealed] = useState(false);
   const adminUrl = `${import.meta.env.BASE_URL}admin/index.html?v=20260227`;
@@ -19,6 +20,11 @@ export default function Hero({ booted }: HeroProps) {
     const el = document.getElementById(id);
     if (!el) return;
     el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const handleNavigate = (page: string) => {
+    setMenuOpen(false);
+    onNavigate?.(page);
   };
 
   useEffect(() => {
@@ -92,7 +98,7 @@ export default function Hero({ booted }: HeroProps) {
                 </a>
               </div>
               <div className="menu-item">
-                <a href="#faq" onClick={(e) => { e.preventDefault(); setMenuOpen(false); onNavigate?.("faq"); }}>
+                <a href="#faq" onClick={(e) => { e.preventDefault(); handleNavigate("faq"); }}>
                   FAQ
                 </a>
               </div>

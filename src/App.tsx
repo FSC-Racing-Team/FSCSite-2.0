@@ -45,6 +45,7 @@ export default function App() {
       hash === "management-marketing" ||
       hash === "management-prof" ||
       hash === "garage" ||
+      hash === "faq" ||
       hash === "admin"
     ) {
       return hash;
@@ -70,8 +71,14 @@ export default function App() {
   }, [currentPage]);
 
   const navigateTo = (page: string) => {
-    window.location.hash = page;
-    setCurrentPage(resolveRouteFromHash(page));
+    const normalizedPage = resolveRouteFromHash(page);
+    const currentHash = window.location.hash.slice(1).toLowerCase().trim();
+
+    if (currentHash !== normalizedPage) {
+      window.location.hash = normalizedPage;
+    }
+
+    setCurrentPage(normalizedPage);
   };
 
   if (currentPage === "electric-hv") {
