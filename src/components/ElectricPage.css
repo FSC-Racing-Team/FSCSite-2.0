@@ -843,5 +843,10 @@
 .electric-page .cgFooter,
 .electric-page .cgDivider {
   position: relative;
-  z-index: 1;
+  z-index: 3;
+}
+
+.electric-page .contactSection {
+  position: relative;
+  z-index: 3;
 }
