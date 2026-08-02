@@ -30,7 +30,7 @@
       "order": 0,
       "visible": true,
       "photo": "/dev/assets/uploads/lol.png",
-      "role": "Head of Software R&D",
+      "role": "Senior Software Developer",
       "special": false,
       "linkedin": "https://eagle1705.github.io/Portfolio/"
     },
@@ -74,7 +74,7 @@
       "order": 0,
       "visible": true,
       "photo": "/dev/assets/uploads/grazianolacagnina.png",
-      "role": "Financial Manager",
+      "role": "Management Engineer",
       "special": false,
       "linkedin": "https://www.linkedin.com/in/graziano-lacagnina-03b48b378/"
     },
@@ -83,7 +83,7 @@
       "dept": "management",
       "name": "Sergio Pellegrino",
       "order": 0,
-      "visible": true,
+      "visible": false,
       "photo": "/dev/assets/uploads/sergiopellegrino.png",
       "role": "Junior Coordinator Manager - Mechanics",
       "special": false,
@@ -144,9 +144,9 @@
       "visible": true,
       "order": 0,
       "name": "Luigi Tinnirello",
-      "role": "Junior LV",
+      "role": "Electonic Engineer",
       "dept": "elettrica",
-      "unit": "low_voltage"
+      "unit": "high_voltage"
     },
     {
       "unit": "low_voltage",
@@ -155,7 +155,7 @@
       "order": 0,
       "visible": true,
       "photo": "",
-      "role": "Junior LV",
+      "role": "Electronic Engineer",
       "special": false,
       "linkedin": ""
     },
@@ -384,6 +384,66 @@
       "role": "Project Advisor",
       "special": true,
       "linkedin": "https://www.dieei.unict.it/docenti/gaetano.patti"
+    },
+    {
+      "unit": "management",
+      "dept": "management",
+      "name": "Elisabetta Baldoni",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/elisabetta-baldoni.png",
+      "role": "Software Developer",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/elisabetta-baldoni-ba9a18280/"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Luca Guarnaccia",
+      "role": "Design Engineer",
+      "dept": "meccanica",
+      "unit": "mechanical_design"
+    },
+    {
+      "unit": "aerodynamics",
+      "dept": "meccanica",
+      "name": "Salvatore Camiolo",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/salvatore-camiolo.png",
+      "role": "Aerodynamics Engineer",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/salvatore-camiolo-065492408/"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Cristiano Calì",
+      "role": "IT Specialist",
+      "dept": "elettrica",
+      "unit": "low_voltage"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Gabriele Cassaniti",
+      "role": "IT Specialist",
+      "dept": "elettrica",
+      "unit": "low_voltage"
+    },
+    {
+      "unit": "low_voltage",
+      "dept": "elettrica",
+      "name": "Angelo Pettinato",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/angelo-pettinato.png",
+      "role": "Automation Engineer",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/angelo-pettinato/"
     }
   ]
 }
