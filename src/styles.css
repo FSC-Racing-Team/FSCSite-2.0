@@ -2118,6 +2118,9 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 /* ===== GARAGE (Door Toggle + Engine Frame) ===== */
 .garageSec{
   position: relative;
+  background: #001f3e !important;
+  padding: clamp(18px, 4vw, 42px) 0;
+}
 
 @media (max-width: 900px), (hover: none) and (pointer: coarse) {
   html,
@@ -2133,8 +2136,6 @@ section.page{ min-height:100vh; width:100%; position:relative; }
     overscroll-behavior-y: auto !important;
     touch-action: pan-y pinch-zoom !important;
   }
-}
-  padding: clamp(18px, 4vw, 42px) 0;
 }
 
 .garageScrim2{
@@ -2156,11 +2157,9 @@ section.page{ min-height:100vh; width:100%; position:relative; }
   margin: 0 auto;
   width: min(1200px, 92vw);
   height: min(86vh, 820px);
-  border-radius: 26px;
+  border-radius: 0 !important;
   border: 1px solid rgba(255,255,255,.10);
-  background:
-    radial-gradient(900px 560px at 50% 10%, rgba(255,255,255,.06), rgba(0,0,0,0) 60%),
-    linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+  background: #001f3e !important;
   box-shadow: 0 28px 90px rgba(0,0,0,.45);
   overflow: hidden;
   outline: none;
@@ -2380,18 +2379,20 @@ section.page{ min-height:100vh; width:100%; position:relative; }
   .garageHud2{ top: 10px; left:10px; right:10px; }
   .garageHudRight2{ flex-wrap: wrap; justify-content: flex-end; }
   .garageFrame2{ height: 72vh; border-radius: 22px; }
+  .garageSec{ display: none !important; }
 }
 /* ===== tweak richiesti ===== */
 
-/* background totale nero */
+/* background totale blu della home */
 .garageSec{
-  background:#000;
+  background: #001f3e !important;
   padding: clamp(18px, 4vw, 42px) 0;
 }
 
 /* frame squadrato */
 .garageFrame2{
   border-radius: 0 !important;
+  background: #001f3e !important;
 }
 
 /* HUD minimal */
@@ -3546,13 +3547,19 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 .cgVolcanoBg{
   position: absolute;
   inset: 0;
-  background-image: url('/team.jpeg');
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 31, 62, 0.2) 0%,
+      rgba(0, 31, 62, 0.32) 100%
+    ),
+    url('/team.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   opacity: 1;
   z-index: 0;
   pointer-events: none;
+  filter: saturate(1.1) contrast(1.08) brightness(0.86);
   -webkit-mask-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0) 0%,
@@ -3576,10 +3583,11 @@ section.page{ min-height:100vh; width:100%; position:relative; }
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(0, 31, 62, 0.08) 0%, rgba(0, 31, 62, 0.18) 45%, rgba(0, 31, 62, 0.42) 100%),
-    radial-gradient(circle at center, rgba(42, 163, 255, 0.16), transparent 62%);
-  mix-blend-mode: screen;
+  background: linear-gradient(180deg,
+    rgba(0, 31, 62, 0) 0%,
+    rgba(0, 31, 62, 0.06) 20%,
+    rgba(0, 31, 62, 0.16) 50%,
+    rgba(0, 31, 62, 0.22) 100%);
   z-index: 1;
 }
 
