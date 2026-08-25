@@ -1,6 +1,5 @@
 // designed by alongio
 import type { ReactElement } from "react";
-import ScrollVelocity from "./ScrollVelocity";
 
 export default function Team(): ReactElement {
   return (
@@ -19,14 +18,6 @@ export default function Team(): ReactElement {
         </div>
       </div>
 
-      {/* Marquee a limite sezione (preservata) */}
-      <div className="teamV3Marquee" aria-hidden="true">
-        <ScrollVelocity
-          texts={["FSC RACING TEAM •", "FSC RACING TEAM •"]}
-          velocity={55}
-          className="teamV3MarqueeText"
-        />
-      </div>
     </section>
   );
 }

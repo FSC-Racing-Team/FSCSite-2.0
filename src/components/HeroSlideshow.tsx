@@ -15,11 +15,8 @@ export default function HeroSlideshow() {
     const imagePaths = [
       "/images/slideshow/IMG_4150.JPG",
       "/images/slideshow/IMG_4178.JPG",
-      "/images/slideshow/IMG_4181.JPG",
-      "/images/slideshow/IMG_4208.JPG",
       "/images/slideshow/IMG_4237.JPG",
       "/images/slideshow/IMG_4244.JPG",
-      "/images/slideshow/IMG_4257.JPG",
       "/images/slideshow/IMG_5075.JPG",
       "/images/slideshow/PXL_20260314_113345627.jpg",
     ];

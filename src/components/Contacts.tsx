@@ -141,7 +141,7 @@ export default function ContactGate({ variant = "page" }: ContactGateProps) {
       <header className="cgHeader">
         <h1 className="cgH1">
           <br></br>
-          Sei pronto a correre con noi?
+          SEI PRONTO A CORRERE CON NOI?
         </h1>
       </header>
 
