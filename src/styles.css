@@ -409,7 +409,12 @@ section.page{ min-height:100vh; width:100%; position:relative; }
     font-size: clamp(1.47rem, 6.9vw, 1.8rem);
     line-height: 1.32;
     letter-spacing: 0.01em;
-    white-space: nowrap;
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 4px;
+    white-space: normal;
+    overflow-wrap: break-word;
+    text-wrap: balance;
   }
 }
 
@@ -3610,7 +3615,7 @@ section.page{ min-height:100vh; width:100%; position:relative; }
   font-weight: 950;
   letter-spacing: -0.035em;
   line-height: .92;
-  font-size: clamp(39.6px, 5.58vw, 99px);
+  font-size: clamp(34px, 4.8vw, 84px);
   color: rgba(232,238,247,.96);
 }
 
@@ -4381,7 +4386,10 @@ section.page{ min-height:100vh; width:100%; position:relative; }
 }
 
 .contactSection{
-  background-color: #001f3e;
+  background:
+    radial-gradient(900px 520px at 12% 18%, color-mix(in oklab, var(--cyan) 13%, transparent), transparent 68%),
+    radial-gradient(820px 560px at 88% 82%, color-mix(in oklab, var(--red) 11%, transparent), transparent 70%),
+    linear-gradient(180deg, #001f3e 0%, #0069ad 100%);
   color: #f7faff;
   padding: clamp(88px, 10vw, 140px) clamp(32px, 5vw, 80px) clamp(110px, 13vw, 160px);
 }
@@ -4542,4 +4550,68 @@ section.page{ min-height:100vh; width:100%; position:relative; }
     height: 360px;
     min-height: 360px;
   }
+}
+
+/* ===== HOME BACKGROUND LAYER ===== */
+body.home-page-active{
+  position: relative;
+}
+
+body.home-page-active .bg{
+  position: absolute;
+  inset: 0;
+  min-height: 100%;
+  background: linear-gradient(180deg, #001f3e 0, #001f3e 100vh, #087db5 100%);
+}
+
+body.home-page-active main,
+body.home-page-active .teamV3,
+body.home-page-active .contactSection,
+body.home-page-active .fscFooter{
+  background: transparent;
+}
+
+body.home-page-active .teamV3::before,
+body.home-page-active .teamV3Vignette{
+  background: transparent;
+}
+
+body.home-page-active .tpSection,
+body.home-page-active .tpTopBar,
+body.home-page-active .tpTopButton,
+body.home-page-active .tpPanel,
+body.home-page-active .tpPanel.tpActive,
+body.home-page-active .tpPanel::after{
+  background: transparent;
+}
+
+body.home-page-active .tpAmbient{
+  opacity: 0;
+}
+
+body.home-page-active .cgPage--home::before{
+  background: transparent;
+}
+
+body.home-page-active .cgPage--home .cgVolcanoBg{
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 1) 22%,
+    rgba(0, 0, 0, 1) 72%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 1) 22%,
+    rgba(0, 0, 0, 1) 72%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+body.home-page-active .fscFooter .brand{
+  background: transparent;
 }
