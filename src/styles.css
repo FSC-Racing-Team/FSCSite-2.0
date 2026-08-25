@@ -4595,23 +4595,159 @@ body.home-page-active .cgPage--home::before{
 
 body.home-page-active .cgPage--home .cgVolcanoBg{
   -webkit-mask-image: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0) 10%,
-    rgba(0, 0, 0, 1) 22%,
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
     rgba(0, 0, 0, 1) 72%,
     rgba(0, 0, 0, 0) 100%
   );
   mask-image: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0) 10%,
-    rgba(0, 0, 0, 1) 22%,
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
     rgba(0, 0, 0, 1) 72%,
     rgba(0, 0, 0, 0) 100%
   );
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+body.inner-page-active .bg,
+body.home-page-active .bg{
+  display: block !important;
+}
+
+body.inner-page-active .electric-page .dept-members,
+body.inner-page-active .electric-page .dept-members-layout,
+body.inner-page-active .electric-page .dept-members-leads,
+body.inner-page-active .electric-page .dept-members-regular{
+  width: 100%;
+  margin-inline: auto;
+}
+
+body.inner-page-active .electric-page .dept-members-layout,
+body.inner-page-active .electric-page .dept-members-leads,
+body.inner-page-active .electric-page .dept-members-regular{
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+body.inner-page-active .electric-page .dept-members-layout{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
+body.inner-page-active .electric-page .dept-members-leads,
+body.inner-page-active .electric-page .dept-members-regular{
+  align-self: center;
+  justify-items: center;
+}
+
+body.inner-page-active .electric-page .dept-member-card{
+  margin-inline: auto;
+}
+
+body.inner-page-active .electric-page .mgmt-section-container{
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
+
+body.inner-page-active .electric-page .mgmt-section-container .dept-members{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body.inner-page-active .electric-page .mgmt-section-container .dept-members-layout{
+  width: 100%;
+  justify-items: center;
+}
+
+body.inner-page-active .cgPage::before,
+body.inner-page-active .cgPage--inner::before{
+  background: transparent;
+}
+
+body.inner-page-active .cgPage .cgVolcanoBg{
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 72%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 72%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
 }
 
 body.home-page-active .fscFooter .brand{
   background: transparent;
+}
+
+/* ===== SHARED SITE SHELL ===== */
+body.inner-page-active{
+  position: relative;
+}
+
+body.inner-page-active .bg{
+  position: absolute;
+  inset: 0;
+  min-height: 100%;
+  background: linear-gradient(180deg, #001f3e 0, #001f3e 100vh, #087db5 100%);
+}
+
+body.inner-page-active .electric-page,
+body.inner-page-active .faqPage,
+body.inner-page-active .electric-page #chi-siamo,
+body.inner-page-active .contactSection,
+body.inner-page-active .fscFooter{
+  background: transparent;
+}
+
+body.inner-page-active .fscFooter .brand{
+  background: transparent;
+}
+
+body.inner-page-active .electric-page .hv-container,
+body.inner-page-active .electric-page .glv-container,
+body.inner-page-active .electric-page .mech-section-container{
+  padding-inline: var(--pad);
+}
+
+body.inner-page-active .electric-page .electric-section{
+  max-width: min(1320px, calc(100% - 2 * var(--pad)));
+  margin-inline: auto;
+}
+
+body.inner-page-active .electric-page .deptSectionTitle,
+body.inner-page-active .electric-page .hvTitle,
+body.inner-page-active .electric-page .lvTitle{
+  font-family: var(--font-title);
+  color: var(--fg);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+body.inner-page-active .faqHeader,
+body.inner-page-active .faqItem{
+  border-radius: 0;
+}
+
+body.inner-page-active .faqHeader{
+  background: transparent;
+  border-color: rgba(255,255,255,.10);
+  box-shadow: none;
+}
+
+body.inner-page-active .faqItem{
+  background: rgba(255,255,255,.03);
+  border-color: rgba(255,255,255,.10);
 }

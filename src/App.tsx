@@ -70,6 +70,17 @@ export default function App() {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
+  useEffect(() => {
+    const isInnerPage = currentPage !== "home";
+    document.documentElement.classList.toggle("inner-page-active", isInnerPage);
+    document.body.classList.toggle("inner-page-active", isInnerPage);
+
+    return () => {
+      document.documentElement.classList.remove("inner-page-active");
+      document.body.classList.remove("inner-page-active");
+    };
+  }, [currentPage]);
+
   const navigateTo = (page: string) => {
     const normalizedPage = resolveRouteFromHash(page);
     const currentHash = window.location.hash.slice(1).toLowerCase().trim();
