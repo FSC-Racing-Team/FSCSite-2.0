@@ -435,7 +435,7 @@
       "unit": "low_voltage"
     },
     {
-      "unit": "high_voltage",
+      "unit": "low_voltage",
       "dept": "elettrica",
       "name": "Angelo Pettinato",
       "order": 0,
