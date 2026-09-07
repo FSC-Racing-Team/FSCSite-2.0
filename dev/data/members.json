@@ -444,6 +444,17 @@
       "role": "Automation Engineer",
       "special": false,
       "linkedin": "https://www.linkedin.com/in/angelo-pettinato/"
+    },
+    {
+      "unit": "professori",
+      "dept": "management",
+      "name": "Prof. Stefano Mauro",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/stefano-mauro.png",
+      "role": "Project Advisor",
+      "special": false,
+      "linkedin": "https://www.dicar.unict.it/docenti/stefano.mauro"
     }
   ]
 }
