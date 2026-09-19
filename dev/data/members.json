@@ -15,6 +15,7 @@
     {
       "unit": "professori",
       "dept": "management",
+      "bio": "Professore associato di Disegno e metodi dell'ingegneria industriale",
       "name": "Prof. Gaetano Sequenzia",
       "order": 0,
       "visible": true,
