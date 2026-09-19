@@ -455,6 +455,18 @@
       "role": "Project Advisor",
       "special": false,
       "linkedin": "https://www.dicar.unict.it/docenti/stefano.mauro"
+    },
+    {
+      "unit": "professori",
+      "dept": "management",
+      "bio": "Professoressa associata di Impianti industriali meccanici ",
+      "name": "Natalia Trapani",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/natalia-trapani.png",
+      "role": "Project Advisor",
+      "special": false,
+      "linkedin": "https://www.dieei.unict.it/corsi/l-9/docenti/natalia.trapani"
     }
   ]
 }
