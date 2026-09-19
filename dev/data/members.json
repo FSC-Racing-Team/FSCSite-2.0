@@ -377,6 +377,7 @@
     {
       "unit": "professori",
       "dept": "management",
+      "bio": "Ricercatore di Sistemi di elaborazione delle informazioni",
       "name": "Prof. Gaetano Patti",
       "order": 0,
       "visible": true,
