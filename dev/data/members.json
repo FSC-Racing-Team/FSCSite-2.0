@@ -448,6 +448,7 @@
     {
       "unit": "professori",
       "dept": "management",
+      "bio": "Professore associato di SISTEMI PER L'ENERGIA E L'AMBIENTE",
       "name": "Prof. Stefano Mauro",
       "order": 0,
       "visible": true,
