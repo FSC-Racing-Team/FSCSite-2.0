@@ -82,31 +82,43 @@ export default function Hero({ booted, onNavigate }: HeroProps) {
                   Home
                 </a>
               </div>
+
               <div className="menu-item">
                 <a href="#team" onClick={(e) => { e.preventDefault(); goTo("team"); }}>
                   il team
                 </a>
               </div>
+
               <div className="menu-item">
                 <a href="#contatti" onClick={(e) => { e.preventDefault(); goTo("contatti"); }}>
-                  Contacts
+                  i nostri contatti
                 </a>
               </div>
+
               <div className="menu-item">
                 <a href="#garage" onClick={(e) => { e.preventDefault(); setMenuOpen(false); window.location.hash = "garage"; }}>
                   Garage
                 </a>
               </div>
+
               <div className="menu-item">
                 <a href="#faq" onClick={(e) => { e.preventDefault(); handleNavigate("faq"); }}>
                   FAQ
                 </a>
               </div>
+
+              <div className="menu-item">
+                <a href="#sponsor" onClick={(e) => { e.preventDefault(); handleNavigate("sponsor"); }}>
+                  I nostri partners
+                </a>
+              </div>
+
               <div className="menu-item">
                 <a href={adminUrl} onClick={(e) => { e.preventDefault(); setMenuOpen(false); window.location.assign(adminUrl); }}>
                   Area Riservata
                 </a>
               </div>
+              
             </nav>
           ) : null}
         </div>

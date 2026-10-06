@@ -302,7 +302,7 @@ export default function ContactGate({ variant = "page" }: ContactGateProps) {
             <p className="contactSection__email">Per collaborazioni o proposte di sponsorship:</p>
             <p className="contactSection__email">Managementarea@fscracing.it</p>
 
-            <h3 className="contactSection__subheading">I NOSTRI SOCIAL</h3>
+            <h3 className="contactSection__subheading">I NOSTRI SOCIAL:</h3>
             <div className="contactSection__socials" aria-label="Social FSC Racing">
               <a
                 className="contactSection__socialLink"
@@ -359,7 +359,7 @@ export default function ContactGate({ variant = "page" }: ContactGateProps) {
               />
             </div>
             <p className="contactSection__address">
-              📍 Edificio n.3 - piano 6, stanza 34, <br /> Università degli studi di Catania; <br /> Via Santa Sofia 64, Catania
+              Edificio n.3 - piano 6, stanza 34, <br /> Università degli studi di Catania; <br /> Via Santa Sofia 64, Catania
             </p>
           </div>
         </div>

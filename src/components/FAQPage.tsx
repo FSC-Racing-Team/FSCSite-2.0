@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./FAQPage.css";
 import PageDrawerMenu from "./PageDrawerMenu";
-import FscFooter from "./FscFooter";
 
 interface FAQItem {
   id: string;
@@ -78,7 +77,6 @@ export default function FAQPage({ onNavigate }: FAQPageProps) {
         </div>
       </div>
 
-      <FscFooter />
     </main>
   );
 }

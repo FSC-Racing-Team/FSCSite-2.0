@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 interface PageDrawerMenuProps {
   onNavigate: (page: string) => void;
-  currentSection: "management" | "management-strategy" | "management-marketing" | "management-prof" | "electric-hv" | "electric-lv" | "mech-vd" | "mech-design" | "mech-aero" | "garage" | "faq";
+  currentSection: "management" | "management-strategy" | "management-marketing" | "management-prof" | "electric-hv" | "electric-lv" | "mech-vd" | "mech-design" | "mech-aero" | "garage" | "faq" | "sponsor";
 }
 
 export default function PageDrawerMenu({ onNavigate }: PageDrawerMenuProps) {
@@ -129,6 +129,18 @@ export default function PageDrawerMenu({ onNavigate }: PageDrawerMenuProps) {
                   }}
                 >
                   FAQ
+                </a>
+              </div>
+
+              <div className="menu-item">
+                <a
+                  href="#sponsor"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigate("sponsor");
+                  }}
+                >
+                  I nostri partners
                 </a>
               </div>
 

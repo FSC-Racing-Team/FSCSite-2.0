@@ -12,6 +12,7 @@ import ManagementProfessoriPage from "./components/ManagementProfessoriPage";
 import GaragePage from "./components/GaragePage";
 import AdminPage from "./components/AdminPage";
 import FAQPage from "./components/FAQPage";
+import PartnersPage from "./components/PartnersPage";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<string>("home");
@@ -46,6 +47,7 @@ export default function App() {
       hash === "management-prof" ||
       hash === "garage" ||
       hash === "faq" ||
+      hash === "sponsor" ||
       hash === "admin"
     ) {
       return hash;
@@ -134,6 +136,10 @@ export default function App() {
 
   if (currentPage === "faq") {
     return <FAQPage onNavigate={navigateTo} />;
+  }
+
+  if (currentPage === "sponsor") {
+    return <PartnersPage onNavigate={navigateTo} />;
   }
 
   return <HomePage onNavigate={navigateTo} />;
