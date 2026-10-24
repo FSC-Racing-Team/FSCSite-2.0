@@ -470,6 +470,15 @@
       "role": "Project Advisor",
       "special": false,
       "linkedin": "https://www.dieei.unict.it/corsi/l-9/docenti/natalia.trapani"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Mirko Clari",
+      "role": "Carbon&Cost Member",
+      "dept": "management",
+      "unit": "management"
     }
   ]
 }
