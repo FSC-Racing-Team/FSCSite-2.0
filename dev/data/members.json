@@ -479,6 +479,15 @@
       "role": "Carbon&Cost Member",
       "dept": "management",
       "unit": "management"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Maria Pia Catania",
+      "role": "Junior Business Plan",
+      "dept": "management",
+      "unit": "management"
     }
   ]
 }
