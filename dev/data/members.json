@@ -483,6 +483,17 @@
       "dept": "meccanica",
       "unit": "aerodynamics",
       "role": "Junior Aerodynamics Engineer"
+    },
+    {
+      "unit": "vehicle_dynamics",
+      "dept": "meccanica",
+      "name": "Andrea Pio Antonio Terranova",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/andrea-terranova.png",
+      "role": "Vehicle Dynamics Engineer",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/andrea-pio-antonio-terranova-unict/"
     }
   ]
 }
