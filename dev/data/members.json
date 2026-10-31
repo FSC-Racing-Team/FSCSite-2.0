@@ -80,17 +80,6 @@
       "linkedin": "https://www.linkedin.com/in/graziano-lacagnina-03b48b378/"
     },
     {
-      "unit": "management",
-      "dept": "management",
-      "name": "Sergio Pellegrino",
-      "order": 0,
-      "visible": false,
-      "photo": "/dev/assets/uploads/sergiopellegrino.png",
-      "role": "Junior Coordinator Manager - Mechanics",
-      "special": false,
-      "linkedin": "https://www.linkedin.com/in/sergio-pellegrino-093812233/"
-    },
-    {
       "unit": "low_voltage",
       "dept": "elettrica",
       "name": "Lorenzo Buzzurro",
@@ -135,15 +124,6 @@
       "special": false,
       "visible": true,
       "order": 0,
-      "name": "Manuel Biancolilla",
-      "role": "Junior LV",
-      "dept": "elettrica",
-      "unit": "low_voltage"
-    },
-    {
-      "special": false,
-      "visible": true,
-      "order": 0,
       "name": "Luigi Tinnirello",
       "role": "Electonic Engineer",
       "dept": "elettrica",
@@ -159,16 +139,6 @@
       "role": "Electronic Engineer",
       "special": false,
       "linkedin": ""
-    },
-    {
-      "special": false,
-      "visible": true,
-      "order": 0,
-      "name": "Gianpiero Maria Marchese",
-      "role": "IT Specialist",
-      "dept": "elettrica",
-      "unit": "low_voltage",
-      "photo": "/dev/assets/uploads/maestro.png"
     },
     {
       "unit": "vehicle_dynamics",
