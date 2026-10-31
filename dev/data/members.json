@@ -496,6 +496,15 @@
       "role": "Automation Engineer",
       "special": false,
       "linkedin": "https://www.linkedin.com/in/flavia-sorbello-371235290/"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Giuliano Zafarana",
+      "role": "Automation Engineer",
+      "dept": "elettrica",
+      "unit": "low_voltage"
     }
   ]
 }
