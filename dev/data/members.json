@@ -451,13 +451,15 @@
       "unit": "management"
     },
     {
-      "special": false,
-      "visible": true,
-      "order": 0,
-      "name": "Maria Pia Catania",
-      "role": "Junior Business Plan",
+      "unit": "management",
       "dept": "management",
-      "unit": "management"
+      "name": "Maria Pia Catania",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/maria-pia-sofia-catania.png",
+      "role": "Junior Business Plan",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/mariapia-catania-693b61402/"
     }
   ]
 }
