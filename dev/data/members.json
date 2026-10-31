@@ -442,13 +442,15 @@
       "linkedin": "https://www.dieei.unict.it/corsi/l-9/docenti/natalia.trapani"
     },
     {
-      "special": false,
-      "visible": true,
-      "order": 0,
-      "name": "Mirko Clari",
-      "role": "Carbon&Cost Member",
+      "unit": "management",
       "dept": "management",
-      "unit": "management"
+      "name": "Mirko Clari",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/mirko-clari.jpeg",
+      "role": "Carbon&Cost Member",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/mirkoclari"
     },
     {
       "unit": "management",
@@ -460,6 +462,27 @@
       "role": "Junior Business Plan",
       "special": false,
       "linkedin": "https://www.linkedin.com/in/mariapia-catania-693b61402/"
+    },
+    {
+      "unit": "mechanical_design",
+      "dept": "meccanica",
+      "name": "Gaetano Valenti Caniglia",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/gaetano-valenti-caniglia.jpeg",
+      "role": "Design Engineer",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/gaetano-valenti-caniglia-2a5a182b5/"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "linkedin": "https://www.linkedin.com/in/alessio-di-stefano-267905380/",
+      "name": "Alessio Di Stefano",
+      "dept": "meccanica",
+      "unit": "aerodynamics",
+      "role": "Junior Aerodynamics Engineer"
     }
   ]
 }
