@@ -494,6 +494,17 @@
       "role": "Vehicle Dynamics Engineer",
       "special": false,
       "linkedin": "https://www.linkedin.com/in/andrea-pio-antonio-terranova-unict/"
+    },
+    {
+      "unit": "low_voltage",
+      "dept": "elettrica",
+      "name": "Flavia Sorbello",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/flavia-sorbello.png",
+      "role": "Automation Engineer",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/flavia-sorbello-371235290/"
     }
   ]
 }
