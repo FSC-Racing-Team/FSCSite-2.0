@@ -30,7 +30,7 @@
       "name": "Francesco Carmelo Alongi",
       "order": 0,
       "visible": true,
-      "photo": "/dev/assets/uploads/lol.png",
+      "photo": "/dev/assets/uploads/alongio.webp",
       "role": "Senior Software Developer",
       "special": false,
       "linkedin": "https://eagle1705.github.io/Portfolio/"
@@ -41,7 +41,7 @@
       "name": "Cristian Amore",
       "order": 0,
       "visible": true,
-      "photo": "/dev/assets/uploads/christianamore.png",
+      "photo": "/dev/assets/uploads/chistian.webp",
       "role": "Junior Marketing e Comunicazione",
       "special": false,
       "linkedin": "https://www.linkedin.com/in/christian-amore-882992258/"
@@ -85,7 +85,7 @@
       "name": "Lorenzo Buzzurro",
       "order": 0,
       "visible": true,
-      "photo": "/dev/assets/uploads/lobuzz.png",
+      "photo": "/dev/assets/uploads/lobuzz-.webp",
       "role": "Responsabile di Reparto",
       "special": true,
       "linkedin": "https://www.linkedin.com/in/lorenzo-buzzurro-1b44a2273/"
@@ -98,7 +98,7 @@
       "role": "Responsabile di Reparto",
       "dept": "elettrica",
       "unit": "high_voltage",
-      "photo": "/dev/assets/uploads/rbarb.png"
+      "photo": "/dev/assets/uploads/riccardo-barbagallo.webp"
     },
     {
       "special": false,
@@ -115,7 +115,7 @@
       "name": "Giovanni Spadaro",
       "order": 0,
       "visible": true,
-      "photo": "/dev/assets/uploads/gvsp.png",
+      "photo": "/dev/assets/uploads/giovanni-spadaro.webp",
       "role": "Head of Telemetry System Development",
       "special": false,
       "linkedin": "https://giovannispadaro.it"
@@ -135,7 +135,7 @@
       "name": "Vincenzo Grasso",
       "order": 0,
       "visible": true,
-      "photo": "",
+      "photo": "/dev/assets/uploads/vincenzo-grasso.webp",
       "role": "Electronic Engineer",
       "special": false,
       "linkedin": ""
@@ -146,7 +146,7 @@
       "name": "Giorgio Scavo",
       "order": 0,
       "visible": true,
-      "photo": "/dev/assets/uploads/giorgioscavo5.png",
+      "photo": "/dev/assets/uploads/george-scavo.webp",
       "role": "Responsabile di Reparto",
       "special": true,
       "linkedin": "https://www.linkedin.com/in/giorgio-scavo-680633372/"
@@ -157,7 +157,7 @@
       "name": "Alessandro Zappalà",
       "order": 0,
       "visible": true,
-      "photo": "/dev/assets/uploads/zppl.png",
+      "photo": "/dev/assets/uploads/alessandro-zeno-zappalà.webp",
       "role": "Junior DDV",
       "special": false,
       "linkedin": "https://www.linkedin.com/in/alessandro-zappalà-664b722b6/"
@@ -290,7 +290,7 @@
       "role": "Aerodynamics Engineer",
       "dept": "meccanica",
       "unit": "aerodynamics",
-      "photo": "/dev/assets/uploads/fidel.png"
+      "photo": "/dev/assets/uploads/giovanni-di-maria-.webp"
     },
     {
       "unit": "aerodynamics",
@@ -438,7 +438,7 @@
       "name": "Mirko Clari",
       "order": 0,
       "visible": true,
-      "photo": "/dev/assets/uploads/mirko-clari.jpeg",
+      "photo": "/dev/assets/uploads/mirko.webp",
       "role": "Carbon&Cost Member",
       "special": false,
       "linkedin": "https://www.linkedin.com/in/mirkoclari"
