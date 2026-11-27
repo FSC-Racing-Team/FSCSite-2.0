@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 interface PageDrawerMenuProps {
   onNavigate: (page: string) => void;
-  currentSection: "management" | "management-strategy" | "management-marketing" | "management-prof" | "electric-hv" | "electric-lv" | "mech-vd" | "mech-design" | "mech-aero" | "garage" | "faq" | "sponsor";
+  currentSection: "management" | "management-strategy" | "management-marketing" | "management-prof" | "electric-powertrain" | "electric-safety" | "electric-control" | "mech-vd" | "mech-design" | "mech-aero" | "garage" | "faq" | "sponsor";
 }
 
 export default function PageDrawerMenu({ onNavigate }: PageDrawerMenuProps) {

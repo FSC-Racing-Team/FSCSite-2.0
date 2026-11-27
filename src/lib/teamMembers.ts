@@ -1,8 +1,9 @@
 import teamMembersData from "../data/team-members.json";
 
 export type TeamDepartment =
-  | "electric-hv"
-  | "electric-lv"
+  | "electric-powertrain"
+  | "electric-safety"
+  | "electric-control"
   | "mech-vd"
   | "mech-design"
   | "mech-aero"
@@ -68,8 +69,9 @@ function normalizePublicUrl(value: string): string {
 }
 
 export const TEAM_DEPARTMENT_OPTIONS: { value: TeamDepartment; label: string }[] = [
-  { value: "electric-hv", label: "Elettrica — High Voltage" },
-  { value: "electric-lv", label: "Elettrica — Low Voltage" },
+  { value: "electric-powertrain", label: "Elettrica — Powertrain" },
+  { value: "electric-safety", label: "Elettrica — Safety and Wiring" },
+  { value: "electric-control", label: "Elettrica — Control System" },
   { value: "mech-vd", label: "Meccanica — Vehicle Dynamics" },
   { value: "mech-design", label: "Meccanica — Mechanical Design" },
   { value: "mech-aero", label: "Meccanica — Aerodynamics" },
@@ -231,11 +233,14 @@ function mapDepartmentFromDecap(raw: DecapMemberRaw): TeamDepartment | null {
   }
 
   if (dept === "elettrica") {
-    if (unit === "high_voltage") {
-      return "electric-hv";
+    if (unit === "powertrain") {
+      return "electric-powertrain";
     }
-    if (unit === "low_voltage") {
-      return "electric-lv";
+    if (unit === "safety_wiring") {
+      return "electric-safety";
+    }
+    if (unit === "control_system") {
+      return "electric-control";
     }
     return null;
   }
@@ -260,11 +265,11 @@ function toTeamMember(raw: DecapMemberRaw, index: number): TeamMember | null {
   const department = mapDepartmentFromDecap(raw);
   const name = (raw.name || "").trim();
   const role = (raw.role || "").trim();
-  if (!department || !name || !role) {
+  if (!department || !name) {
     return null;
   }
 
-  const safeUnit = (raw.unit || "member").replace(/[^a-z0-9_\-]+/gi, "-");
+  const safeUnit = (raw.unit || "member").replace(/[^a-z0-9_-]+/gi, "-");
   return {
     id: `${department}-${safeUnit}-${index}`,
     department,

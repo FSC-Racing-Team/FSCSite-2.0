@@ -1,8 +1,7 @@
 // designed by alongio
 import { useEffect, useState } from "react";
 import HomePage from "./components/HomePage";
-import ElectricHighVoltagePage from "./components/ElectricHighVoltagePage";
-import ElectricLowVoltagePage from "./components/ElectricLowVoltagePage";
+import ElectricDivisionPage from "./components/ElectricDivisionPage";
 import MechVehicleDynamicsPage from "./components/MechVehicleDynamicsPage";
 import MechMechanicalDesignPage from "./components/MechMechanicalDesignPage";
 import MechAerodynamicsPage from "./components/MechAerodynamicsPage";
@@ -18,13 +17,21 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState<string>("home");
 
   const resolveRouteFromHash = (hashValue: string): string => {
-    const hash = hashValue.toLowerCase().trim();
+    const hash = hashValue.replace(/^#/, "").toLowerCase().trim();
     if (!hash) {
       return "home";
     }
 
     if (hash === "electric") {
-      return "electric-hv";
+      return "electric-powertrain";
+    }
+
+    if (hash === "electric-hv") {
+      return "electric-powertrain";
+    }
+
+    if (hash === "electric-lv") {
+      return "electric-safety";
     }
 
     if (hash === "mech") {
@@ -37,8 +44,9 @@ export default function App() {
 
     if (
       hash === "home" ||
-      hash === "electric-hv" ||
-      hash === "electric-lv" ||
+      hash === "electric-powertrain" ||
+      hash === "electric-safety" ||
+      hash === "electric-control" ||
       hash === "mech-vd" ||
       hash === "mech-design" ||
       hash === "mech-aero" ||
@@ -94,12 +102,12 @@ export default function App() {
     setCurrentPage(normalizedPage);
   };
 
-  if (currentPage === "electric-hv") {
-    return <ElectricHighVoltagePage onNavigate={navigateTo} />;
-  }
-
-  if (currentPage === "electric-lv") {
-    return <ElectricLowVoltagePage onNavigate={navigateTo} />;
+  if (
+    currentPage === "electric-powertrain" ||
+    currentPage === "electric-safety" ||
+    currentPage === "electric-control"
+  ) {
+    return <ElectricDivisionPage onNavigate={navigateTo} division={currentPage} />;
   }
 
   if (currentPage === "mech-vd") {
@@ -144,4 +152,3 @@ export default function App() {
 
   return <HomePage onNavigate={navigateTo} />;
 }
-

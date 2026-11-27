@@ -8,11 +8,18 @@ export default function Team(): ReactElement {
   const [memberCount, setMemberCount] = useState(0);
 
   useEffect(() => {
-    if (!statInView || memberCount === 40) return;
+    if (!statInView) {
+      return;
+    }
 
     const startTime = performance.now();
     const duration = 1200;
     let animationFrame = 0;
+
+    const startAnimation = () => {
+      setMemberCount(0);
+      animationFrame = requestAnimationFrame(animateCount);
+    };
 
     const animateCount = (currentTime: number) => {
       const progress = Math.min((currentTime - startTime) / duration, 1);
@@ -23,9 +30,11 @@ export default function Team(): ReactElement {
       }
     };
 
-    animationFrame = requestAnimationFrame(animateCount);
+    animationFrame = requestAnimationFrame(startAnimation);
     return () => cancelAnimationFrame(animationFrame);
   }, [statInView]);
+
+  const displayedCount = statInView ? memberCount : 0;
 
   return (
     <section id="teamPage" className="teamV3" aria-label="Sezione Team">
@@ -38,7 +47,7 @@ export default function Team(): ReactElement {
         </p>
 
         <div className="teamV3Stat" ref={statRef}>
-          <div className="teamV3StatNumber" aria-label={`${memberCount} membri`}>{memberCount}+</div>
+          <div className="teamV3StatNumber" aria-label={`${displayedCount} membri`}>{displayedCount}+</div>
           <div className="teamV3StatSub">Membri attivi provenienti da diverse facoltà</div>
         </div>
       </div>

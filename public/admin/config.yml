@@ -44,8 +44,10 @@ collections:
                   - { label: "Management", value: "management" }
                   - { label: "Marketing e Comunicazione", value: "marketing-comunicazione" }
                   - { label: "Professori", value: "professori" }
-                  - { label: "Low Voltage", value: "low_voltage" }
-                  - { label: "High Voltage", value: "high_voltage" }
+                  - { label: "Powertrain", value: "powertrain" }
+                  - { label: "Safety and Wiring", value: "safety_wiring" }
+                  - { label: "Control System", value: "control_system" }
+                  - { label: "Non assegnato", value: "unassigned" }
                   - { label: "Vehicle Dynamics", value: "vehicle_dynamics" }
                   - { label: "Aerodinamica", value: "aerodynamics" }
                   - { label: "Mechanical Design", value: "mechanical_design" }

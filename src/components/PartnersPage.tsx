@@ -9,18 +9,17 @@ const partnerLevels = ["MAIN", "PLATINUM", "GOLD", "SILVER"];
 
 const platinumPartners = [
   ["/images/logo-siemens.png", "Siemens", "Per il gruppo ruota"],
-  ["/images/oni_welding_logo.png", "ONI Welding", "per i software di simulazione della vettura"],
+  ["/images/oni_welding_logo.png", "ONI Welding", "Per i software di simulazione della vettura"],
   ["/images/Palmeri-pneumatici-Logo.avif", "Palmeri Pneumatici", "Per la costruzione del telaio"],
-  ["/images/pizzeria_il_pancione_logo.webp", "Pizzeria Il Pancione", ""],
 ];
 
 const partnerLogosByLevel = {
-  // Aggiungere qui le immagini dei partner Main.
+  // Da aggiungere qui le immagini dei partner Main.
   MAIN: [],
   PLATINUM: platinumPartners,
-  // Aggiungere qui le immagini dei partner Gold.
+  // Da aggiungere qui le immagini dei partner Gold.
   GOLD: [],
-  // Aggiungere qui le immagini dei partner Silver.
+  // Da aggiungere qui le immagini dei partner Silver.
   SILVER: [],
 };
 

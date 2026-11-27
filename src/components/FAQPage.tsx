@@ -67,11 +67,15 @@ export default function FAQPage({ onNavigate }: FAQPageProps) {
                 <span className="toggleIcon">+</span>
               </button>
               
-              {expandedId === item.id && (
-                <div id={`${item.id}-content`} className="faqAnswer">
+              <div
+                id={`${item.id}-content`}
+                className={`faqAnswer ${expandedId === item.id ? "expanded" : ""}`}
+                aria-hidden={expandedId !== item.id}
+              >
+                <div className="faqAnswerInner">
                   <p>{item.answer}</p>
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>

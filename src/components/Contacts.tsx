@@ -16,15 +16,6 @@ function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 }
 
-function escapeHtml(str: string) {
-  return str
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
 interface ContactGateProps {
   variant?: "home" | "page";
 }
@@ -205,29 +196,27 @@ export default function ContactGate({ variant = "page" }: ContactGateProps) {
           </button>
 
           <div ref={cardRef} className="cgCard" tabIndex={-1}>
-            <p className="cgCardTitle">
-              Perfetto. Solo alcune domande per indirizzare la tua richiesta.
-            </p>
+            <p className="cgCardTitle">CONOSCIAMOCI MEGLIO</p>
 
             <form className="cgForm" onSubmit={onSubmit} noValidate>
               <div className="cgGrid">
                 <div className="cgField">
-                  <div className="cgLabel">NOME</div>
+                  <div className="cgLabel">Nome</div>
                   <input ref={firstRef} className="cgInput" name="firstName" autoComplete="given-name" required />
                 </div>
 
                 <div className="cgField">
-                  <div className="cgLabel">COGNOME</div>
+                  <div className="cgLabel">Cognome</div>
                   <input className="cgInput" name="lastName" autoComplete="family-name" />
                 </div>
 
                 <div className="cgField cgFull">
-                  <div className="cgLabel">CORSO DI LAUREA</div>
+                  <div className="cgLabel">Corso di Laurea</div>
                   <input className="cgInput" name="corso" autoComplete="organization" />
                 </div>
 
                 <div className="cgField cgFull">
-                  <div className="cgLabel">ANNO DI ISCRIZIONE</div>
+                  <div className="cgLabel">Anno Universitario</div>
                   <select className="cgSelect" name="anno" defaultValue="" required>
                     <option value="" disabled>
                       Seleziona l'anno…
@@ -239,7 +228,7 @@ export default function ContactGate({ variant = "page" }: ContactGateProps) {
                 </div>
 
                 <div className="cgField cgFull">
-                  <div className="cgLabel">REPARTO</div>
+                  <div className="cgLabel">Reparto</div>
                   <select className="cgSelect" name="reparto" defaultValue="">
                     <option value="" disabled>
                       Seleziona un reparto…
@@ -256,18 +245,9 @@ export default function ContactGate({ variant = "page" }: ContactGateProps) {
                 </div>
 
                 <div className="cgField cgFull">
-                  <div className="cgLabel">MESSAGGIO</div>
+                  <div className="cgLabel">Descrizione</div>
                   <textarea className="cgTextarea" name="message" required />
                 </div>
-              </div>
-
-              <div
-                className="cgMetaEmail"
-                dangerouslySetInnerHTML={{ __html: `Email utilizzata: <b>${escapeHtml(email.trim())}</b>` }}
-              />
-
-              <div className="cgFormDisclaimer">
-                Autorizzo il trattamento dei dati personali ai sensi del Regolamento UE 2016/679 e del D.Lgs. 196/2003, per le finalità indicate nel modulo di contatto.
               </div>
 
               <button className={`cgSubmit${isSending ? " is-loading" : ""}`} type="submit" disabled={isSending}>
@@ -277,9 +257,13 @@ export default function ContactGate({ variant = "page" }: ContactGateProps) {
                     Invio...
                   </>
                 ) : (
-                  "Invia"
+                  "INVIA"
                 )}
               </button>
+
+              <div className="cgFormDisclaimer">
+                Autorizzo il trattamento dei dati personali ai sensi del Regolamento UE 2016/679 e del D.Lgs. 196/2003, per le finalità indicate nel modulo di contatto.
+              </div>
             </form>
           </div>
         </div>
@@ -291,7 +275,7 @@ export default function ContactGate({ variant = "page" }: ContactGateProps) {
         <div className="contactSection__header">
           <h2 className="contactSection__title">I NOSTRI CONTATTI</h2>
           <p className="contactSection__description">
-            Il nostro progetto è in continua evoluzione e siamo sempre alla ricerca di nuove sfide e di professionisti con cui confrontarci. <br /> Che si tratti di uno scambio di idee tecniche, di scoprire i nostri futuri ingegneri o semplicemente di curiosità verso il nostro lavoro, le porte del nostro team sono sempre aperte.
+            Il nostro progetto è in continua evoluzione e cerchiamo partner che condividano la nostra stessa spinta verso l'innovazione. Che il tuo obiettivo sia associare il tuo brand al nostro, esplorare opportunità di recruiting tra i nostri giovani talenti o sviluppare sinergie tecniche, siamo pronti a costruire la soluzione su misura per te. Contattaci oggi per organizzare una call conoscitiva.
           </p>
         </div>
 
@@ -353,7 +337,7 @@ export default function ContactGate({ variant = "page" }: ContactGateProps) {
               <iframe
                 className="contactSection__mapFrame"
                 title="Posizione FSC Racing"
-                src="https://www.google.com/maps?q=Edificio%20n.3%20Universit%C3%A0%20degli%20studi%20di%20Catania%20Via%20Santa%20Sofia%2064%20Catania&z=17&output=embed"
+                src="https://www.google.com/maps?q=Via%20Santa%20Sofia%2064%2C%20Catania&z=17&output=embed"
                 loading="lazy"
                 allowFullScreen
               />

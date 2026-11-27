@@ -37,12 +37,13 @@ export default function Hero({ booted, onNavigate }: HeroProps) {
 
   useEffect(() => {
     if (!booted) {
-      setRevealed(false);
       return;
     }
     const handle = window.setTimeout(() => setRevealed(true), 40);
     return () => window.clearTimeout(handle);
   }, [booted]);
+
+  const isRevealed = booted && revealed;
 
   return (
     <section className="page" id="heroPage">
@@ -128,7 +129,7 @@ export default function Hero({ booted, onNavigate }: HeroProps) {
         <div className="stageBottom">
           <HeroSlideshow />
         </div>
-        <section className={`reveal ${revealed ? "is-on" : ""}`}>
+        <section className={`reveal ${isRevealed ? "is-on" : ""}`}>
           <div className="wipe" />
           <div className="inner heroCentral">
             <div className="heroRight">

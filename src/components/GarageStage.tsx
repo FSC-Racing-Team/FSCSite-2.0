@@ -16,14 +16,19 @@ interface ThreePanelsProps {
 const departmentBranches: Record<number, DepartmentBranch[]> = {
   0: [
     {
-      label: "High Voltage",
-      href: "#electric-hv",
-      subtitle: "Gestione battery pack, BMS e sicurezza alta tensione: layout celle, isolamento, interlock, TS e interfacce GLV/HV conformi a regolamento FS."
+      label: "Powertrain",
+      href: "#electric-powertrain",
+      subtitle: "Generazione, conversione e trasmissione della potenza ad alta tensione (Tractive System). L'obiettivo è garantire che la macchina abbia la potenza necessaria, nel rispetto dei limiti termici e di regolamento."
     },
     {
-      label: "Low Voltage",
-      href: "#electric-lv",
-      subtitle: "Sistemi di controllo 12V: ECU custom, acquisizione dati, dashboard pilota, cablaggi e schede distribuzione alimentazione."
+      label: "Safety and Wiring",
+      href: "#electric-safety",
+      subtitle: "Garantisce che tutti i componenti comunichino fisicamente tra loro e che la vettura superi le verifiche tecniche (Electrical Scrutineering)."
+    },
+    {
+      label: "Control System",
+      href: "#electric-control",
+      subtitle: "Scrivere l'intelligenza del veicolo, gestire la dinamica e salvare i dati, trasformando la potenza grezza in tempo sul giro."
     },
   ],
   1: [
@@ -94,7 +99,7 @@ export default function ThreePanels({ onNavigate }: ThreePanelsProps) {
 
       <div className={`tpGrid ${isOn ? "tpOn" : ""}`}>
         <section
-          className={`tpPanel ${active === 0 ? "tpActive" : ""}`}
+          className={`tpPanel tpPanelElectric ${active === 0 ? "tpActive" : ""}`}
           style={{ ["--i" as string]: 0 } as React.CSSProperties}
           data-accent={"cyan" satisfies Accent}
           data-panel="electric"
@@ -122,10 +127,10 @@ export default function ThreePanels({ onNavigate }: ThreePanelsProps) {
                   key={branch.label}
                   className="tpElectricLink"
                   href={branch.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    onNavigate(branch.href.slice(1));
+                  onClick={(event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    onNavigate(branch.href);
                   }}
                 >
                   <span className="tpElectricLinkContent">
