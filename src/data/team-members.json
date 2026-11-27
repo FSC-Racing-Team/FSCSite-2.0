@@ -1,24 +1,125 @@
 {
   "members": [
     {
-      "id": "hv-lead-1",
-      "department": "electric-hv",
-      "name": "Responsabile HV",
-      "role": "Head of High Voltage",
-      "imageUrl": "/images/collage-elect/battery.jpg",
+      "id": "powertrain-lead-vincenzo",
+      "department": "electric-powertrain",
+      "name": "Vincenzo Grasso",
+      "role": "Responsabile di Reparto",
+      "imageUrl": "",
       "github": "",
       "linkedinUrl": "",
-      "cardSize": "lead"
+      "cardSize": "lead",
+      "order": 0
     },
     {
-      "id": "lv-lead-1",
-      "department": "electric-lv",
-      "name": "Responsabile LV",
-      "role": "Head of Low Voltage",
-      "imageUrl": "/images/collage-elect/ecu.jpg",
+      "id": "powertrain-angelo",
+      "department": "electric-powertrain",
+      "name": "Angelo Pettinato",
+      "role": "Automation Engineer",
+      "imageUrl": "/dev/assets/uploads/angelo-pettinato.png",
+      "github": "",
+      "linkedinUrl": "https://www.linkedin.com/in/angelo-pettinato/",
+      "cardSize": "standard",
+      "order": 1
+    },
+    {
+      "id": "powertrain-luigi",
+      "department": "electric-powertrain",
+      "name": "Luigi Tinnirello",
+      "role": "Electronic Engineer",
+      "imageUrl": "",
       "github": "",
       "linkedinUrl": "",
-      "cardSize": "lead"
+      "cardSize": "standard",
+      "order": 2
+    },
+    {
+      "id": "safety-lead-riccardo",
+      "department": "electric-safety",
+      "name": "Riccardo Barbagallo",
+      "role": "Responsabile di Reparto",
+      "imageUrl": "/dev/assets/uploads/rbarb.png",
+      "github": "",
+      "linkedinUrl": "",
+      "cardSize": "lead",
+      "order": 0
+    },
+    {
+      "id": "safety-dario",
+      "department": "electric-safety",
+      "name": "Dario Cavallaro",
+      "role": "Membro",
+      "imageUrl": "",
+      "github": "",
+      "linkedinUrl": "",
+      "cardSize": "standard",
+      "order": 1
+    },
+    {
+      "id": "control-lead-lorenzo",
+      "department": "electric-control",
+      "name": "Lorenzo Buzzurro",
+      "role": "Responsabile di Reparto",
+      "imageUrl": "/dev/assets/uploads/lobuzz.png",
+      "github": "",
+      "linkedinUrl": "https://www.linkedin.com/in/lorenzo-buzzurro-1b44a2273/",
+      "cardSize": "lead",
+      "order": 0
+    },
+    {
+      "id": "control-flavia",
+      "department": "electric-control",
+      "name": "Flavia Sorbello",
+      "role": "Membro",
+      "imageUrl": "",
+      "github": "",
+      "linkedinUrl": "",
+      "cardSize": "standard",
+      "order": 1
+    },
+    {
+      "id": "control-giuliano",
+      "department": "electric-control",
+      "name": "Giuliano Zafarana",
+      "role": "Membro",
+      "imageUrl": "",
+      "github": "",
+      "linkedinUrl": "",
+      "cardSize": "standard",
+      "order": 2
+    },
+    {
+      "id": "control-giovanni",
+      "department": "electric-control",
+      "name": "Giovanni Spadaro",
+      "role": "Head of Telemetry System Development",
+      "imageUrl": "/dev/assets/uploads/gvsp.png",
+      "github": "",
+      "linkedinUrl": "https://giovannispadaro.it",
+      "cardSize": "standard",
+      "order": 3
+    },
+    {
+      "id": "control-cristiano",
+      "department": "electric-control",
+      "name": "Cristiano Calì",
+      "role": "IT Specialist",
+      "imageUrl": "",
+      "github": "",
+      "linkedinUrl": "",
+      "cardSize": "standard",
+      "order": 4
+    },
+    {
+      "id": "control-gabriele",
+      "department": "electric-control",
+      "name": "Gabriele Cassaniti",
+      "role": "IT Specialist",
+      "imageUrl": "",
+      "github": "",
+      "linkedinUrl": "",
+      "cardSize": "standard",
+      "order": 5
     },
     {
       "id": "vd-lead-1",
@@ -59,6 +160,61 @@
       "github": "",
       "linkedinUrl": "",
       "cardSize": "lead"
+    },
+    {
+      "id": "vd-andrea-terranova",
+      "department": "mech-vd",
+      "name": "Andrea Terranova",
+      "role": "",
+      "imageUrl": "/images/people/andrea_terranova_dinamica%20del%20veicolo.png",
+      "github": "",
+      "linkedinUrl": "https://www.linkedin.com/in/andrea-pio-antonio-terranova-unict/",
+      "cardSize": "standard",
+      "order": 10
+    },
+    {
+      "id": "vd-alessio-milazzo",
+      "department": "mech-vd",
+      "name": "Alessio Milazzo",
+      "role": "",
+      "imageUrl": "",
+      "github": "",
+      "linkedinUrl": "",
+      "cardSize": "standard",
+      "order": 11
+    },
+    {
+      "id": "aero-alessio-di-stefano",
+      "department": "mech-aero",
+      "name": "Alessio di Stefano",
+      "role": "",
+      "imageUrl": "",
+      "github": "",
+      "linkedinUrl": "https://www.linkedin.com/in/alessio-di-stefano-267905380?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+      "cardSize": "standard",
+      "order": 10
+    },
+    {
+      "id": "design-gaetano-valenti",
+      "department": "mech-design",
+      "name": "Gaetano Valenti",
+      "role": "",
+      "imageUrl": "/images/people/gaetano_valenti_progettazione.png",
+      "github": "",
+      "linkedinUrl": "https://www.linkedin.com/in/gaetano-valenti-caniglia-2a5a182b5?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+      "cardSize": "standard",
+      "order": 10
+    },
+    {
+      "id": "management-mirko-clari",
+      "department": "management",
+      "name": "Mirko Clari",
+      "role": "",
+      "imageUrl": "/images/people/mirko_clari_management.png",
+      "github": "",
+      "linkedinUrl": "https://www.linkedin.com/in/mirkoclari",
+      "cardSize": "standard",
+      "order": 10
     }
   ]
 }

@@ -1,6 +1,7 @@
 // designed by alongio
 import { useEffect, useMemo, useRef, useState } from "react";
 import CarBlueprintIndex from "./CarBlueprintIndex";
+import LoaderOverlay from "./LoaderOverlay";
 
 type Props = {
   modelUrl?: string;
@@ -10,6 +11,7 @@ export default function GarageDoorEngine({ modelUrl = "/car.glb" }: Props) {
   const frameRef = useRef<HTMLDivElement | null>(null);
 
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const [inside, setInside] = useState(false);
   const [focusWithin, setFocusWithin] = useState(false);
@@ -123,7 +125,10 @@ export default function GarageDoorEngine({ modelUrl = "/car.glb" }: Props) {
         {/* VIEWPORT */}
         <div className="garageViewport2" aria-label="3D viewport">
           <div className="garageEngine2">
-            <CarBlueprintIndex modelUrl={modelUrl} enabled={engineEnabled} captureWheel captureKeys />
+            <CarBlueprintIndex modelUrl={modelUrl} enabled={engineEnabled} captureWheel captureKeys onLoading={setLoading} />
+            {open && (
+              <LoaderOverlay off={!loading} />
+            )}
           </div>
 
           {/* CTA + EXIT in basso quando OPEN */}

@@ -114,7 +114,7 @@ export default function DepartmentMembers({ title, department }: DepartmentMembe
 
         <div className="dept-member-content">
           <div className="dept-member-name">{member.name}</div>
-          <div className="dept-member-role">{member.role}</div>
+          {member.role ? <div className="dept-member-role">{member.role}</div> : null}
 
           {githubUrl ? (
             <div className="dept-member-links">

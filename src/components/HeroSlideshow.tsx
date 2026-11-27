@@ -6,32 +6,20 @@ interface SlideshowImage {
 }
 
 export default function HeroSlideshow() {
-  const [images, setImages] = useState<SlideshowImage[]>([]);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [incomingIndex, setIncomingIndex] = useState<number | null>(null);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  useEffect(() => {
+  const [images] = useState<SlideshowImage[]>(() => {
     const imagePaths = [
-      "/images/slideshow/IMG_4150.JPG",
       "/images/slideshow/IMG_4178.JPG",
-      "/images/slideshow/IMG_4181.JPG",
-      "/images/slideshow/IMG_4208.JPG",
-      "/images/slideshow/IMG_4237.JPG",
       "/images/slideshow/IMG_4244.JPG",
-      "/images/slideshow/IMG_4257.JPG",
-      "/images/slideshow/IMG_5075.JPG",
-      "/images/slideshow/PXL_20260314_113345627.jpg",
     ];
-
     const shuffled = [...imagePaths].sort(() => Math.random() - 0.5);
-    const imageObjects = shuffled.map((src, index) => ({
+    return shuffled.map((src, index) => ({
       src,
       key: `${src}-${index}`,
     }));
-
-    setImages(imageObjects);
-  }, []);
+  });
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [incomingIndex, setIncomingIndex] = useState<number | null>(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     if (images.length === 0) return;

@@ -16,20 +16,15 @@ function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 }
 
-function escapeHtml(str: string) {
-  return str
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+interface ContactGateProps {
+  variant?: "home" | "page";
 }
 
-export default function ContactGate() {
+export default function ContactGate({ variant = "page" }: ContactGateProps) {
   const env = import.meta.env as Record<string, string | undefined>;
-  const emailJsPublicKey = env.VITE_EMAILJS_PUBLIC_KEY || "EZoeTiMOVjbTneoi6";
-  const emailJsServiceId = env.VITE_EMAILJS_SERVICE_ID || "fscsiteform";
-  const emailJsTemplateId = env.VITE_EMAILJS_TEMPLATE_ID || "FSCRACING0101";
+  const emailJsPublicKey = env.VITE_EMAILJS_PUBLIC_KEY || "VNSyf_E5HvAzplZzr";
+  const emailJsServiceId = env.VITE_EMAILJS_SERVICE_ID || "service_0sp7qqg";
+  const emailJsTemplateId = env.VITE_EMAILJS_TEMPLATE_ID || "template_2bdph0h";
 
   const [email, setEmail] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -130,14 +125,14 @@ export default function ContactGate() {
   };
 
   return (
-    <section className="cgPage" aria-label="Contact gate" id="contatti">
+    <>
+      <section className={`cgPage ${variant === "home" ? "cgPage--home" : "cgPage--inner"}`} aria-label="Contact gate" id="contatti">
       <span id="contacts" aria-hidden="true" />
       <div className="cgVolcanoBg" aria-hidden="true" />
       <header className="cgHeader">
         <h1 className="cgH1">
-          Sei pronto a 
-          <br />
-            Correre con noi?
+          <br></br>
+          SEI PRONTO A CORRERE CON NOI?
         </h1>
       </header>
 
@@ -187,62 +182,6 @@ export default function ContactGate() {
         </div>
       </main>
 
-      <div className="cgDivider" aria-hidden="true" />
-
-      <footer className="cgFooter">
-        <div className="cgFootRow">
-          <div>
-            <div className="cgFootSmall">
-              CONTATTACI PER
-              <br />
-              SAPERNE DI PIÙ.
-            </div>
-          </div>
-
-          <div className="cgFootCenter">
-
-          </div>
-
-          <div className="cgFootRight">
-            <div className="cgFootSmall">CONTATTI GENERALI</div>
-            <div className="cgFootBig">fsc_generale@outlook.it</div>
-            <div className="cgSocialRow" aria-label="Social FSC Racing">
-              <a
-                className="cgSocialLink"
-                href="https://www.instagram.com/fsc_racingteam/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram FSC Racing"
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" className="cgSocialIcon">
-                  <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" strokeWidth="1.8" />
-                  <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1.8" />
-                  <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" />
-                </svg>
-                <span>Instagram</span>
-              </a>
-
-              <a
-                className="cgSocialLink"
-                href="https://www.linkedin.com/company/fsc-racing-team/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn FSC Racing"
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" className="cgSocialIcon">
-                  <rect x="3" y="3" width="18" height="18" rx="3" ry="3" fill="none" stroke="currentColor" strokeWidth="1.8" />
-                  <circle cx="8" cy="9" r="1.3" fill="currentColor" />
-                  <path d="M6.8 11.2V17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                  <path d="M11 17v-3.3c0-1.5 1.1-2.6 2.5-2.6s2.5 1.1 2.5 2.6V17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                  <path d="M11 11.2V17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                </svg>
-                <span>LinkedIn</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
-
       {/* Overlay */}
       <div
         ref={overlayRef}
@@ -257,29 +196,27 @@ export default function ContactGate() {
           </button>
 
           <div ref={cardRef} className="cgCard" tabIndex={-1}>
-            <p className="cgCardTitle">
-              Perfetto. Solo alcune domande per indirizzare la tua richiesta.
-            </p>
+            <p className="cgCardTitle">CONOSCIAMOCI MEGLIO</p>
 
             <form className="cgForm" onSubmit={onSubmit} noValidate>
               <div className="cgGrid">
                 <div className="cgField">
-                  <div className="cgLabel">NOME</div>
+                  <div className="cgLabel">Nome</div>
                   <input ref={firstRef} className="cgInput" name="firstName" autoComplete="given-name" required />
                 </div>
 
                 <div className="cgField">
-                  <div className="cgLabel">COGNOME</div>
+                  <div className="cgLabel">Cognome</div>
                   <input className="cgInput" name="lastName" autoComplete="family-name" />
                 </div>
 
                 <div className="cgField cgFull">
-                  <div className="cgLabel">CORSO DI LAUREA</div>
+                  <div className="cgLabel">Corso di Laurea</div>
                   <input className="cgInput" name="corso" autoComplete="organization" />
                 </div>
 
                 <div className="cgField cgFull">
-                  <div className="cgLabel">ANNO DI ISCRIZIONE</div>
+                  <div className="cgLabel">Anno Universitario</div>
                   <select className="cgSelect" name="anno" defaultValue="" required>
                     <option value="" disabled>
                       Seleziona l'anno…
@@ -291,7 +228,7 @@ export default function ContactGate() {
                 </div>
 
                 <div className="cgField cgFull">
-                  <div className="cgLabel">REPARTO</div>
+                  <div className="cgLabel">Reparto</div>
                   <select className="cgSelect" name="reparto" defaultValue="">
                     <option value="" disabled>
                       Seleziona un reparto…
@@ -308,18 +245,9 @@ export default function ContactGate() {
                 </div>
 
                 <div className="cgField cgFull">
-                  <div className="cgLabel">MESSAGGIO</div>
+                  <div className="cgLabel">Descrizione</div>
                   <textarea className="cgTextarea" name="message" required />
                 </div>
-              </div>
-
-              <div
-                className="cgMetaEmail"
-                dangerouslySetInnerHTML={{ __html: `Email utilizzata: <b>${escapeHtml(email.trim())}</b>` }}
-              />
-
-              <div className="cgFormDisclaimer">
-                Autorizzo il trattamento dei dati personali ai sensi del Regolamento UE 2016/679 e del D.Lgs. 196/2003, per le finalità indicate nel modulo di contatto.
               </div>
 
               <button className={`cgSubmit${isSending ? " is-loading" : ""}`} type="submit" disabled={isSending}>
@@ -329,13 +257,98 @@ export default function ContactGate() {
                     Invio...
                   </>
                 ) : (
-                  "Invia"
+                  "INVIA"
                 )}
               </button>
+
+              <div className="cgFormDisclaimer">
+                Autorizzo il trattamento dei dati personali ai sensi del Regolamento UE 2016/679 e del D.Lgs. 196/2003, per le finalità indicate nel modulo di contatto.
+              </div>
             </form>
           </div>
         </div>
       </div>
     </section>
+
+    <section className="contactSection" aria-label="Sezione contatti">
+      <div className="contactSection__inner">
+        <div className="contactSection__header">
+          <h2 className="contactSection__title">I NOSTRI CONTATTI</h2>
+          <p className="contactSection__description">
+            Il nostro progetto è in continua evoluzione e cerchiamo partner che condividano la nostra stessa spinta verso l'innovazione. Che il tuo obiettivo sia associare il tuo brand al nostro, esplorare opportunità di recruiting tra i nostri giovani talenti o sviluppare sinergie tecniche, siamo pronti a costruire la soluzione su misura per te. Contattaci oggi per organizzare una call conoscitiva.
+          </p>
+        </div>
+
+        <div className="contactSection__content">
+          <div className="contactSection__contacts">
+            <h3 className="contactSection__subheading">LE NOSTRE EMAIL:</h3>
+            <p className="contactSection__email">fsc_generale@outlook.it</p>
+            <p className="contactSection__email">Per collaborazioni o proposte di sponsorship:</p>
+            <p className="contactSection__email">Managementarea@fscracing.it</p>
+
+            <h3 className="contactSection__subheading">I NOSTRI SOCIAL:</h3>
+            <div className="contactSection__socials" aria-label="Social FSC Racing">
+              <a
+                className="contactSection__socialLink"
+                href="https://www.instagram.com/fsc_racingteam/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram FSC Racing"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" className="contactSection__icon">
+                  <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" strokeWidth="1.8" />
+                  <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1.8" />
+                  <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" />
+                </svg>
+              </a>
+
+              <a
+                className="contactSection__socialLink"
+                href="https://www.linkedin.com/company/fsc-racing-team/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn FSC Racing"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" className="contactSection__icon">
+                  <rect x="3" y="3" width="18" height="18" rx="3" ry="3" fill="none" stroke="currentColor" strokeWidth="1.8" />
+                  <circle cx="8" cy="9" r="1.3" fill="currentColor" />
+                  <path d="M6.8 11.2V17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  <path d="M11 17v-3.3c0-1.5 1.1-2.6 2.5-2.6s2.5 1.1 2.5 2.6V17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  <path d="M11 11.2V17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                </svg>
+              </a>
+
+              <a
+                className="contactSection__socialLink"
+                href="https://www.tiktok.com/@fsc_racingteam"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok FSC Racing"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" className="contactSection__icon">
+                  <path d="M14.5 3h2.2a4.2 4.2 0 0 0 4.2 4.2v2.3a6.5 6.5 0 0 1-4.2-1.4v7.7a5.8 5.8 0 1 1-5.8-5.8c.3 0 .6 0 1 .1v2.4a3.4 3.4 0 1 0 1.8 3.1V3Z" fill="currentColor" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div className="contactSection__mapWrapper">
+            <div className="contactSection__mapCard">
+              <iframe
+                className="contactSection__mapFrame"
+                title="Posizione FSC Racing"
+                src="https://www.google.com/maps?q=Via%20Santa%20Sofia%2064%2C%20Catania&z=17&output=embed"
+                loading="lazy"
+                allowFullScreen
+              />
+            </div>
+            <p className="contactSection__address">
+              Edificio n.3 - piano 6, stanza 34, <br /> Università degli studi di Catania; <br /> Via Santa Sofia 64, Catania
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    </>
   );
 }

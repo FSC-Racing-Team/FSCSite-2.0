@@ -6,6 +6,7 @@ type Accent = "cyan" | "red" | "mgmt";
 type DepartmentBranch = {
   label: string;
   href: string;
+  subtitle: string;
 };
 
 interface ThreePanelsProps {
@@ -14,21 +15,54 @@ interface ThreePanelsProps {
 
 const departmentBranches: Record<number, DepartmentBranch[]> = {
   0: [
-    { label: "High Voltage", href: "#electric" },
-    { label: "Low Voltage", href: "#electric" },
+    {
+      label: "Powertrain",
+      href: "#electric-powertrain",
+      subtitle: "Generazione, conversione e trasmissione della potenza ad alta tensione (Tractive System). L'obiettivo è garantire che la macchina abbia la potenza necessaria, nel rispetto dei limiti termici e di regolamento."
+    },
+    {
+      label: "Safety and Wiring",
+      href: "#electric-safety",
+      subtitle: "Garantisce che tutti i componenti comunichino fisicamente tra loro e che la vettura superi le verifiche tecniche (Electrical Scrutineering)."
+    },
+    {
+      label: "Control System",
+      href: "#electric-control",
+      subtitle: "Scrivere l'intelligenza del veicolo, gestire la dinamica e salvare i dati, trasformando la potenza grezza in tempo sul giro."
+    },
   ],
   1: [
-    { label: "Vehicle Dynamics", href: "#mech" },
-    { label: "Mechanical Design", href: "#mech" },
-    { label: "Aerodynamics", href: "#mech" },
+    {
+      label: "Dinamica",
+      href: "#mech-vd",
+      subtitle: "Gestione sospensioni, studio comportamentale di masse sospese e non sospese."
+    },
+    {
+      label: "Meccanica",
+      href: "#mech-design",
+      subtitle: "Progettazione CAD, analisi delle sollecitazioni, modellazione e studio delle componenti meccaniche."
+    },
+    {
+      label: "Aerodinamica",
+      href: "#mech-aero",
+      subtitle: "Simulazione CFD, simulazioni CAD e ottimizzazione delle superfici aerodinamiche."
+    },
   ],
   2: [
-    { label: "Strategy & Ops", href: "#management" },
-    { label: "Marketing & Communication", href: "#management" },
+    {
+      label: "Management",
+      href: "#management-strategy",
+      subtitle: "Direzione aziendale, valutazione dei rischi, allocazione del budget e sviluppo degli obiettivi di business."
+    },
+    {
+      label: "Marketing & Comunicazione",
+      href: "#management-marketing",
+      subtitle: "Pianificazione strategica della comunicazione, analisi di mercato, modellazione dell'immagine aziendale e sviluppo delle relazioni esterne."
+    },
   ],
 };
 
-export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProps) {
+export default function ThreePanels({ onNavigate }: ThreePanelsProps) {
   const [active, setActive] = useState<number>(1); // default: Meccanica
   const [isOn, setIsOn] = useState(false);
 
@@ -45,9 +79,18 @@ export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProp
       }
     };
 
+  const renderDepartmentIcon = (kind: "electric" | "mech" | "management") => {
+    const iconMap = {
+      electric: "/images/ICONA ELETTRICA.svg",
+      mech: "/images/ICONA MECCANICA.svg",
+      management: "/images/ICONA MANAGEMENT.svg"
+    } as const;
+
+    return <img src={iconMap[kind]} alt="" aria-hidden="true" className="tpIconImage" />;
+  };
+
   return (
     <section className="tpSection" aria-label="3 panels" id="team">
-      {/* ambient SOLO dentro la sezione (non fixed) */}
       <div className="tpAmbient" aria-hidden="true" />
 
       <div className="tpTopBar">
@@ -55,10 +98,9 @@ export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProp
       </div>
 
       <div className={`tpGrid ${isOn ? "tpOn" : ""}`}>
-        {/* 1) ELETTRICA */}
         <section
-          className={`tpPanel ${active === 0 ? "tpActive" : ""}`}
-          style={{ ["--i" as any]: 0 }}
+          className={`tpPanel tpPanelElectric ${active === 0 ? "tpActive" : ""}`}
+          style={{ ["--i" as string]: 0 } as React.CSSProperties}
           data-accent={"cyan" satisfies Accent}
           data-panel="electric"
           tabIndex={0}
@@ -71,22 +113,9 @@ export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProp
           <div className="tpContent tpElectricPanel">
             <div className="tpElectricDefault">
               <div className="tpIcon" aria-hidden="true">
-                <svg viewBox="0 0 220 220" fill="none">
-                  <g
-                    stroke="rgba(232,238,247,.78)"
-                    strokeWidth="2.4"
-                    strokeLinejoin="round"
-                    strokeLinecap="round"
-                  >
-                    <path d="M122 22 L70 118 H118 L96 198 L150 104 H108 L122 22 Z" />
-                  </g>
-                  <g opacity=".55" stroke="rgba(232,238,247,.35)" strokeWidth="1.2">
-                    <path d="M156 42 C182 66 190 96 182 132" />
-                    <path d="M60 52 C34 78 28 108 38 146" />
-                  </g>
-                </svg>
+                {renderDepartmentIcon("electric")}
               </div>
-              <h2 className="tpTitle">Elettrica</h2>
+              <h2 className="tpTitle">ELETTRICA</h2>
               <p className="tpDesc">
                 Architettura elettronica, cablaggi, sensori e integrazione. Dati affidabili, sistemi
                 robusti.
@@ -98,19 +127,25 @@ export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProp
                   key={branch.label}
                   className="tpElectricLink"
                   href={branch.href}
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    onNavigate(branch.href);
+                  }}
                 >
-                  {branch.label}
+                  <span className="tpElectricLinkContent">
+                    <span className="tpElectricLinkTitle">{branch.label}</span>
+                    <span className="tpElectricLinkSubtitle">{branch.subtitle}</span>
+                  </span>
                 </a>
               ))}
             </div>
           </div>
         </section>
 
-        {/* 2) MECCANICA */}
         <section
           className={`tpPanel tpPanelMech ${active === 1 ? "tpActive" : ""}`}
-          style={{ ["--i" as any]: 1 }}
+          style={{ ["--i" as string]: 1 } as React.CSSProperties}
           data-accent={"red" satisfies Accent}
           data-panel="electric"
           tabIndex={0}
@@ -123,22 +158,9 @@ export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProp
           <div className="tpContent tpElectricPanel">
             <div className="tpElectricDefault">
               <div className="tpIcon" aria-hidden="true">
-                <svg viewBox="0 0 220 220" fill="none">
-                  <g
-                    stroke="rgba(232,238,247,.78)"
-                    strokeWidth="2.4"
-                    strokeLinejoin="round"
-                    strokeLinecap="round"
-                  >
-                    <path d="M122 22 L70 118 H118 L96 198 L150 104 H108 L122 22 Z" />
-                  </g>
-                  <g opacity=".55" stroke="rgba(232,238,247,.35)" strokeWidth="1.2">
-                    <path d="M156 42 C182 66 190 96 182 132" />
-                    <path d="M60 52 C34 78 28 108 38 146" />
-                  </g>
-                </svg>
+                {renderDepartmentIcon("mech")}
               </div>
-              <h2 className="tpTitle">Meccanica</h2>
+              <h2 className="tpTitle">MECCANICA</h2>
               <p className="tpDesc">
                 Telaio, sospensioni, powertrain e manufacturing. Prestazioni misurabili, iterazione
                 rapida.
@@ -150,21 +172,26 @@ export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProp
                   key={branch.label}
                   className="tpElectricLink"
                   href={branch.href}
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    onNavigate(branch.href.slice(1));
+                  }}
                 >
-                  {branch.label}
+                  <span className="tpElectricLinkContent">
+                    <span className="tpElectricLinkTitle">{branch.label}</span>
+                    <span className="tpElectricLinkSubtitle">{branch.subtitle}</span>
+                  </span>
                 </a>
               ))}
             </div>
           </div>
         </section>
 
-        {/* 3) MANAGEMENT */}
-
         <section
           id="management"
           className={`tpPanel ${active === 2 ? "tpActive" : ""}`}
-          style={{ ["--i" as any]: 2 }}
+          style={{ ["--i" as string]: 2 } as React.CSSProperties}
           data-accent={"cyan" satisfies Accent}
           data-panel="electric"
           tabIndex={0}
@@ -177,22 +204,9 @@ export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProp
           <div className="tpContent tpElectricPanel">
             <div className="tpElectricDefault">
               <div className="tpIcon" aria-hidden="true">
-                <svg viewBox="0 0 220 220" fill="none">
-                  <g
-                    stroke="rgba(232,238,247,.78)"
-                    strokeWidth="2.4"
-                    strokeLinejoin="round"
-                    strokeLinecap="round"
-                  >
-                    <path d="M122 22 L70 118 H118 L96 198 L150 104 H108 L122 22 Z" />
-                  </g>
-                  <g opacity=".55" stroke="rgba(232,238,247,.35)" strokeWidth="1.2">
-                    <path d="M156 42 C182 66 190 96 182 132" />
-                    <path d="M60 52 C34 78 28 108 38 146" />
-                  </g>
-                </svg>
+                {renderDepartmentIcon("management")}
               </div>
-              <h2 className="tpTitle">Management</h2>
+              <h2 className="tpTitle">MANAGEMENT</h2>
               <p className="tpDesc">
                 Pianificazione, risorse, sponsor e coordinamento. Un progetto coerente, dall’idea al
                 risultato.
@@ -204,9 +218,16 @@ export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProp
                   key={branch.label}
                   className="tpElectricLink"
                   href={branch.href}
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    onNavigate(branch.href.slice(1));
+                  }}
                 >
-                  {branch.label}
+                  <span className="tpElectricLinkContent">
+                    <span className="tpElectricLinkTitle">{branch.label}</span>
+                    <span className="tpElectricLinkSubtitle">{branch.subtitle}</span>
+                  </span>
                 </a>
               ))}
             </div>
@@ -215,8 +236,16 @@ export default function ThreePanels({ onNavigate: _onNavigate }: ThreePanelsProp
       </div>
 
       <div className="tpBottomBar">
-        <a className="tpTopButton" href="#management" onClick={() => setActive(2)}>
-          supporto accademico
+        <a
+          className="tpTopButton"
+          href="#management-prof"
+          onClick={(e) => {
+            e.preventDefault();
+            setActive(2);
+            onNavigate("management-prof");
+          }}
+        >
+          SUPPORTO ACCADEMICO
         </a>
       </div>
     </section>

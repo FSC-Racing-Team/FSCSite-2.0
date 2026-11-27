@@ -1,4 +1,3 @@
-
 export default function Elephant() {
   const wheelHref = `${import.meta.env.BASE_URL}wheel.png`;
   return (

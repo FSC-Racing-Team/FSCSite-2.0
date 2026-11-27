@@ -1,22 +1,63 @@
 // designed by alongio
 import { useEffect, useState } from "react";
 import HomePage from "./components/HomePage";
-import ElectricPage from "./components/ElectricPage";
-import MechPage from "./components/MechPage";
+import ElectricDivisionPage from "./components/ElectricDivisionPage";
+import MechVehicleDynamicsPage from "./components/MechVehicleDynamicsPage";
+import MechMechanicalDesignPage from "./components/MechMechanicalDesignPage";
+import MechAerodynamicsPage from "./components/MechAerodynamicsPage";
+import ManagementStrategyPage from "./components/ManagementStrategyPage";
+import ManagementMarketingPage from "./components/ManagementMarketingPage";
+import ManagementProfessoriPage from "./components/ManagementProfessoriPage";
 import GaragePage from "./components/GaragePage";
-import ManagementPage from "./components/ManagementPage";
 import AdminPage from "./components/AdminPage";
+import FAQPage from "./components/FAQPage";
+import PartnersPage from "./components/PartnersPage";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<string>("home");
 
   const resolveRouteFromHash = (hashValue: string): string => {
-    const hash = hashValue.toLowerCase().trim();
+    const hash = hashValue.replace(/^#/, "").toLowerCase().trim();
     if (!hash) {
       return "home";
     }
 
-    if (hash === "home" || hash === "electric" || hash === "mech" || hash === "garage" || hash === "management" || hash === "admin") {
+    if (hash === "electric") {
+      return "electric-powertrain";
+    }
+
+    if (hash === "electric-hv") {
+      return "electric-powertrain";
+    }
+
+    if (hash === "electric-lv") {
+      return "electric-safety";
+    }
+
+    if (hash === "mech") {
+      return "mech-vd";
+    }
+
+    if (hash === "management") {
+      return "management-strategy";
+    }
+
+    if (
+      hash === "home" ||
+      hash === "electric-powertrain" ||
+      hash === "electric-safety" ||
+      hash === "electric-control" ||
+      hash === "mech-vd" ||
+      hash === "mech-design" ||
+      hash === "mech-aero" ||
+      hash === "management-strategy" ||
+      hash === "management-marketing" ||
+      hash === "management-prof" ||
+      hash === "garage" ||
+      hash === "faq" ||
+      hash === "sponsor" ||
+      hash === "admin"
+    ) {
       return hash;
     }
 
@@ -39,31 +80,75 @@ export default function App() {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
+  useEffect(() => {
+    const isInnerPage = currentPage !== "home";
+    document.documentElement.classList.toggle("inner-page-active", isInnerPage);
+    document.body.classList.toggle("inner-page-active", isInnerPage);
+
+    return () => {
+      document.documentElement.classList.remove("inner-page-active");
+      document.body.classList.remove("inner-page-active");
+    };
+  }, [currentPage]);
+
   const navigateTo = (page: string) => {
-    window.location.hash = page;
-    setCurrentPage(resolveRouteFromHash(page));
+    const normalizedPage = resolveRouteFromHash(page);
+    const currentHash = window.location.hash.slice(1).toLowerCase().trim();
+
+    if (currentHash !== normalizedPage) {
+      window.location.hash = normalizedPage;
+    }
+
+    setCurrentPage(normalizedPage);
   };
 
-  if (currentPage === "electric") {
-    return <ElectricPage onNavigate={navigateTo} />;
+  if (
+    currentPage === "electric-powertrain" ||
+    currentPage === "electric-safety" ||
+    currentPage === "electric-control"
+  ) {
+    return <ElectricDivisionPage onNavigate={navigateTo} division={currentPage} />;
   }
 
-  if (currentPage === "mech") {
-    return <MechPage onNavigate={navigateTo} />;
+  if (currentPage === "mech-vd") {
+    return <MechVehicleDynamicsPage onNavigate={navigateTo} />;
+  }
+
+  if (currentPage === "mech-design") {
+    return <MechMechanicalDesignPage onNavigate={navigateTo} />;
+  }
+
+  if (currentPage === "mech-aero") {
+    return <MechAerodynamicsPage onNavigate={navigateTo} />;
   }
 
   if (currentPage === "garage") {
     return <GaragePage onNavigate={navigateTo} />;
   }
 
-  if (currentPage === "management") {
-    return <ManagementPage onNavigate={navigateTo} />;
+  if (currentPage === "management-strategy") {
+    return <ManagementStrategyPage onNavigate={navigateTo} />;
+  }
+
+  if (currentPage === "management-marketing") {
+    return <ManagementMarketingPage onNavigate={navigateTo} />;
+  }
+
+  if (currentPage === "management-prof") {
+    return <ManagementProfessoriPage onNavigate={navigateTo} />;
   }
 
   if (currentPage === "admin") {
     return <AdminPage onNavigate={navigateTo} />;
   }
 
+  if (currentPage === "faq") {
+    return <FAQPage onNavigate={navigateTo} />;
+  }
+
+  if (currentPage === "sponsor") {
+    return <PartnersPage onNavigate={navigateTo} />;
+  }
+
   return <HomePage onNavigate={navigateTo} />;
 }
-

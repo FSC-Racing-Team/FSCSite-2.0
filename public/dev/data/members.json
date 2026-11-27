@@ -30,7 +30,7 @@
       "order": 0,
       "visible": true,
       "photo": "/dev/assets/uploads/lol.png",
-      "role": "Head of Software R&D",
+      "role": "Senior Software Developer",
       "special": false,
       "linkedin": "https://eagle1705.github.io/Portfolio/"
     },
@@ -74,7 +74,7 @@
       "order": 0,
       "visible": true,
       "photo": "/dev/assets/uploads/grazianolacagnina.png",
-      "role": "Financial Manager",
+      "role": "Management Engineer",
       "special": false,
       "linkedin": "https://www.linkedin.com/in/graziano-lacagnina-03b48b378/"
     },
@@ -83,14 +83,14 @@
       "dept": "management",
       "name": "Sergio Pellegrino",
       "order": 0,
-      "visible": true,
+      "visible": false,
       "photo": "/dev/assets/uploads/sergiopellegrino.png",
       "role": "Junior Coordinator Manager - Mechanics",
       "special": false,
       "linkedin": "https://www.linkedin.com/in/sergio-pellegrino-093812233/"
     },
     {
-      "unit": "low_voltage",
+      "unit": "control_system",
       "dept": "elettrica",
       "name": "Lorenzo Buzzurro",
       "order": 0,
@@ -107,23 +107,23 @@
       "name": "Riccardo Barbagallo",
       "role": "Responsabile di Reparto",
       "dept": "elettrica",
-      "unit": "high_voltage",
+      "unit": "safety_wiring",
       "photo": "/dev/assets/uploads/rbarb.png"
     },
     {
       "special": false,
       "visible": true,
-      "order": 0,
+      "order": 1,
       "name": "Dario Cavallaro",
-      "role": "Junior HV",
+      "role": "Membro",
       "dept": "elettrica",
-      "unit": "high_voltage"
+      "unit": "safety_wiring"
     },
     {
-      "unit": "low_voltage",
+      "unit": "control_system",
       "dept": "elettrica",
       "name": "Giovanni Spadaro",
-      "order": 0,
+      "order": 3,
       "visible": true,
       "photo": "/dev/assets/uploads/gvsp.png",
       "role": "Head of Telemetry System Development",
@@ -132,41 +132,41 @@
     },
     {
       "special": false,
-      "visible": true,
+      "visible": false,
       "order": 0,
       "name": "Manuel Biancolilla",
       "role": "Junior LV",
       "dept": "elettrica",
-      "unit": "low_voltage"
+      "unit": "unassigned"
     },
     {
       "special": false,
       "visible": true,
-      "order": 0,
+      "order": 2,
       "name": "Luigi Tinnirello",
-      "role": "Junior LV",
+      "role": "Electonic Engineer",
       "dept": "elettrica",
-      "unit": "low_voltage"
+      "unit": "powertrain"
     },
     {
-      "unit": "low_voltage",
+      "unit": "powertrain",
       "dept": "elettrica",
       "name": "Vincenzo Grasso",
       "order": 0,
       "visible": true,
       "photo": "",
-      "role": "Junior LV",
-      "special": false,
+      "role": "Responsabile di Reparto",
+      "special": true,
       "linkedin": ""
     },
     {
       "special": false,
-      "visible": true,
+      "visible": false,
       "order": 0,
       "name": "Gianpiero Maria Marchese",
       "role": "IT Specialist",
       "dept": "elettrica",
-      "unit": "low_voltage",
+      "unit": "unassigned",
       "photo": "/dev/assets/uploads/maestro.png"
     },
     {
@@ -384,6 +384,141 @@
       "role": "Project Advisor",
       "special": true,
       "linkedin": "https://www.dieei.unict.it/docenti/gaetano.patti"
+    },
+    {
+      "unit": "management",
+      "dept": "management",
+      "name": "Elisabetta Baldoni",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/elisabetta-baldoni.png",
+      "role": "Software Developer",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/elisabetta-baldoni-ba9a18280/"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 0,
+      "name": "Luca Guarnaccia",
+      "role": "Design Engineer",
+      "dept": "meccanica",
+      "unit": "mechanical_design"
+    },
+    {
+      "unit": "aerodynamics",
+      "dept": "meccanica",
+      "name": "Salvatore Camiolo",
+      "order": 0,
+      "visible": true,
+      "photo": "/dev/assets/uploads/salvatore-camiolo.png",
+      "role": "Aerodynamics Engineer",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/salvatore-camiolo-065492408/"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 4,
+      "name": "Cristiano Calì",
+      "role": "IT Specialist",
+      "dept": "elettrica",
+      "unit": "control_system"
+    },
+    {
+      "special": false,
+      "visible": true,
+      "order": 5,
+      "name": "Gabriele Cassaniti",
+      "role": "IT Specialist",
+      "dept": "elettrica",
+      "unit": "control_system"
+    },
+    {
+      "unit": "powertrain",
+      "dept": "elettrica",
+      "name": "Angelo Pettinato",
+      "order": 1,
+      "visible": true,
+      "photo": "/dev/assets/uploads/angelo-pettinato.png",
+      "role": "Automation Engineer",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/angelo-pettinato/"
+    },
+    {
+      "unit": "control_system",
+      "dept": "elettrica",
+      "name": "Flavia Sorbello",
+      "order": 1,
+      "visible": true,
+      "photo": "",
+      "role": "Membro",
+      "special": false
+    },
+    {
+      "unit": "control_system",
+      "dept": "elettrica",
+      "name": "Giuliano Zafarana",
+      "order": 2,
+      "visible": true,
+      "photo": "",
+      "role": "Membro",
+      "special": false
+    },
+    {
+      "dept": "meccanica",
+      "unit": "vehicle_dynamics",
+      "name": "Andrea Terranova",
+      "order": 10,
+      "visible": true,
+      "photo": "/images/people/andrea_terranova_dinamica del veicolo.png",
+      "role": "",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/andrea-pio-antonio-terranova-unict/"
+    },
+    {
+      "dept": "meccanica",
+      "unit": "vehicle_dynamics",
+      "name": "Alessio Milazzo",
+      "order": 11,
+      "visible": true,
+      "photo": "",
+      "role": "",
+      "special": false,
+      "linkedin": ""
+    },
+    {
+      "dept": "meccanica",
+      "unit": "aerodynamics",
+      "name": "Alessio di Stefano",
+      "order": 10,
+      "visible": true,
+      "photo": "",
+      "role": "",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/alessio-di-stefano-267905380?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+    },
+    {
+      "dept": "meccanica",
+      "unit": "mechanical_design",
+      "name": "Gaetano Valenti",
+      "order": 10,
+      "visible": true,
+      "photo": "/images/people/gaetano_valenti_progettazione.png",
+      "role": "",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/gaetano-valenti-caniglia-2a5a182b5?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+    },
+    {
+      "dept": "management",
+      "unit": "management",
+      "name": "Mirko Clari",
+      "order": 10,
+      "visible": true,
+      "photo": "/images/people/mirko_clari_management.png",
+      "role": "",
+      "special": false,
+      "linkedin": "https://www.linkedin.com/in/mirkoclari"
     }
   ]
 }

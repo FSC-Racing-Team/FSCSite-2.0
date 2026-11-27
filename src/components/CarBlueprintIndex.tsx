@@ -11,6 +11,7 @@ type Props = {
     enabled?: boolean; // ✅ nuovo: cattura input solo quando true
     onRequestExit?: (dir: "up" | "down") => void; // ✅ nuovo
     showProgressBar?: boolean;    // nuovo: mostra barra progresso con checkpoint
+    onLoading?: (loading: boolean) => void;
 };
 
 type Stage = { label: string; s0: number; s1: number };
@@ -201,6 +202,7 @@ export default function CarBlueprintIndex({
     enabled = true,                  // ✅
     onRequestExit,                   // ✅
     showProgressBar = false,         // nuovo
+    onLoading,
 }: Props) {
     const resolvedModelUrl = useMemo(() => toAssetUrl(modelUrl), [modelUrl]);
     const wrapRef = useRef<HTMLDivElement | null>(null);
@@ -208,10 +210,12 @@ export default function CarBlueprintIndex({
     const overlayRef = useRef<HTMLCanvasElement | null>(null);
     const enabledRef = useRef(enabled);
     const progressRef = useRef<{ setProgress: (progress: number) => void } | null>(null);
+    const onLoadingRef = useRef<((loading: boolean) => void) | undefined>(undefined);
     const onExitRef = useRef(onRequestExit);
     const [progressBarValue, setProgressBarValue] = useState(0);
     useEffect(() => { enabledRef.current = enabled; }, [enabled]);
     useEffect(() => { onExitRef.current = onRequestExit; }, [onRequestExit]);
+    useEffect(() => { onLoadingRef.current = onLoading; }, [onLoading]);
 
     const handleProgressChange = (newProgress: number) => {
         if (progressRef.current) {
@@ -1609,7 +1613,10 @@ export default function CarBlueprintIndex({
             pVel = 0;
             goalV = 0;
             isLoaded = true;
+            try { onLoadingRef.current?.(false); } catch (e) {}
         };
+
+        try { onLoadingRef.current?.(true); } catch (e) {}
 
         loader.load(
             resolvedModelUrl,
@@ -1618,7 +1625,10 @@ export default function CarBlueprintIndex({
                 setModel(gltf);
             },
             undefined,
-            (err) => console.error(err)
+            (err) => {
+                console.error(err);
+                try { onLoadingRef.current?.(false); } catch (e) {}
+            }
         );
 
         // ===== LOOP =====
